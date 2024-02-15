@@ -106,11 +106,11 @@ void Konfiguration::endGame() {
 void Konfiguration::Help() {
     cout << "\033[2J\033[1;1H"; // Clear the terminal screen
 	cout << "\n Hier ist Hilfe:" << endl;
-	cout << "Spielregeln für 4 Gewinnt" << endl;
+	cout << "Spielregeln fï¿½r 4 Gewinnt" << endl;
     cout << "1: Zwei Spieler nehmen abwechselnd an dem Spiel teil1 \n";
-    cout << "2: Jeder Spieler hat verschiedene Spielsteine,  X für Spieler eins und O für Spieler zwei. \n";
-    cout << "3: Die Spieler werfen abwechselnd einen ihrer Spielsteine in ein Raster, das aus sieben waagerechten und sechs senkrechten Löchern besteht. \n ";
-    cout << "4: Die Spielsteine fallen immer auf den tiefsten verfügbaren Platz im ausgewählten Raster. \n ";
+    cout << "2: Jeder Spieler hat verschiedene Spielsteine,  X fï¿½r Spieler eins und O fï¿½r Spieler zwei. \n";
+    cout << "3: Die Spieler werfen abwechselnd einen ihrer Spielsteine in ein Raster, das aus sieben waagerechten und sechs senkrechten Lï¿½chern besteht. \n ";
+    cout << "4: Die Spielsteine fallen immer auf den tiefsten verfï¿½gbaren Platz im ausgewï¿½hlten Raster. \n ";
     cout << "5: Das Ziel des Spiels ist es, vier Steine der eigenen Farbe in einer Reihe zu haben.Diese Reihe kann waagerecht, senkrecht oder diagonal sein. \n ";
     cout << "6: Der Spieler, der zuerst vier Steine in einer Reihe hat, gewinnt das Spiel." << endl;
 
@@ -122,10 +122,11 @@ void Konfiguration::getHighscore(string filename) {
     highscore LIST2;
     LIST2.loadFromFile(filename);
     cout << "Hier kommt die Highscore Liste" << endl;
+    ersteFrage:
     cout << "Wonach soll sortiert werden?" << endl;
     cout << "(N)ame" << endl;
     cout << "(D)atum" << endl;
-    cout << "(Z)üge" << endl;
+    cout << "(Z)uege" << endl;
     char Sortiert;
     char S;
     int C = 2;
@@ -142,9 +143,10 @@ void Konfiguration::getHighscore(string filename) {
         break;
     default:
         cout << "Invalide Eingabe" << endl;
-        C = C - 1;
+        goto ersteFrage;
         break;
     }
+    zweiteFrage:
     cout << "Wie nach soll soritert werden?" << endl;
     cout << "A(u)fsteigend?" << endl;
     cout << "A(b)steigend?" << endl;
@@ -159,12 +161,10 @@ void Konfiguration::getHighscore(string filename) {
         break;
     default:
         cout << "Invalide Eingabe" << endl;
-        C = C - 1;
+        goto zweiteFrage;
         break;
     }
-    if (C == 2) {
         LIST2.displaySorted(S, R);
-    };
-    // Hier weiteren Code einfügen bzw. andere Funktionen aufrufen
+    // Hier weiteren Code einfï¿½gen bzw. andere Funktionen aufrufen
 
 }
