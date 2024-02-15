@@ -166,5 +166,6 @@ void Konfiguration::getHighscore(string filename) {
     }
         LIST2.displaySorted(S, R);
     // Hier weiteren Code einf�gen bzw. andere Funktionen aufrufen
+    //Test
 
 }
