@@ -8,6 +8,7 @@ using namespace::std;
 highscore::highscore() : head(nullptr), headData2(nullptr), headStrData(nullptr) {}
 
 // Destructor
+/*
 highscore::~highscore() {
     while (head != nullptr) {
         Node* temp = head;
@@ -17,6 +18,19 @@ highscore::~highscore() {
         delete temp;
     }
 };
+*/
+highscore::~highscore() {
+    Node* current = head;
+    while (current != nullptr) {
+        Node* next = current->nextData1;
+        delete current;
+        current = next;
+    }
+
+    head = nullptr;
+    headData2 = nullptr;
+    headStrData = nullptr;
+}
 
 void highscore::insertNode(int value1, time_t value2, const string& strValue) {
     Node* newNode = new Node;

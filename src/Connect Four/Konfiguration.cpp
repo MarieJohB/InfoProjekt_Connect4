@@ -124,12 +124,11 @@ void Konfiguration::getHighscore(string filename) {
     cout << "Hier kommt die Highscore Liste" << endl;
     ersteFrage:
     cout << "Wonach soll sortiert werden?" << endl;
-    cout << "(N)ame" << endl;
-    cout << "(D)atum" << endl;
-    cout << "(Z)uege" << endl;
+    cout << "-N für Name" << endl;
+    cout << "-D für Datum" << endl;
+    cout << "-Z für Zuege" << endl;
     char Sortiert;
     char S;
-    int C = 2;
     cin >> Sortiert;
     switch (Sortiert) {
     case 'N':
@@ -148,8 +147,8 @@ void Konfiguration::getHighscore(string filename) {
     }
     zweiteFrage:
     cout << "Wie nach soll soritert werden?" << endl;
-    cout << "A(u)fsteigend?" << endl;
-    cout << "A(b)steigend?" << endl;
+    cout << "-u für Aufsteigend?" << endl;
+    cout << "-b für Absteigend?" << endl;
     cin >> Sortiert;
     bool R;
     switch (Sortiert) {
