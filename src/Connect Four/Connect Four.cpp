@@ -71,19 +71,18 @@ int main(int argc, char* argv[]) {
     */
 
     char ausgabe;
-    char* eingabe1 = argv[1]; // zweites Argument abgreifen, also die erste Eingabe
-
     char TextAusgeben;
-    char* eingabe2 = argv[2]; // drittes Argument einlesen
-
+    
     if (argc >= 3) { // wenn dar User beim Start Parameter eingegeben hat
 
-        if (eingabe1 != NULL) {
-            ausgabe = *eingabe1; // Achtung: ausgabe ist ein Charakter, das muss man Bei Vergliech etc. beachten
+        if (argv[1] != NULL) {
+            // zweites Argument abgreifen, also die erste Eingabe
+            // Achtung: ausgabe ist ein Charakter, das muss man Bei Vergliech etc. beachten
+            ausgabe = *argv[1]; 
             //cout << "Das 2. Argument ist " << ausgabe << endl;
         }
-        if (eingabe2 != NULL) {
-            TextAusgeben = *eingabe2;
+        if (argv[2] != NULL) {
+            TextAusgeben = *argv[2]; // drittes Argument einlesen
         }
 
     }
