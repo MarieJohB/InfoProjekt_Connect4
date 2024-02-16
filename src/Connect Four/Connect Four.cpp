@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
 #include "Konfiguration.h"
 #include "AbstractBoard.h"
 #include "Ruler.h"
@@ -72,13 +73,13 @@ int main(int argc, char* argv[]) {
 
     char ausgabe;
     char TextAusgeben;
-    
+
     if (argc >= 3) { // wenn dar User beim Start Parameter eingegeben hat
 
         if (argv[1] != NULL) {
             // zweites Argument abgreifen, also die erste Eingabe
             // Achtung: ausgabe ist ein Charakter, das muss man Bei Vergliech etc. beachten
-            ausgabe = *argv[1]; 
+            ausgabe = *argv[1];
             //cout << "Das 2. Argument ist " << ausgabe << endl;
         }
         if (argv[2] != NULL) {
@@ -87,16 +88,16 @@ int main(int argc, char* argv[]) {
 
     }
     else { // Falls beim Start keine Parameter übergeben wurde
-        cout << "\033[2J\033[1;1H"; // Clear the terminal screen
-        cout << "Falsche Eingabe: " << endl << "1 => Spieler 1: X | Spieler 2: O \n2 => Spieler 1: X | Spieler 2: O \n" << endl;
+        system("cls"); // Für Windows
+        cout << "Falsche Eingabe: " << endl << "1 => Spieler 1: X | Spieler 2: O \n2 => Spieler 1: O | Spieler 2: X \n" << endl;
         cin >> ausgabe;
         cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
-        cout << "\033[2J\033[1;1H";
+        system("cls"); // Für Windows
         cout << "T => Ausgabe des Spieles in einer .txt Datei" << endl;
         cout << "K => Ausgabe des Spieles im Terminal" << endl;
         cin >> TextAusgeben;
         cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
-        cout << "\033[2J\033[1;1H";
+        system("cls"); // Für Windows
 
     }
 
@@ -119,21 +120,21 @@ int main(int argc, char* argv[]) {
 
 
     // Überprüfen, ob das Spiel in der Konsole oder in der Text Datei stattfindet
-    if (TextAusgeben == 'T') {
+    if (TextAusgeben == 'T' || TextAusgeben == 't') {
         cout << "Spielfeld ausgabe geschieht im .txt Datei" << endl;
         GameOn.displayText = true;
     }
-    else{
+    else {
         cout << "Speilfeldausgabe geschieht im Terminal" << endl;
 
     }
 
-    while (GameOn.end){
+    while (GameOn.end) {
         Board1.initializeBoard(board);
         GameOn.askUser(filename);
 
         while (GameOn.play) {
-            
+
             if (GameOn.displayText) {
 
                 Board1.displayBoard(board);
@@ -167,12 +168,10 @@ int main(int argc, char* argv[]) {
                     //int zuege = Ruler.countpasses(ausgabe, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2);
                     cout << "\nSpieler " << (turn % 2 + 1) << " gewinnt" << " in " << Ruler.countpasses(ausgabe, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2) << " Zuege!" << endl;
                     NameOfWinner();
-                    for (int i = 0; i < 10 ; i++) {
-                        celeb.victoryDance();
-                    }
+                    celeb.victoryDance();
                     cout << "gewonnen hat: " << winner.getName() << endl;
                     list.loadFromFile(filename);
-                    list.insertNode(Ruler.countpasses(ausgabe, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2) , 0, winner.getName());
+                    list.insertNode(Ruler.countpasses(ausgabe, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2), 0, winner.getName());
                     list.saveToFile(filename);
                     GameOn.endGame();
 
@@ -195,13 +194,13 @@ int main(int argc, char* argv[]) {
 
             }
             else {
-                cout << "\033[2J\033[1;1H"; // Clear the terminal screen
+                system("cls"); // Für Windows
                 cout << "Ungueltige Spalte waehle eine andere \n";
             }
         }
-        
+
     }
     return 0;
-    }
+}
 
-    
+
