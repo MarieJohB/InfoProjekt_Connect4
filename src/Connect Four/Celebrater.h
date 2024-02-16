@@ -13,7 +13,7 @@ class Celebrater {
 public:
 
 	void victoryDance();
-
+	void sleepieepie();
 
 };
 #endif
