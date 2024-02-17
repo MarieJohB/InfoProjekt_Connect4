@@ -30,13 +30,14 @@ Konfiguration::Konfiguration() {
 
 void Konfiguration::askUser(string filename) {
     do {
-        cout << "Verfuegbare Befehle:" << endl;
+        cout << "Verfuegbare Befehle: \n" << endl;
         cout << "- 'h' fuer Hilfe anzeigen" << endl;
         cout << "- 's' fuer Spiel starten" << endl;
         cout << "- 'b' um die Bestenliste zu sehen" << endl;
-        cout << "- 'e' um das Programm zu beenden" << endl;
+        cout << "- 'e' um das Programm zu beenden \n" << endl;
 
         // cin >> input;
+        cout << "Ihre Eingabe: ";
         input = getchar();
         cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
         // cin.get(input); // nur das erste Zeichen einlesen
@@ -64,14 +65,14 @@ void Konfiguration::askUser(string filename) {
 // Spiel starten:
 void Konfiguration::startGame() {
     system("cls"); // Für Windows
-    cout << "Das Spiel wird gestartet" << endl;
+    cout << "Das Spiel wird gestartet \n" << endl;
     play = true;
     // weiteren Code eingeben oder andere Funktion hier aufrufen
 }
 
 void Konfiguration::endProgramm() {
     system("cls"); // Für Windows
-    cout << "Das Spiel wird beendet" << endl;
+    cout << "Das Spiel wird beendet \n" << endl;
     end = false;
     // weiteren Code eingebn oder andere Funktion hier aufrufen
 
@@ -91,14 +92,14 @@ bool Konfiguration::continueGame() {
             return false;
             break;
         default:
-            cout << "Ungueltiger Befehl. Bitte erneut versuchen." << endl;
+            cout << "Ungueltiger Befehl. Bitte erneut versuchen. \n" << endl;
         }
     } while (input != 'y' && input != 'n');
 }
 
 void Konfiguration::endGame() {
     system("cls"); // Für Windows
-    cout << "Spiel wurde beended kehre zum Hauptbildschirm zurueck!" << endl;
+    cout << "Spiel wurde beended kehre zum Hauptbildschirm zurueck! \n" << endl;
     play = false;
 }
 
@@ -113,7 +114,7 @@ void Konfiguration::Help() {
     cout << "3: Die Spieler werfen abwechselnd einen ihrer Spielsteine in ein Raster, das aus sieben waagerechten und sechs senkrechten L�chern besteht. \n";
     cout << "4: Die Spielsteine fallen immer auf den tiefsten verf�gbaren Platz im ausgewaehlten Raster. \n ";
     cout << "5: Das Ziel des Spiels ist es, vier Steine der eigenen Farbe in einer Reihe zu haben.Diese Reihe kann waagerecht, senkrecht oder diagonal sein. \n";
-    cout << "6: Der Spieler, der zuerst vier Steine in einer Reihe hat, gewinnt das Spiel." << endl;
+    cout << "6: Der Spieler, der zuerst vier Steine in einer Reihe hat, gewinnt das Spiel. \n" << endl;
 
 
 }

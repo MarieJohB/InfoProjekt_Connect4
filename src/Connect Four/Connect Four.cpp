@@ -89,20 +89,24 @@ int main(int argc, char* argv[]) {
     }
     else { // Falls beim Start keine Parameter übergeben wurde
         system("cls"); // Für Windows
-        cout << "Falsche Eingabe: " << endl << "1 => Spieler 1: X | Spieler 2: O \n2 => Spieler 1: O | Spieler 2: X \n" << endl;
+        cout << "Falsche Eingabe: \n" << endl << "1 => Spieler 1: X | Spieler 2: O \n2 => Spieler 1: O | Spieler 2: X \n" << endl;
+        cout << "Ihre Eingabe: ";
         cin >> ausgabe;
         cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
+        check.checkNumberAusgabe(ausgabe);
         system("cls"); // Für Windows
         cout << "T => Ausgabe des Spieles in einer .txt Datei" << endl;
-        cout << "K => Ausgabe des Spieles im Terminal" << endl;
+        cout << "K => Ausgabe des Spieles im Terminal \n" << endl;
+        cout << "Ihre Eingabe: ";
         cin >> TextAusgeben;
         cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
+        check.checkTextAusgabe(TextAusgeben);
         system("cls"); // Für Windows
 
     }
 
-    check.checkTextAusgabe(TextAusgeben);
-    check.checkNumberAusgabe(ausgabe);
+    //check.checkTextAusgabe(TextAusgeben);
+    //check.checkNumberAusgabe(ausgabe);
 
     // Überprüfen, welcher Spieler X bzw O hat
     if (ausgabe == '1') { // Spieler 1 hat X
@@ -121,11 +125,11 @@ int main(int argc, char* argv[]) {
 
     // Überprüfen, ob das Spiel in der Konsole oder in der Text Datei stattfindet
     if (TextAusgeben == 'T' || TextAusgeben == 't') {
-        cout << "Spielfeld ausgabe geschieht im .txt Datei" << endl;
+        cout << "Spielfeld ausgabe geschieht im .txt Datei \n" << endl;
         GameOn.displayText = true;
     }
     else {
-        cout << "Speilfeldausgabe geschieht im Terminal" << endl;
+        cout << "Speilfeldausgabe geschieht im Terminal \n" << endl;
 
     }
 
