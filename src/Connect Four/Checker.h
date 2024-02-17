@@ -12,8 +12,8 @@ class Checker{
 
 public:
 
-	void checkTextAusgabe(char Textausgeben);
-	void checkNumberAusgabe(long long ausgabe);
+	char checkTextAusgabe(char Textausgeben);
+	char checkNumberAusgabe(char ausgabe);
 
 
 };

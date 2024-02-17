@@ -93,29 +93,46 @@ int main(int argc, char* argv[]) {
         cout << "Ihre Eingabe: ";
         cin >> ausgabe;
         cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
-        check.checkNumberAusgabe(ausgabe);
+        int check1 = check.checkNumberAusgabe(ausgabe);
+        if (check1 == '1') { // Spieler 1 hat X
+            token1 = 'X';
+            token2 = 'O';
+            ausgabe = '1';
+        }
+        else if (check1 == '2') { // 1: Spieler 2 hat X
+            token1 = 'O';
+            token2 = 'X';
+            ausgabe = '2';
+
+        }
         system("cls"); // Für Windows
         cout << "T => Ausgabe des Spieles in einer .txt Datei" << endl;
         cout << "K => Ausgabe des Spieles im Terminal \n" << endl;
         cout << "Ihre Eingabe: ";
         cin >> TextAusgeben;
         cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
-        check.checkTextAusgabe(TextAusgeben);
+        int check2 = check.checkTextAusgabe(TextAusgeben);
+        if (check2 == 'T' || check2 == 't') {
+            cout << "Spielfeld ausgabe geschieht im .txt Datei \n" << endl;
+            GameOn.displayText = true;
+            TextAusgeben = 'T';
+        }
+        else {
+            cout << "Speilfeldausgabe geschieht im Terminal \n" << endl;
+
+        }
         system("cls"); // Für Windows
 
     }
 
-    //check.checkTextAusgabe(TextAusgeben);
-    //check.checkNumberAusgabe(ausgabe);
-
     // Überprüfen, welcher Spieler X bzw O hat
-    if (ausgabe == '1' || ausgabe == 1) { // Spieler 1 hat X
+    if (ausgabe == '1') { // Spieler 1 hat X
         token1 = 'X';
         token2 = 'O';
 
         cout << "Spieler 1 => Token: " << token1 << " Spieler 2 => Token: " << token2 << endl;
     }
-    else if (ausgabe == '2' || ausgabe == 2) { // 1: Spieler 2 hat X
+    else if (ausgabe == '2') { // 1: Spieler 2 hat X
         token1 = 'O';
         token2 = 'X';
 

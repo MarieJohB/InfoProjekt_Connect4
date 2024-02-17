@@ -6,7 +6,7 @@
 #include <cstdlib>
 using namespace::std;
 
-void Checker::checkTextAusgabe(char TextAusgeben) {
+char Checker::checkTextAusgabe(char TextAusgeben) {
     // Prüfen, ob die Eingabe korrekt war
     while (!(TextAusgeben == 'T' || TextAusgeben == 'K' || TextAusgeben == 't' || TextAusgeben == 'k')) {
         system("cls"); // Für Windows
@@ -17,20 +17,24 @@ void Checker::checkTextAusgabe(char TextAusgeben) {
         cin >> TextAusgeben;
         cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
         system("cls"); // Für Windows
+
+    }
+    if (TextAusgeben == 'T' || TextAusgeben == 'K' || TextAusgeben == 't' || TextAusgeben == 'k') {
+        return TextAusgeben;
     }
 };
 
-void Checker::checkNumberAusgabe(long long ausgabe) {
+char Checker::checkNumberAusgabe(char ausgabe) {
     // Prüfen, ob die Eingabe korrekt war
-    while (!(ausgabe == '1' || ausgabe == '2' || ausgabe == 1 || ausgabe == 2)) { // oder (ausgabe != '1' && ausgabe != '2')
+    while (!(ausgabe == '1' || ausgabe == '2')) { // oder (ausgabe != '1' && ausgabe != '2')
         system("cls"); // Für Windows
         cout << "Falsche Eingabe: " << endl << "1 => Spieler 1: X | Spieler 2: O \n2 => Spieler 1: O | Spieler 2: X \n" << endl;
         cout << "Ihre Eingabe: ";
         cin >> ausgabe;
-        if (ausgabe > numeric_limits<int>::max()) {
-            cout << "Die eingegebene Zahl ist größer als die größtmögliche int-Zahl\n";
-        }
         cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
         system("cls"); // Für Windows
+    }
+    if (ausgabe == '1' || ausgabe == '2') {
+        return ausgabe;
     }
 };
