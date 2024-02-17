@@ -103,7 +103,6 @@ int main(int argc, char* argv[]) {
             token1 = 'O';
             token2 = 'X';
             ausgabe = '2';
-
         }
         system("cls"); // Für Windows
         cout << "T => Ausgabe des Spieles in einer .txt Datei" << endl;
@@ -113,13 +112,8 @@ int main(int argc, char* argv[]) {
         cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
         int check2 = check.checkTextAusgabe(TextAusgeben);
         if (check2 == 'T' || check2 == 't') {
-            cout << "Spielfeld ausgabe geschieht im .txt Datei \n" << endl;
             GameOn.displayText = true;
             TextAusgeben = 'T';
-        }
-        else {
-            cout << "Speilfeldausgabe geschieht im Terminal \n" << endl;
-
         }
         system("cls"); // Für Windows
 
@@ -216,7 +210,7 @@ int main(int argc, char* argv[]) {
             }
             else {
                 system("cls"); // Für Windows
-                cout << "Ungueltige Spalte waehle eine andere \n";
+                cout << "\nUngueltige Spalte waehle eine andere \n";
             }
         }
 

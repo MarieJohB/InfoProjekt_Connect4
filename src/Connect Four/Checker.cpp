@@ -28,7 +28,7 @@ char Checker::checkNumberAusgabe(char ausgabe) {
     // Prüfen, ob die Eingabe korrekt war
     while (!(ausgabe == '1' || ausgabe == '2')) { // oder (ausgabe != '1' && ausgabe != '2')
         system("cls"); // Für Windows
-        cout << "Falsche Eingabe: " << endl << "1 => Spieler 1: X | Spieler 2: O \n2 => Spieler 1: O | Spieler 2: X \n" << endl;
+        cout << "Falsche Eingabe: \n" << endl << "1 => Spieler 1: X | Spieler 2: O \n2 => Spieler 1: O | Spieler 2: X \n" << endl;
         cout << "Ihre Eingabe: ";
         cin >> ausgabe;
         cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen

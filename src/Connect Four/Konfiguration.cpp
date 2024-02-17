@@ -56,7 +56,8 @@ void Konfiguration::askUser(string filename) {
             endProgramm();
             break;
         default:
-            cout << "Ungueltiger Befehl. Bitte erneut versuchen." << endl;
+            system("cls"); // Für Windows
+            cout << "Ungueltiger Befehl. Bitte erneut versuchen.\n" << endl;
         }
     } while (input != 'h' && input != 's' && input != 'b' && input != 'e');
 }
@@ -157,14 +158,14 @@ ersteFrage:
         S = '1';
         break;
     default:
-
-        cout << "\nInvalide Eingabe" << endl;
+        system("cls"); // Für Windows
+        cout << "Invalide Eingabe" << endl;
         goto ersteFrage;
         break;
     }
     system("cls"); // Für Windows
 zweiteFrage:
-    cout << "Wie nach soll soritert werden?\n" << endl;
+    cout << "Wie nach soll sortiert werden?\n" << endl;
     cout << "-u fuer Aufsteigend?" << endl;
     cout << "-b fuer Absteigend?" << endl;
     cout << "\nIhre Eingabe: ";
@@ -179,6 +180,7 @@ zweiteFrage:
         R = false;
         break;
     default:
+        system("cls"); // Für Windows
         cout << "Invalide Eingabe" << endl;
         goto zweiteFrage;
         break;
@@ -226,11 +228,21 @@ zweiteFrage:
 ++**##*+%##+++++++++++*+-    .-+*###%%%###+-    :#++++++++++++++++++++++++++++++++++++++++++++#####@*****#*%@@*######@@@#####%%%#++++++++++*#%**##**++
 #**********###**+++++*+----------------------:::===================================================++++++***+********************++++*****##*++******#
 %@%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 
-    )";
-    cout << asciiArt;
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+)";
+
+    cout << asciiArt << "\n";
 
     LIST2.displaySorted(S, R);
+    char wait;
+    cout << "\nIrgendeine Taste zum Fortfahren eingeben\n";
+    cin >> wait;
+    while (wait == ' ') {
+        cin >> wait;
+        
+    }
+    system("cls"); // Für Windows
+
     // Hier weiteren Code einfuegen bzw. andere Funktionen aufrufen
     //Test
 

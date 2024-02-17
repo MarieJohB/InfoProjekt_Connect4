@@ -113,7 +113,7 @@ void highscore::insertNode(int value1, time_t value2, const string& strValue) {
 void highscore::loadFromFile(const string& filename) {
     ifstream inputFile(filename);
     if (!inputFile) {
-        cerr << "Error: Unable to open file " << filename << endl;
+        cerr << "Error: Datei kann nicht geöffnet werden " << filename << endl;
         return;
     }
 
@@ -126,13 +126,13 @@ void highscore::loadFromFile(const string& filename) {
         char comma;
         if (iss >> value1 >> comma >> value2 >> comma) {
             if (!getline(iss >> ws, strValue)) {
-                cerr << "Error reading line: " << line << endl;
+                cerr << "Error beim Lesen der Zeile: " << line << endl;
                 continue; // Skip to the next line
             }
             insertNode(value1, value2, strValue); // Inserts node while maintaining sorted order
         }
         else {
-            cerr << "Error reading line: " << line << endl;
+            cerr << "Error beim Lesen der Zeile: " << line << endl;
         }
     }
 
@@ -141,10 +141,10 @@ void highscore::loadFromFile(const string& filename) {
 void highscore::saveToFile(const string& filename) {
     ofstream outputFile(filename);
     if (!outputFile) {
-        cerr << "File " << filename << " does not exist. Creating a new file." << endl;
+        cerr << "Datei " << filename << " existiert nicht. Erstelle neu." << endl;
         outputFile.open(filename, ios::out);
         if (!outputFile) {
-            cerr << "Error: Unable to create file " << filename << " for writing." << endl;
+            cerr << "Error: Datei kann nicht zum Schreiben " << filename << " erstellt werden." << endl;
             return;
         }
     }
@@ -162,19 +162,19 @@ void highscore::displaySorted(char sortBy, bool ascending) {
 
     switch (sortBy) {
     case '1':
-        cout << "Sorted by Highscore:" << endl;
+        cout << "Sortierung erfolgte nach dem Highscore:\n" << endl;
         current = ascending ? head : findLastNodeData1(head); // Set current to the last node for descending order;
         break;
     case '2':
-        cout << "Sorted by Date:" << endl;
+        cout << "Sortierung erfolgte nach dem Datum:\n" << endl;
         current = ascending ? headData2 : findLastNodeData2(headData2); // Set current to the last node for descending order
         break;
     case 's':
-        cout << "Sorted by Name:" << endl;
+        cout << "Sortierung erfolgte nach dem Namen:\n" << endl;
         current = ascending ? headStrData : findLastNodeDataStr(headStrData); // Set current to the last node for descending order;
         break;
     default:
-        cerr << "Invalid sorting option." << endl;
+        cerr << "Invalide Sortier Option." << endl;
         return;
     }
 
