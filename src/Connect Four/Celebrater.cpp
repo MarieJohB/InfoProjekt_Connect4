@@ -12,7 +12,7 @@ using namespace::std;
 
 void Celebrater::sleepieepie() {
     this_thread::sleep_for(95ms);
-    //system("echo \033[2J\033[1;1H"); // Setzt den Cursor nach oben links
+    system("echo \033[2J\033[1;1H"); // Setzt den Cursor nach oben links
 }
 
 void Celebrater::victoryDance() {

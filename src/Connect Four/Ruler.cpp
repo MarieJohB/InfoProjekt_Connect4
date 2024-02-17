@@ -6,7 +6,7 @@ using namespace::std;
 
 
 bool Ruler :: isValidMove(char board[ROWS][COLS], int col){
-    if (col == 282) {
+    if (col == 281) {
         Celebrater cel;
         cel.victoryDance();
     };
