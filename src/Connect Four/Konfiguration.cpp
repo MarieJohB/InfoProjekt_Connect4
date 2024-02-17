@@ -126,13 +126,14 @@ void Konfiguration::getHighscore(string filename) {
     system("cls"); // Für Windows
 
 ersteFrage:
-    cout << "Wonach soll sortiert werden?" << endl;
+    cout << "Wonach soll sortiert werden?\n" << endl;
     cout << "-N fuer Name" << endl;
     cout << "-D fuer Datum" << endl;
     cout << "-Z fuer Zuege" << endl;
 
     char Sortiert;
     char S;
+    cout << "\nIhre Eingabe: ";
     cin >> Sortiert;
     cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
 
@@ -157,15 +158,16 @@ ersteFrage:
         break;
     default:
 
-        cout << "Invalide Eingabe" << endl;
+        cout << "\nInvalide Eingabe" << endl;
         goto ersteFrage;
         break;
     }
     system("cls"); // Für Windows
 zweiteFrage:
-    cout << "Wie nach soll soritert werden?" << endl;
+    cout << "Wie nach soll soritert werden?\n" << endl;
     cout << "-u fuer Aufsteigend?" << endl;
     cout << "-b fuer Absteigend?" << endl;
+    cout << "\nIhre Eingabe: ";
     cin >> Sortiert;
     cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
     bool R;

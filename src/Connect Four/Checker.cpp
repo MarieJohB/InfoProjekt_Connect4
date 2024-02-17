@@ -1,6 +1,7 @@
 #include <fstream>
 #include <stdio.h>
 #include <iostream>
+#include <limits>
 #include "Checker.h"
 #include <cstdlib>
 using namespace::std;
@@ -19,15 +20,15 @@ void Checker::checkTextAusgabe(char TextAusgeben) {
     }
 };
 
-void Checker::checkNumberAusgabe(int ausgabe) {
+void Checker::checkNumberAusgabe(long long ausgabe) {
     // Prüfen, ob die Eingabe korrekt war
-    while (!(ausgabe == '1' || ausgabe == '2')) { // oder (ausgabe != '1' && ausgabe != '2')
+    while (!(ausgabe == '1' || ausgabe == '2' || ausgabe == 1 || ausgabe == 2)) { // oder (ausgabe != '1' && ausgabe != '2')
         system("cls"); // Für Windows
         cout << "Falsche Eingabe: " << endl << "1 => Spieler 1: X | Spieler 2: O \n2 => Spieler 1: O | Spieler 2: X \n" << endl;
         cout << "Ihre Eingabe: ";
         cin >> ausgabe;
-        if (ausgabe > 1000) {
-            ausgabe = 3;
+        if (ausgabe > numeric_limits<int>::max()) {
+            cout << "Die eingegebene Zahl ist größer als die größtmögliche int-Zahl\n";
         }
         cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
         system("cls"); // Für Windows

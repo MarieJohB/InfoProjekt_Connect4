@@ -109,13 +109,13 @@ int main(int argc, char* argv[]) {
     //check.checkNumberAusgabe(ausgabe);
 
     // Überprüfen, welcher Spieler X bzw O hat
-    if (ausgabe == '1') { // Spieler 1 hat X
+    if (ausgabe == '1' || ausgabe == 1) { // Spieler 1 hat X
         token1 = 'X';
         token2 = 'O';
 
         cout << "Spieler 1 => Token: " << token1 << " Spieler 2 => Token: " << token2 << endl;
     }
-    else if (ausgabe == '2') { // 1: Spieler 2 hat X
+    else if (ausgabe == '2' || ausgabe == 2) { // 1: Spieler 2 hat X
         token1 = 'O';
         token2 = 'X';
 

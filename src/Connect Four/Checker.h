@@ -13,7 +13,7 @@ class Checker{
 public:
 
 	void checkTextAusgabe(char Textausgeben);
-	void checkNumberAusgabe(int ausgabe);
+	void checkNumberAusgabe(long long ausgabe);
 
 
 };

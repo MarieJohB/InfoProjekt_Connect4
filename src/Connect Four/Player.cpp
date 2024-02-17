@@ -18,7 +18,7 @@ int Player :: getInteger() {
     while (!(cin >> col) || col > 1000) {
         cin.clear(); // löscht den Fehlerstatus
         cin.ignore(numeric_limits<streamsize>::max(), '\n'); // ignoriert das falsche Eingabe
-        cout << "Ungueltige Eingabe. Bitte geben Sie eine Ganzzahl ein die im Wertebereich liegt: ";
+        cout << "\nUngueltige Eingabe. Bitte geben Sie eine Ganzzahl ein die im Wertebereich liegt: ";
     }
 
     return col;
