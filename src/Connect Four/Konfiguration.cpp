@@ -3,6 +3,7 @@
 #include <string>
 #include "highscore.h"
 #include <cstdlib>
+#include <limits>
 using namespace::std;
 
 
@@ -235,13 +236,11 @@ zweiteFrage:
 
     LIST2.displaySorted(S, R);
     char wait;
-    cout << "\nIrgendein Zeichen zum Fortfahren eingeben\n";
-    cin >> wait;
-    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
-    while (wait == ' ') {
-        cin >> wait;
+    cout << "\nEnter zum Fortfahren drücken\n";
+    cin.get(wait);
+    while (wait != '\n' && wait != ' ') {
+        cin.get(wait);
         cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
-        
     }
     system("cls"); // Für Windows
 
