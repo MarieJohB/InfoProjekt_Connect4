@@ -30,8 +30,9 @@ public:
 	void Help();
 	// Highscore ausgeben lassen:
 	void getHighscore(string filename);
-	bool continueGame();
+	//bool continueGame();
 	void endProgramm();
+	void wait();
 
 
 

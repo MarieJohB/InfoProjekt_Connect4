@@ -7,7 +7,17 @@
 using namespace::std;
 
 
+void Konfiguration::wait() {
+    char wait;
+    cout << "\nEnter zum Fortfahren drücken\n";
+    cin.get(wait);
+    while (wait != '\n' && wait != ' ') {
+        cin.get(wait);
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
+    }
+    system("cls"); // Für Windows
 
+}
 
 
 Konfiguration::Konfiguration(char input_, int ROW_, int COL_, bool displayText_, bool play_, bool end_) {
@@ -42,7 +52,7 @@ void Konfiguration::askUser(string filename) {
 %@@@%=:..:=#@@@@@+-..:-*@@@@@*-:..-+%@@@@%=:..:=#@@@@@+-..:-*@@@@@*-:..-+%@@@@%=:..:=#@@@%
 %@@+        -@@#        .%@%:        *@@=   s    =@@#        .%@%:        *@@=        =@@%
 %@%          *@.         -@=          @#   ===    #@.         -@=          @#          #@%
-%@@          %@-         +@*         :@% Spielen  %@-         +@*         :@%          %@%
+%@@          %@-         +@*         :@% Spielen %@-.         +@*         :@%          %@%
 %@@#:      :#@@@=       +@@@*.      -%@@#:      :#@@@=      .+@@@+.      -%@@#:      :#@@%
 %@@@@%*++*%@@@@@@@#+++#@@@@@@@#*++*@@@@@@@%*++*%@@@@@@@#++*#@@@@@@@#*++*@@@@@@@%*++*%@@@@%
 %@@@@*=--=*%@@@@@#=---+%@@@@@%+---=#@@@@@@%%%%%%@@@@@@#=---+%@@@@@%+---=#@@@@@@*=--=*@@@@%
@@ -71,7 +81,6 @@ void Konfiguration::askUser(string filename) {
 %@@@*-:..:-*@@@@%%#####%@@@@%+:...:=#@@@@*-:...-+@@@@@%#####%@@@@@%#####%%@@@@*-:..:-*@@@%
 %@@@@@@%%@@@@@@@@@@@@@@@@@@@@@@@%@@@@@@@@@@@@%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%@@@@@@%
 -------------------------------------                -------------------------------------
-
 )";
         /*cout << "Verfuegbare Befehle: \n" << endl;
         cout << "- 'h' fuer Hilfe anzeigen" << endl;
@@ -123,7 +132,7 @@ void Konfiguration::endProgramm() {
 
 }
 
-bool Konfiguration::continueGame() {
+/*bool Konfiguration::continueGame() {
     do {
 
         cin >> input;
@@ -140,7 +149,7 @@ bool Konfiguration::continueGame() {
             cout << "Ungueltiger Befehl. Bitte erneut versuchen. \n" << endl;
         }
     } while (input != 'y' && input != 'n');
-}
+}*/
 
 void Konfiguration::endGame() {
     system("cls"); // Für Windows
@@ -160,7 +169,7 @@ void Konfiguration::Help() {
     cout << "4: Die Spielsteine fallen immer auf den tiefsten verf�gbaren Platz im ausgewaehlten Raster. \n ";
     cout << "5: Das Ziel des Spiels ist es, vier Steine der eigenen Farbe in einer Reihe zu haben.Diese Reihe kann waagerecht, senkrecht oder diagonal sein. \n";
     cout << "6: Der Spieler, der zuerst vier Steine in einer Reihe hat, gewinnt das Spiel. \n" << endl;
-
+    wait();
 
 }
 
@@ -278,15 +287,7 @@ zweiteFrage:
     cout << asciiArt << "\n";
 
     LIST2.displaySorted(S, R);
-    char wait;
-    cout << "\nEnter zum Fortfahren drücken\n";
-    cin.get(wait);
-    while (wait != '\n' && wait != ' ') {
-        cin.get(wait);
-        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
-    }
-    system("cls"); // Für Windows
-
+    wait();
     // Hier weiteren Code einfuegen bzw. andere Funktionen aufrufen
     //Test
 

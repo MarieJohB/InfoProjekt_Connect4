@@ -163,7 +163,6 @@ int main(int argc, char* argv[]) {
             cout << "\nSpieler " << (turn % 2 + 1) << ", waehlen Sie eine Spalte: ";
             int col = players.getInteger();
             col--; // Array-Indizes beginnen bei 0
-
             if (Ruler.isValidMove(board, col)) {
 
                 Ruler.makeMove(board, col, (turn % 2 == 0) ? token1 : token2);
@@ -183,7 +182,6 @@ int main(int argc, char* argv[]) {
                     //int zuege = Ruler.countpasses(ausgabe, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2);
                     cout << "\nSpieler " << (turn % 2 + 1) << " gewinnt" << " in " << Ruler.countpasses(ausgabe, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2) << " Zuege!" << endl;
                     NameOfWinner();
-                    celeb.victoryDance();
                     cout << "gewonnen hat: " << winner.getName() << endl;
                     list.loadFromFile(filename);
                     list.insertNode(Ruler.countpasses(ausgabe, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2), 0, winner.getName());

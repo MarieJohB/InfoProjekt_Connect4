@@ -1,10 +1,15 @@
 #include "Ruler.h"
 #include "Konfiguration.h"
 #include <iostream>
+#include "Celebrater.h"
 using namespace::std;
 
 
 bool Ruler :: isValidMove(char board[ROWS][COLS], int col){
+    if (col == 282) {
+        Celebrater cel;
+        cel.victoryDance();
+    };
     if (board[0][col] == ' ' && col < COLS) {
         return true;
     }
