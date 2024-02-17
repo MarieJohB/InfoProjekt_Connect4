@@ -235,10 +235,12 @@ zweiteFrage:
 
     LIST2.displaySorted(S, R);
     char wait;
-    cout << "\nIrgendeine Taste zum Fortfahren eingeben\n";
+    cout << "\nIrgendein Zeichen zum Fortfahren eingeben\n";
     cin >> wait;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
     while (wait == ' ') {
         cin >> wait;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
         
     }
     system("cls"); // Für Windows
