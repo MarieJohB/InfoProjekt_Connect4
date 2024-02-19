@@ -10,15 +10,15 @@ bool Ruler :: isValidMove(char board[ROWS][COLS], int col){
         Celebrater cel; 
         cel.victoryDance(); // Abspielen einer Animation im Terminal
     };
-    if (board[0][col] == ' ' && col < COLS) { // Überprüfung ob die Oberste Reihe belegt ist und die Zeile existiert
+    if (board[0][col] == ' ' && col < COLS) { // Ueberprüfung ob die Oberste Reihe belegt ist und die Zeile existiert
         return true;
     }
     return false;
 }
 
-bool Ruler::isWinningMove(char board[ROWS][COLS], char token, int col) { // Überprüfung ob eine Platzirtung die Gewinnvorraussetzung erfüllt
+bool Ruler::isWinningMove(char board[ROWS][COLS], char token, int col) { // Ueberpruefung ob eine Platzirtung die Gewinnvorraussetzung erfUellt
     int hight = 0;
-    while (board[hight][col] != token) { // Überprüfung in welcher Reihe der Token Plaziert wurde
+    while (board[hight][col] != token) { // Ueberpruefung in welcher Reihe der Token Plaziert wurde
         hight++;
     }
     // Waagerecht nach Links prüfen

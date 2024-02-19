@@ -19,7 +19,6 @@ void Celebrater::victoryDance() {
 
 )";
     system("cls"); // Für Windows
-    cout << asciiArt;
     sleepieepie();
 
     asciiArt = R"(
