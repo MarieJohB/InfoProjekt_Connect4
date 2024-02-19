@@ -45,13 +45,14 @@ void ConsoleBoard :: displayBoard(char board[ROWS][COLS]){
     }
 }
 
-void FileBoard :: initializeBoard(char board[ROWS][COLS]) {
+
+void FileBoard::initializeBoard(char board[ROWS][COLS]) { //Fuellen der Matrix mit ' ' fuer weitere Vergleiche
     for (int i = 0; i < ROWS; i++)
         for (int j = 0; j < COLS; j++)
             board[i][j] = ' ';
 }
 
-void FileBoard::displayBoard(char board[ROWS][COLS]) {
+void FileBoard::displayBoard(char board[ROWS][COLS]) { //Anzeigen des Spielfeldes
     // Erhalte das aktuelle Datum und Zeit
     time_t now = time(0);
     tm ltm;
@@ -71,36 +72,38 @@ void FileBoard::displayBoard(char board[ROWS][COLS]) {
         return;
     }
 
+    // Durchläuft jede Zelle des Spielbretts
     for (int i = 0; i < ROWS; i++) {
         for (int j = 0; j < COLS; j++)
-            file << "| " << board[i][j] << " ";
-        file << "|\n";
+            // Gibt den Inhalt jeder Zelle aus
+            cout << "| " << board[i][j] << " ";
+        cout << "|\n"; // Beendet die Zeile nach dem Durchlaufen aller Spalten
     }
-
+    // Zeichnet eine Trennlinie
     for (int g = 0; g < 4 * COLS + 1; g++) {
-        file << "-";
+        cout << "-";
         if (g + 1 == 4 * COLS + 1) {
-            file << "\n";
+            cout << "\n"; // Beendet die Zeile nach dem Zeichnen der Trennlinie
         }
     }
-
+    // Gibt die Spaltennummern aus
     for (int h = 0; h < COLS; h++) {
         if (h == 0) {
-            file << "  ";
+            cout << "  "; // Fügt am Anfang der Zeile ein Leerzeichen hinzu
         }
         if (h > 7) {
-            file << h + 1;
-            file << "  ";
+            cout << h + 1; // Gibt die Spaltennummer aus
+            cout << "  "; // Fügt nach jeder Spaltennummer ein Leerzeichen hinzu
         }
         else {
-            file << h + 1;
-            file << "   ";
+            cout << h + 1; // Gibt die Spaltennummer aus
+            cout << "   "; // Fügt nach jeder Spaltennummer ein Leerzeichen hinzu
         }
     }
 
     file.close(); // Schließe die Datei hier
 
     // Öffne die Datei
-    string command = "start " + filename;
+    string command = "start " + filename; 
     system(command.c_str());
 }

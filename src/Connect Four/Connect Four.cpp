@@ -145,12 +145,12 @@ int main(int argc, char* argv[]) {
     }
 
     while (GameOn.end) {
-        Board1.initializeBoard(board);
-        GameOn.askUser(filename);
+        Board1.initializeBoard(board); // Initialisierung des Spielfeldes
+        GameOn.askUser(filename); // Eingabeaufforderung im Hauptmenue
 
         while (GameOn.play) {
 
-            if (GameOn.displayText) {
+            if (GameOn.displayText) { // Festlegen wo das Spiel Ausgegeben wird
 
                 Board1.displayBoard(board);
             }
@@ -159,40 +159,18 @@ int main(int argc, char* argv[]) {
                 Board2.displayBoard(board);
             }
 
-
-            cout << "\nSpieler " << (turn % 2 + 1) << ", waehlen Sie eine Spalte: ";
-            int col = players.getInteger();
+             
+            cout << "\nSpieler " << (turn % 2 + 1) << ", waehlen Sie eine Spalte: "; // Spaltenwahl Aufforderung korrespodierend zu dem dazugehoerigen Spielern
+            int col = players.getInteger(); // Lesen der Eingabe 
             col--; // Array-Indizes beginnen bei 0
-            if (Ruler.isValidMove(board, col)) {
+            if (Ruler.isValidMove(board, col)) { // Uberpruefen ob der Zug gueltig ist
 
-                Ruler.makeMove(board, col, (turn % 2 == 0) ? token1 : token2);
-                Ruler.countpasses(ausgabe, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2);
+                Ruler.makeMove(board, col, (turn % 2 == 0) ? token1 : token2); // Platzierung des Tokens
+                Ruler.countpasses(ausgabe, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2); // Zaehlung der Platzierung
 
-                if (Ruler.isWinningMove(board, (turn % 2 == 0) ? token1 : token2, col)) {
+                if (Ruler.isWinningMove(board, (turn % 2 == 0) ? token1 : token2, col)) { // Ueberpruefen der Gewinnkondition
 
-                    if (GameOn.displayText) {
-
-                        Board1.displayBoard(board);
-                    }
-                    else
-                    {
-                        Board2.displayBoard(board);
-                    }
-
-                    //int zuege = Ruler.countpasses(ausgabe, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2);
-                    cout << "\nSpieler " << (turn % 2 + 1) << " gewinnt" << " in " << Ruler.countpasses(ausgabe, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2) << " Zuege!" << endl;
-                    NameOfWinner();
-                    cout << "gewonnen hat: " << winner.getName() << endl;
-                    list.loadFromFile(filename);
-                    list.insertNode(Ruler.countpasses(ausgabe, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2), 0, winner.getName());
-                    list.saveToFile(filename);
-                    GameOn.endGame();
-
-                }
-                else if (Ruler.isDraw(board)) {
-
-
-                    if (GameOn.displayText) {
+                    if (GameOn.displayText) { // Festlegen wo das Spiel Ausgegeben wird
 
                         Board1.displayBoard(board);
                     }
@@ -200,10 +178,31 @@ int main(int argc, char* argv[]) {
                     {
                         Board2.displayBoard(board);
                     }
+
+                    cout << "\nSpieler " << (turn % 2 + 1) << " gewinnt" << " in " << Ruler.countpasses(ausgabe, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2) << " Zuege!" << endl; // Ausgabe des Gewinners
+                    NameOfWinner(); // Festlegung des Namens des Gewinners
+                    cout << "gewonnen hat: " << winner.getName() << endl; // Ausgabe des Gewinnernamens
+                    list.loadFromFile(filename); // Laden des Highscores von der Text Datei
+                    list.insertNode(Ruler.countpasses(ausgabe, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2), 0, winner.getName()); // Einfügen der Daten des Gewinners in der Liste
+                    list.saveToFile(filename); // Abspeicherung der Daten des Gewinners in der Text Datei
+                    GameOn.endGame(); // Beenden der Spielinstanz
+
+                }
+                else if (Ruler.isDraw(board)) { // Ueberpruefen ob ein Unentschieden vorliegt
+
+
+                    if (GameOn.displayText) { // Festlegen wo das Spiel Ausgegeben wird
+
+                        Board1.displayBoard(board);
+                    }
+                    else
+                    {
+                        Board2.displayBoard(board);
+                    }
                     GameOn.endGame();
                 }
 
-                turn++;
+                turn++; // Aenderung des Spielers welcher am Zug ist
 
             }
             else {
