@@ -9,7 +9,7 @@ using namespace::std;
 
 void Konfiguration::wait() {
     char wait;
-    cout << "\nEnter zum Fortfahren drücken\n";
+    cout << "\nEnter zum Fortfahren druecken\n";
     cin.get(wait);
     while (wait != '\n' && wait != ' ') {
         cin.get(wait);
