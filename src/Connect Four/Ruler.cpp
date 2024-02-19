@@ -262,7 +262,7 @@ void Ruler :: makeMove(char board[ROWS][COLS], int col, char token) { // Funktio
     for (int i = ROWS - 1; i >= 0; i--) {
         if (board[i][col] == ' ') {
             board[i][col] = token;
-            system("cls"); // Für Windows
+            system("cls"); // Bereinigung des Terminals von allen Zeichen
             cout << "es wurde gesetzt: " << token << endl;
             break;
         }

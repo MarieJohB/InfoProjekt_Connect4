@@ -12,7 +12,10 @@ class Celebrater {
 
 public:
 
+	//Abspielen der Animation
 	void victoryDance();
+
+	//Kurze Pausen für eigenen Style der Animation durchführen
 	void sleepieepie();
 
 };

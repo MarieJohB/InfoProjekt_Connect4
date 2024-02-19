@@ -17,12 +17,13 @@ public:
     // Überprüfen, ob das Spiel gewonnen wurde
     bool isWinningMove(char board[ROWS][COLS], char token, int col);
 
+    //Überprüfen, ob ein Unentschieden vorliegt
     bool isDraw(char board[ROWS][COLS]);
 
+    //Zählung der gesetzten Token pro Spieler
     int countpasses(char checktoken, char turn, int& cplayer1, int& cplayer2);
 
-
-    // Den Spielstein im Spielbrett platzieren
+    // Den Token im Spielbrett platzieren
     void makeMove(char board[ROWS][COLS], int col, char token);
 };
 #endif

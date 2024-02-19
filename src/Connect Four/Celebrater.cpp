@@ -5,13 +5,12 @@
 #include <string>
 #include <chrono>
 #include <thread>
-#include "Celebrater.h"
 #include <cstdlib>
-#ifdef _WIN32
+#include "Celebrater.h"
 using namespace::std;
 
 void Celebrater::sleepieepie() {
-    this_thread::sleep_for(95ms);
+    this_thread::sleep_for(95ms); 
     system("echo \033[2J\033[1;1H"); // Setzt den Cursor nach oben links
 }
 
@@ -4071,5 +4070,4 @@ SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS%%%?%SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
 )";
 }
 
-#endif WIN_32
 
