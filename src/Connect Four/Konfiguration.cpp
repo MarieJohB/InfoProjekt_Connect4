@@ -288,6 +288,7 @@ zweiteFrage:
 
     LIST2.displaySorted(S, R);
     wait();
+    LIST2.saveToFile(filename);
     // Hier weiteren Code einfuegen bzw. andere Funktionen aufrufen
     //Test
 
