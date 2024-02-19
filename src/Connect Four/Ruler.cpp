@@ -23,25 +23,37 @@ bool Ruler::isWinningMove(char board[ROWS][COLS], char token, int col) {
     }
     // Waagerecht nach Links überprüfen
     if (col >= 2) {
-        if ((board[hight][col - 1] == token && board[hight][col - 2] == token && board[hight][col - 3] == token) || (board[hight][col - 1] == token && board[hight][col - 2] == token && board[hight][col + 1] == token)) {
+        if (board[hight][col - 1] == token && board[hight][col - 2] == token && board[hight][col - 3] == token) {
+            return true;
+        }
+        else if (board[hight][col - 1] == token && board[hight][col - 2] == token && board[hight][col + 1] == token) {
             return true;
         }
     }
     // Waagerecht nach Rechts überprüfen
-    if (col <= COLS - 3) { //-4 da Array bei 0 beginnt und -3 für 4-Gewinnt
-        if ((board[hight][col + 1] == token && board[hight][col + 2] == token && board[hight][col + 3] == token) || (board[hight][col + 1] == token && board[hight][col + 2] == token && board[hight][col - 1] == token)) {
+    if (col <= COLS - 2) {
+        if (board[hight][col + 1] == token && board[hight][col + 2] == token && board[hight][col + 3] == token) {
+            return true;
+        }
+        else if (board[hight][col + 1] == token && board[hight][col + 2] == token && board[hight][col - 1] == token) {
             return true;
         }
     }
     // Diagonal nach Oben Rechts überprüfen
     if (hight >= 3 && col <= COLS - 2) {
-        if ((board[hight - 1][col + 1] == token && board[hight - 2][col + 2] == token && board[hight - 3][col + 3] == token) || (board[hight - 1][col + 1] == token && board[hight - 2][col + 2] == token && board[hight + 1][col - 1] == token)) {
+        if (board[hight - 1][col + 1] == token && board[hight - 2][col + 2] == token && board[hight - 3][col + 3] == token) {
+            return true;
+        }
+        else if (board[hight - 1][col + 1] == token && board[hight - 2][col + 2] == token && board[hight + 1][col - 1] == token) {
             return true;
         }
     }
     // Diagonal nach Oben Links überprüfen
     if (hight >= 3 && col >= COLS - 2) {
-        if ((board[hight - 1][col - 1] == token && board[hight - 2][col - 2] == token && board[hight - 3][col - 3] == token) || (board[hight - 1][col - 1] == token && board[hight - 2][col - 2] == token && board[hight + 1][col + 1] == token)) {
+        if (board[hight - 1][col - 1] == token && board[hight - 2][col - 2] == token && board[hight - 3][col - 3] == token) {
+            return true;
+        }
+        else if (board[hight - 1][col - 1] == token && board[hight - 2][col - 2] == token && board[hight + 1][col + 1] == token) {
             return true;
         }
     }
@@ -52,14 +64,20 @@ bool Ruler::isWinningMove(char board[ROWS][COLS], char token, int col) {
         }
     }
     // Diagonal nach Unten Links überprüfen
-    if (hight <= ROWS - 4 && col >= 2) { //-4 da Array bei 0 beginnt und -3 für 4-Gewinnt
-        if ((board[hight + 1][col - 1] == token && board[hight + 2][col - 2] == token && board[hight + 3][col - 3] == token) || (board[hight + 1][col - 1] == token && board[hight + 2][col - 2] == token && board[hight - 1][col + 1] == token)) {
+    if ((hight <= ROWS - 3) && (col >= 2)) { //-4 da Array bei 0 beginnt und -3 für 4-Gewinnt
+        if (board[hight + 1][col - 1] == token && board[hight + 2][col - 2] == token && board[hight + 3][col - 3] == token) {
+            return true;
+        }
+        else if (board[hight + 1][col - 1] == token && board[hight + 2][col - 2] == token && board[hight - 1][col + 1] == token) {
             return true;
         }
     }
     // Diagonal nach Unten Rechts überprüfen
     if (hight <= ROWS - 4 && col <= 4) { //-4 da Array bei 0 beginnt und -3 für 4-Gewinnt
-        if ((board[hight + 1][col + 1] == token && board[hight + 2][col + 2] == token && board[hight + 3][col + 3] == token) || (board[hight + 1][col + 1] == token && board[hight + 2][col + 2] == token && board[hight - 1][col - 1] == token)) {
+        if (board[hight + 1][col + 1] == token && board[hight + 2][col + 2] == token && board[hight + 3][col + 3] == token) {
+            return true;
+        }
+        else if (board[hight + 1][col + 1] == token && board[hight + 2][col + 2] == token && board[hight - 1][col - 1] == token) {
             return true;
         }
     }
@@ -113,7 +131,7 @@ void Ruler :: makeMove(char board[ROWS][COLS], int col, char token) {
     for (int i = ROWS - 1; i >= 0; i--) {
         if (board[i][col] == ' ') {
             board[i][col] = token;
-            cout << "\033[2J\033[1;1H"; // Clear the terminal screen
+            system("cls"); // Für Windows
             cout << "es wurde gesetzt: " << token << endl;
             break;
         }

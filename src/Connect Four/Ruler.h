@@ -3,7 +3,6 @@
 #pragma once
 #include <stdio.h>
 #include <iostream>
-#include  "Konfiguration.h"
 using namespace::std;
 
 #define ROWS 6
