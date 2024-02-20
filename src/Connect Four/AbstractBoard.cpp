@@ -8,14 +8,14 @@
 #include <sstream>
 using namespace::std;
 
-void ConsoleBoard :: initializeBoard(char board[ROWS][COLS]){
+void ConsoleBoard :: initializeBoard(char board[ROWS][COLS]){ //Fuellen der Matrix mit ' ' fuer weitere Vergleiche
     for (int i = 0; i < ROWS; i++)
         for (int j = 0; j < COLS; j++)
             board[i][j] = ' ';
 }
 
 void ConsoleBoard :: displayBoard(char board[ROWS][COLS]){
-    // Durchläuft jede Zelle des Spielbretts
+    // Durchlaeuft jede Zelle des Spielbretts
     for (int i = 0; i < ROWS; i++) {
         for (int j = 0; j < COLS; j++)
             // Gibt den Inhalt jeder Zelle aus
@@ -62,7 +62,7 @@ void FileBoard::displayBoard(char board[ROWS][COLS]) { //Anzeigen des Spielfelde
 
     // Format das Datum und Zeit in einen String
     stringstream ss;
-    ss << 1900 + ltm.tm_year << '-' << 1 + ltm.tm_mon << '-' << ltm.tm_mday << '_' << 1 + ltm.tm_hour << ".txt"; // Füge .txt hinzu
+    ss << 1900 + ltm.tm_year << '-' << 1 + ltm.tm_mon << '-' << ltm.tm_mday << '_' << 1 + ltm.tm_hour << ".txt"; // Fuege .txt hinzu
     string filename = ss.str();
 
     ofstream file(filename.c_str());
@@ -72,7 +72,7 @@ void FileBoard::displayBoard(char board[ROWS][COLS]) { //Anzeigen des Spielfelde
         return;
     }
 
-    // Durchläuft jede Zelle des Spielbretts
+    // Durchlaeuft jede Zelle des Spielbretts
     for (int i = 0; i < ROWS; i++) {
         for (int j = 0; j < COLS; j++)
             // Gibt den Inhalt jeder Zelle aus
@@ -89,7 +89,7 @@ void FileBoard::displayBoard(char board[ROWS][COLS]) { //Anzeigen des Spielfelde
     // Gibt die Spaltennummern aus
     for (int h = 0; h < COLS; h++) {
         if (h == 0) {
-            cout << "  "; // Fügt am Anfang der Zeile ein Leerzeichen hinzu
+            cout << "  "; // Fuegt am Anfang der Zeile ein Leerzeichen hinzu
         }
         if (h > 7) {
             cout << h + 1; // Gibt die Spaltennummer aus
