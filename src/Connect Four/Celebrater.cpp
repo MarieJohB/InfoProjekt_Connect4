@@ -9,7 +9,7 @@
 #include "Celebrater.h"
 using namespace::std;
 
-void Celebrater::sleepieepie() {
+void Celebrater::PauseAndClearBeforeResume() {
     this_thread::sleep_for(95ms); 
     system("echo \033[2J\033[1;1H"); // Setzt den Cursor nach oben links
 }
@@ -18,8 +18,8 @@ void Celebrater::victoryDance() {
     string asciiArt = R"(
 
 )";
-    system("cls"); // Für Windows
-    sleepieepie();
+    system("cls"); // Bereinigung des Terminals von allen Zeichen
+    PauseAndClearBeforeResume();
 
     asciiArt = R"(
 +++++++++++++++++++++*+++++++*+++++++++++++++
@@ -68,7 +68,7 @@ void Celebrater::victoryDance() {
 SSSSSSSSSSSSSSSSSSS%??%SSS%???SSSSSSSSSSSSSSS
 )";
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++++++++++++++++++++++++++++++
 ++++++;++*+++++++++++++++++++++++++++++++++++
@@ -123,7 +123,7 @@ SSSSSSSSSSSSSSSSSSSS%??SSS%?%SSSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++++++++++++++++++++++++++++++
 ++++++++*+++++*++++++++++++++++++++++++++++++
@@ -176,7 +176,7 @@ SSSSSSSSSSSSSSSSSSSS%??SSS%?%SSSSSSSSSSSSSSSS
 SSSSSSSSSSSSSSSSSS???S%S??%SSSSSSSSSSSSSSSSSS
 )";
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++**++++++++++++;;;;++*++++++++++++++++
 +++++*+;:;+*+++++*++*?****;:;+*++++++++++++++
@@ -228,7 +228,7 @@ SSSSSSSSSSSSSSSSSSS%??%SSS??SSSSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++++++++++++++++;;;;;++++++++++++++++++
 +++++++++++++++++*+;;*%?+;;;:+*++++++++++++++
@@ -280,7 +280,7 @@ SSSSSSSSSSSSSSSSSS??%SSSSS??%SSSSSSSSSSSSSSSS
 
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++++++++++*+++++++++++++++++++
 +++++++++++++++++++++++;:;+++++++++++++++++++
@@ -333,7 +333,7 @@ SSSSSSSSSSSSSSS%??%SSSSS???%SSSSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++++++++++;;:::;;++*+++++++++++++++++++
 ++++++++++++++;**+;++::::;*++++++++++++++++++
@@ -384,7 +384,7 @@ SSSSSSSSSSSSSSS%??%SSSSSSS????%%SSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++:+++;*+++++++++++++++++++++++++
@@ -439,7 +439,7 @@ SSSSSSSSSSSSSSSSSSSS%??%SS%???SSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++++++*+++++++++*+++++++++++++
 +++++++++++++++++++**;::::,,,::;+++++++++++++
@@ -495,7 +495,7 @@ SSSSSSSSSSSSSSSSSSSSSS%?%?%SS%?%SSSSSSSSSSSSS
 
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++++++++++++++++**++;++*+++++++++++++++
 ++++++++++++++++++++;;;::,,,:+++++*++++++++++
@@ -545,7 +545,7 @@ SSSSSSSSSS%????SSSSSSSSSS%???%SSSSSSSSSSSSSSS
 
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++++++*++++;;;++*+++++++++++++
 +++++++++++++++++++++;:,,,,,,,:;+*+++++++++++
@@ -596,7 +596,7 @@ SSSSSSSSSSSSSS%???S%????SSSSSSSSSSSSSSSSSSSSS
 
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++++++++++++++++++++++;;;++++++++++++++
 ++++++++++++++++++++++*****+:,,,+*+++++++++++
@@ -653,7 +653,7 @@ SSSSSSSSSSS%????%%??%SSSSSSSSSSSSSSSSSSSSSSSS
 
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++++++++++++++++++++++++++++++
 +++++++++++++++++++++++++;::;;+++++++++++++++
@@ -707,7 +707,7 @@ SSSSSSSSSS%????%SSSSSSSSSSSSS????SSSSSSSSSSSS
 
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++++++++++++++++++*++++++++++++++++++++
 +++++++++++++++++++++++;;:::+*+++++++++++++++
@@ -758,7 +758,7 @@ SSSSS%%??%SSSSSSSSSSSSSSSSS%????%SSSSSSSSSSSS
 
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++++++++++++++++++++++++++++++
 +++++++++++++*+;:,,,,,,:;++++++++++++++++++++
@@ -813,7 +813,7 @@ SSSSSSSSSSSSSSS%????%%??%SSSSSSSSSSSSSSSSSSSS
 
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++++++++++++++++++;;+*+++++++++++++++++
 +++++++++++++++++++++++,,,,;*++++++++++++++++
@@ -870,7 +870,7 @@ SSSSSSS%????SSSSSSSSSSSSSSSSS%???SSSSSSSSSSSS
 
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++*+;;;::;;+++++++++++++++++++
 +++++++++++++++++:,,,,;;;:::;++++++++++++++++
@@ -925,7 +925,7 @@ SSSSSSSSSSSSSSSS%???%S%????SSSSSSSSSSSSSSSSSS
 
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++++++++++++++++++;++++++++++++++++++++
 ++++++++++++*+;;;:::;+;:,:+++++++++++++++++++
@@ -976,7 +976,7 @@ SSSSSSSSSSSSSSSSSSSS%????%???%SSSSSSSSSSSSSSS
 
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++++++++;;;;;++++++++++++++++++++++++++
 +++++++++++;:,,::,,:::;+***++++++++++++++++++
@@ -1027,7 +1027,7 @@ SSSSSSSSSSSSSSSSSSSS%????%???%SSSSSSSSSSSSSSS
 
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++++++++++;;+*+++++++++++++++++++++++++
 +++++++++++++++,,:+*+++++++++++++++++++++++++
@@ -1086,7 +1086,7 @@ SSSSSSSSSSSSSSSSS????SSSSSS%???SSSSSSSSSSSSSS
 
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++++++++++++*++****++++++++++++++++++++
 ++++++++++++++++++;,:;;::;+++++++++++++++++++
@@ -1142,7 +1142,7 @@ SSSSSSSSSSSSSSS%??%SSSSS%??%SSSSSSSSSSSSSSSSS
 
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++++*+++++++*+++++++++++++++++
 ++++++++++++++++++;:::,,,,,:;+*++++++++++++++
@@ -1198,7 +1198,7 @@ SSSSSSSSSSSSSSSSS%???%SSSS???%SSSSSSSSSSSSSSS
 
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++++++++*+;::;*?+;+++++++++++++++++++++
 ++++++++++++*+:,,,:+???**?**+++++++++++++++++
@@ -1252,7 +1252,7 @@ SSSSSSSSSSSSSSSS%???%SSSS???%SSSSSSSSSSSSSSSS
 
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++*+;;;:;;;;+*++++++++++++++++++++
 ++++++++++++;:,,,,,,,,,,:+*++++++++++++++++++
@@ -1311,7 +1311,7 @@ SSSSSSSSSSSSSSS%???%SSSSSSS??%SSSSSSSSSSSSSSS
 
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++++++++++++++++*++;;;;;;++*+++++++++++
 +++++++++++++++++++++;:,,,,,,,,,,:;++++++++++
@@ -1367,7 +1367,7 @@ SSSSSSSSSSSSSSSSSS????%SSS%???%SSSSSSSSSSSSSS
 
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++++++;;;;;++*++++++++++++++++
 +++++++++++++++++;:,,,,,,,,,:;+++++++++++++++
@@ -1423,7 +1423,7 @@ SSSSSSSSSSSSSSSSSS????%SSS%???%SSSSSSSSSSSSSS
 
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++++*++;;;;;;++++++++++++++++++++++++++
 ++++++++++:,,,,;;:::;;+*+++++++++++++++++++++
@@ -1477,7 +1477,7 @@ SSSSSSSSSSSSSSSSSS????%SSS%???%SSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++++++++++;;;;;+++++++++++++++
 +++++++++++++++++++*+;:,,,,,,,,,:+*++++++++++
@@ -1533,7 +1533,7 @@ SSSSSSSSSSSSSSSSSS????%SSSS%????SSSSSSSSSSSSS
 
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++++++++;;;;;;;;+*++++++++++++
 ++++++++++++++++++++;:,,,,,,,,,,:+*++++++++++
@@ -1590,7 +1590,7 @@ SSSSSSSSSSSSSSSSS%%%%SSSS%%%%%SSSSSSSSSSSSSSS
 
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++++++*++;;;++++*+++++++++++++
 +++++++++++++++++++++;:,,,,,,:::+*+++++++++++
@@ -1647,7 +1647,7 @@ SSSSSSSSSSSSS%???SSSSSSSSS????%SSSSSSSSSSSSSS
 
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++++++++++++++++;;:,,,,:;;+*+++++++++++
 +++++++++++++++++++*;:;*+;;;;:,,,:+*+++++++++
@@ -1702,7 +1702,7 @@ SSSSSSSSSS%???%SSSSSSSSSSSS%????%SSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++++++++++++*+;;:::;+++++++++++++++++++
 ++++++++++++++++++;:;+++:,:;+++++++++++++++++
@@ -1735,7 +1735,7 @@ SSSSSSSSSS%???%SSSSSSSSSSSS%????%SSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++*+;::::;++++++++++++++++++++
 +++++++++++++++++::+++;,,:;++++++++++++++++++
@@ -1769,7 +1769,7 @@ SSSSSSSSSS%???%SSSSSSSSSSSS%????%SSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++;::,,:::;+*+++++++++++++++++++++
 ++++++++++*;:;;;;+:,,,:;+++++++++++++++++++++
@@ -1813,7 +1813,7 @@ SSSSSSSSS??%SSSSSSSSSSS%???SSSSSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++++++*+;;;;:;;;+++++++++++++++++++++++
 +++++++++++;:,,,,,,,,,,:;++++++++++++++++++++
@@ -1867,7 +1867,7 @@ SSSSSSSSS??%SSSSSSSSSSS%???SSSSSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++++++++++*+;::::::;;+*++++++++++++++++
 ++++++++++++++*+:,,,,,,,,,,,:++++++++++++++++
@@ -1923,7 +1923,7 @@ SSSSSSSSSSSSS%???%SSSSS%???%SSSSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++*+++;;;;++++++++++++++++++++
 +++++++++++++++*+:,,,,,,,,:;+*+++++++++++++++
@@ -1979,7 +1979,7 @@ SSSSSSSSSSSSSS%????SSSSSS????%SSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++*+++;;;;;+*+++++++++++++++++
 +++++++++++++++*+::,,,,,:;;:+++++++++++++++++
@@ -2033,7 +2033,7 @@ SSSSSSSSSSSSSSS%????SSSSSS????%SSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++*++;::::;;++++++++++++++++++++++
 +++++++++++*+:,,,,,,:++:;++++++++++++++++++++
@@ -2087,7 +2087,7 @@ SSSSSSSSSSSS%?%%SSSSSSSSS%?%SSSSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++++++*+;::::;;++++++++++++++++++++++++
 ++++++++++++:,,,::+**:;++++++++++++++++++++++
@@ -2132,7 +2132,7 @@ SSSSSSSSSS%???SSSSSSSSSSSSSSSSS%???%%%%%%SS#S
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++;;::;+;+++++++++++++++++++++++++
 ++++++++++++:,,+**+;:++++++++++++++++++++++++
@@ -2167,7 +2167,7 @@ SSSSSSSSSS%???SSSSSSSSSSSSSSSSS%???%%%%%%SS#S
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++*+;:,,,:;+++++++++++++++++++++++
 +++++++++++++:,,,;++*+:++++++++++++++++++++++
@@ -2205,7 +2205,7 @@ SSSSSSSSSS%???SSSSSSSSSSSSSSSSS%???%%%%%%SS#S
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++++++++++++++*+++++++++++++++
 ++++++++++++++++++++;:,,,,,,,:;++++++++++++++
@@ -2259,7 +2259,7 @@ SSSSSSSSSSSSSSSSSSS%???%SSSSSSSSSS%??%SSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++++++++++++*++;;;;;;++++++++++++++++++
 ++++++++++++++++*+:,,,,,,,,,:;+++++++++++++++
@@ -2313,7 +2313,7 @@ SSSSSSSSSSSSSSSSSS%%%%%SSSS%%%%SSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++;;;;;;;+++++++++++++++++++++
 +++++++++++++++:,,,,,,,,,:;++++++++++++++++++
@@ -2367,7 +2367,7 @@ SSSSSSSSSSSSSSSS%%?%SSSS%%?%SSSSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++++++++;;:::::;;+*++++++++++++++++++++
 +++++++++++*;:,,,,,,,,,,;+*++++++++++++++++++
@@ -2419,7 +2419,7 @@ SSSSSSSSSSSSSS%???%SS%???%SSSSSSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++++++;;;:;;;+*+++++++++++++++
 ++++++++++++++++++;,,,,,,,,,:;+++++++++++++++
@@ -2475,7 +2475,7 @@ SSSSSSSSSSSSSSSS%??SSSS%??SSSSSSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++++*++;;;;;;+++++++++++++++++
 +++++++++++++++++++:,,,,,,,,,:;++++++++++++++
@@ -2527,7 +2527,7 @@ SSSSSSSSSSSSSSSS%???%SSS%???%SSSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++++;::::::;+*++++++++++++++++
 +++++++++++++++*;:,,,,,,,,,,:++++++++++++++++
@@ -2580,7 +2580,7 @@ SSSSSSSSSSSSSSSSSS%??%SSS%??SSSSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++++++++;::::::;+++++++++++++++++++++++
 ++++++++++++;,,,,,::,,,,;++++++++++++++++++++
@@ -2635,7 +2635,7 @@ SSSSSSSSSSSSSSSS%???SSSS%??%SSSSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++*+;;;;;;;+++++++++++++++++++++++++++
 +++++++*+:,,,,,,,,,:;++++++++++++++++++++++++
@@ -2685,7 +2685,7 @@ SSSSSSSSSSSS%?%?%SS%%?%SSSSSSSSSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++;::::;;+++++++++++++++++++++
 +++++++++++++*;:,,,,,,,,,:+++++++++++++++++++
@@ -2739,7 +2739,7 @@ SSSSSSSSSSSSSSSSS???%SS%??%SSSSSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++++++++++++++++++;;+++++++++++++++++++
 ++++++++++++++++++++++;;;:+*+++++++++++++++++
@@ -2799,7 +2799,7 @@ SSSSSSSSSSSSSSSSSSS%%?SSS%??%SSSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++*;,:+++++++++++++++++++++++++++++++++++
 +++++++;,,;++++++++++++++++++++++++++++++++++
@@ -2860,7 +2860,7 @@ SSSSSSSSSSSSS%???SSSSSSSSSSSSSSSS%??%SSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++;;;;+++++++++++++++++++*;;::;;+++++++++++++
 +++++;;:::;+*+++++++++++**:;:,:,:;+++++++++++
@@ -2895,7 +2895,7 @@ SSSSSSSSSSSSS%???SSSSSSSSSSSSSSSS%??%SSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++++++++++++++++++++++++++++++
 ++*;;++++++++++++++++++++++++++++++++++++++++
@@ -2942,7 +2942,7 @@ SSSSSS%??%SSSSSSSSSSSSSSSSSSS%??%SSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++++++++++++++++;:::,::::;;++++++++++++
 ++++++++++++++++++*+;:,,:,,,,,,,,:;++++++++++
@@ -2995,7 +2995,7 @@ SSSSSSSSSS%%%SSSSSSSSSSS%%%%SSSSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++++++;;;;;+++++++++++++++++++
 ++++++++++++++++++;:,,,,,,,,,:;++++++++++++++
@@ -3049,7 +3049,7 @@ SSSSSSSSSSSSSSS%????%%??%SSSSSSSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++*+;;:::::;;+++++++++++++++++
 +++++++++++++++++;,,:,,,,,,,:++++++++++++++++
@@ -3101,7 +3101,7 @@ SSSSSSSSSSSSSSS%????%SSSSS%???%SSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++++++++++++++;;;;;;+*+++++++++++++++++
 ++++++++++++++++++:,,,:,,,,:+++++++++++++++++
@@ -3150,7 +3150,7 @@ SSSSSSSSSSSSSSSS%%%SSSSSSSSSSSS%%%SSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++++;:::;;+*++++++++++++++++++
 ++++++++++++++++;:,,,,,,,,:++++++++++++++++++
@@ -3194,7 +3194,7 @@ SSSSSSSSSSSSSSSSSS%???%SSS%???%SSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++++++*+;;;:;;;++++++++++++++++++++++++
 ++++++++++++;,,,,,,,,:+++++++++++++++++++++++
@@ -3234,7 +3234,7 @@ SSSSSSSSSSSSSSSSS%??????%SSSSSSSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++++++++;;;;;;+*+++++++++++++++++++++++
 +++++++++++*;:,,,,,,,:+++++++++++++++++++++++
@@ -3273,7 +3273,7 @@ SSSSSSSSSSSSSSSSS%??????%SSSSSSSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++++++++*+;;;;;;+++++++++++++++++++++++
 ++++++++++++++:,,,,,,,,:+++++++++++++++++++++
@@ -3314,7 +3314,7 @@ SSSSSSSSSSSSSSSSS%??????%SSSSSSSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++++++++++++++++*+++++++++++++
 ++++++++++++++++;+*++++++++++;;+;++++++++++++
@@ -3371,7 +3371,7 @@ SSSSSSSSSSSSS??????SSS%?????%SSSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++++++++++;::::;;;+++++++++++++++++++++
 ++++++++++++*;:,,,,,,,,,,:;++++++++++++++++++
@@ -3425,7 +3425,7 @@ SSSSSSSSSSSSS??????SSS%?????%SSSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++;:::::;;++++++++++++++++++++++++++
 ++++++++;:,,,,,,,,,,:++++++++++++++++++++++++
@@ -3476,7 +3476,7 @@ SSSSSSSSSSSS%%%%%%%SSSSSSS%%%%SSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++++++*++++++++*++++++++++++++
 ++++++++++++++++++*+;:,,,,,,,,:;+++++++++++++
@@ -3529,7 +3529,7 @@ SSSSSSSSSSSSSSSSS%??????%?%SSSSSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++++++++++++++;;;;;++*+++++++++++++++++
 ++++++++++++++++;:,,,,,,,,,:+++++++++++++++++
@@ -3580,7 +3580,7 @@ SSSSSSSSSSSSS%?????%S%%?????%SSSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++*+;;:::;;+++++++++++++++++++++
 +++++++++++++*+:,,,,:,,,,::++++++++++++++++++
@@ -3631,7 +3631,7 @@ SSSSSSSSSSSSSS%?????%%????%SSSSSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++++;;::::;;;+++++++++++++++++
 +++++++++++++++++:,,,,:,,,,,,:;++++++++++++++
@@ -3683,7 +3683,7 @@ SSSSSSSSSSSSSSSSSS%?????%???%SSSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++++++++++*+++;;;;+++*+++++++++++++++++
 +++++++++++++++;::,,,,,,,,,:+++++++++++++++++
@@ -3734,7 +3734,7 @@ SSSSSSSSSSSSSSSSSSSSSS%???????%SSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++*+;;:::::;++++++++++++++++++++++
 +++++++++++++::,,,,,,,,:+++++++++++++++++++++
@@ -3774,7 +3774,7 @@ SSSSSSSSSSSSSSSSS%???SSSSS%???%SSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++*++;;;;;;++*++++++++++++++++++++++++
 +++++++++;:,,,,,,,,,:+*++++++++++++++++++++++
@@ -3822,7 +3822,7 @@ SSSSSSSSSSSSSSSS%%%%SSSSSS%%%%SSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++*++;;;;+++*+++++++++++++++++
 +++++++++++++++++:,,,,,,,,,:+*+++++++++++++++
@@ -3870,7 +3870,7 @@ SSSSSSSSSSSSSSSSSS%%%%SS%?%%SSSSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++++++++;;:::;;+++++++++++++++++
 ++++++++++++++++++++:,,,,,::::+++++++++++++++
@@ -3905,7 +3905,7 @@ SSSSSSSSSSSSSSSSSS%%%%SS%?%%SSSSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 +++++++++++++++*+;;:::::;++++++++++++++++++++
 +++++++++++++++;,,,,,,,,,,:+*++++++++++++++++
@@ -3949,7 +3949,7 @@ SSSSSSSSSS???%S%???%SSSSSSSSSSSSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
+    PauseAndClearBeforeResume();
     asciiArt = R"(
 ++++++++++++++++++++++++;;;;;;+++++++++++++++
 +++++++++++++++++++++;:,,,,,,,,,:+*++++++++++
@@ -4005,68 +4005,7 @@ SSSSSSSS%%%SSSSSSSSS%%%SSSSSSSSSSSSSSSSSSSSSS
 )";
 
     cout << asciiArt;
-    sleepieepie();
-    asciiArt = R"(
-+++++++++++++++++++++++++++++++++++++*++;;;;;;++++++++++++++++++++++++++++++++++++++++++++
-++++++++++++++++++++++++++++++++++++;:,,,,,,,,,::;++++++++++++++++++++++++++++++++++++++++
-+++++++++++++++++++++++++++++++++++:,,::;;;::++::,:+++++++++++++++++++++++++++++++++++++++
-++++++++++++++++++++++++++++++++++:,,,:;%%%??%%;;:,;++++++++++++++++++++++++++++++++++++++
-++++++++++++++++++++++++++++++++++::::;+**+:;++;++,:++++++++++++++++++++++++++++++++++++++
-++++++++++++++++++++++++++++++++++::;:+;;::,:::::+::++++++++++++++++++++++++++++++++++++++
-+++++++++++++++++++++++*++*+++;:::::::;++;:,,,::,:::;+++++++++++++++++++++++++++++++++++++
-++++++++++++++++++++**;::;::,,:,,:+;;:+??+:,,,:;;;;:++++++++++++++++++++++++++++++++++++++
-+++++++++++++++++*?%%?::,,,::;;;,:;;;;;;;;,,,,,,,:;:++++++++++++++++++++++++++++++++++++++
-++++++++++++++++?SSSSS?;:;;++++*+;+;**;::;:::::,:;,;++++++++++++++++++++++++++++++++++++++
-++++++++++++++++*%SSSSSS%%?**+++++;+***;:;::::::+::+++++++++++++++++++++++++++++++++++++++
-+++++++++++++++++**?%SSSSS%%%%??**;:;**+***;::++*:;+++++++++++++++++++++++++++++++++++++++
-++++++++++++++++++++**?%%%%%%SSSSS%%;*%**?++++***+++*+++++++++++++++++++++++++++++++++++++
-+++++++++++++++++++++++**?%%%SSSSSSS%%S:;**+++*+;;?*****++++++++++++++++++++++++++++++++++
-+++++++++++++++++++++++++++*??%SSSSSSS%,,::;;;;,,,*S%?**++++++++++++++++++++++++++++++++++
-++++++++++++++++++++++++++++++**?SSSSS%::,;*+::,,::%S%%**+++++++++++++++++++++++++++++++++
-+++++++++++++++++++++++++++++++++?SSSSSS%%?%%*+*??+%S%%%%?*+++++++++++++++++++++++++++++++
-+++++++++++++++++++++++++++++++++?SSSSSSSSSSSSSSSSS%%%S%%%%?*+++++++++++++++++++++++++++++
-+++++++++++++++++++++++++++++++++*SSSSSSSSSSSSSSSSSSS??%%%%%%?***+++++++++++++++++++++++++
-+++++++++++++++++++++++++++++++++*SSSSSS###SSSSSSSSS%*+*??%%%%%%%?*+++++++++++++++++++++++
-+++++++++++++++++++++++++++++++++*%SSS#######SSSSS%?*++++**?%%%%%%%?*+++++++++++++++++++++
-++++++++++++++++++++++++++++++++++%SS########SSSSS*+++++++++*?%%%%%%%?**++++++++++++++++++
-++++++++++++++++++++++++++++++++++?SSSSSSSSSSSSSS?++++++++++++**?%%%%%%%?*++++++++++++++++
-++++++++++++++++++++++++++++**++*%SSSSSSSSSSSSSS%*+++++++++++++++*?%%SSS%+;+++++++++++++++
-+++++++++++++++++++++++++*?%%%%%SSSSSSSSSSSSSSSS%*+++++++++++++++++**%%+:,,:+++++++*++++++
-+++++++++++++++++++++++*?%SSSSSSSSSSSSSSSSSSSSSSS?++++++++++++++++++++;,,,:::++*++;;;+++++
-++++++++++++++++++++++*%SSSSSSSSSSSSSSSSSSSSSSSSS?+++++++++++++++++++**+;++;:,::::;+*+++++
-+++++++++++++++++++++?SSSSS#SSSSSSSSSSSSSSSSSSSSS%++++++++++++++++++++++++++++;:;+++++++++
-++++++++++++++++++++?SSSSSSSSSSSSSS#SSSSSSSSSSSSS%*+++++++++++++++++++++++++++++++++++++++
-+++++++++++++++++++?SSSSSSSSS############SSSSSSSSS?*++++++++++++++++++++++++++++++++++++++
-++++++++++++++++++?#SSSS###################SSSSSSSS*++++++++++++++++++++++++++++++++++++++
-+++++++++++++++++?##########################SSSSSS%*++++++++++++++++++++++++++++++++++++++
-++++++++++++++++*S###########################SSSS#S*++++++++++++++++++++++++++++++++++++++
-********+++++++*S#################################S?+*************************************
-**********++++*%###################################?+*************************************
-*****+++;;::::?####################################%**************************************
-**++::;;;;;;;*#####################################?**************************************
-*+++;*;;;:::;S####################################%***************************************
-**********+;%#####################################****************************************
-************S#@##################################@%***************************************
-************+*%#@#################################?***************************************
-*************;:*S@@#@#############################S?**************************************
-**************;;+%#@@@########@@####################?*************************************
-***************+;*?%S#######SS%%%%%%%%%%%%SSSSS#####S*************************************
-***************?++?????%%%%?*********?***+***?*%SSS%?*************************************
-*****************++?????*************?++;;;;+?********************************************
-?????????????????**????*?????????????+;;;;;;*?????????????????????????????????????????????
-?????????????????????????????????????+;;;;;;*?????????????????????????????????????????????
-?????????????????????????????????????*;;;;;;*?????????????????????????????????????????????
-??????????????????????????????????????++++++*?????????????????????????????????????????????
-?????????????????????????????????????*++++++*?????????????????????????????????????????????
-?????????????????????????????????????*+;;;;;*?????????????????????????????????????????????
-??????????????????????????????????????++++++*?????????????????????????????????????????????
-??????????????????????????????????????++++++*?????????????????????????????????????????????
-???????????????????????????????????????+++++*?????????????????????????????????????????????
-???????????????????????????????????????+++++*?????????????????????????????????????????????
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%?****?%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS%%%?%SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
 
-)";
 }
 
 

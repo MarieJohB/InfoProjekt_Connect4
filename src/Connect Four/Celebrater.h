@@ -16,7 +16,7 @@ public:
 	void victoryDance();
 
 	//Kurze Pausen für eigenen Style der Animation durchführen
-	void sleepieepie();
+	void PauseAndClearBeforeResume();
 
 };
 #endif

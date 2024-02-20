@@ -15,7 +15,7 @@ void Konfiguration::wait() {
         cin.get(wait);
         cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
     }
-    system("cls"); // Für Windows
+    system("cls"); // Bereinigung des Terminals von allen Zeichen
 
 }
 
@@ -82,18 +82,11 @@ void Konfiguration::askUser(string filename) {
 %@@@@@@%%@@@@@@@@@@@@@@@@@@@@@@@%@@@@@@@@@@@@%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%@@@@@@%
 -------------------------------------                -------------------------------------
 )";
-        /*cout << "Verfuegbare Befehle: \n" << endl;
-        cout << "- 'h' fuer Hilfe anzeigen" << endl;
-        cout << "- 's' fuer Spiel starten" << endl;
-        cout << "- 'b' um die Highscore zu sehen" << endl;
-        cout << "- 'e' um das Programm zu beenden \n" << endl;
-        */
-        // cin >> input;
+
         cout << hauptmenu << "\n";
         cout << "                                      Ihre Eingabe: ";
         input = getchar();
         cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
-        // cin.get(input); // nur das erste Zeichen einlesen
 
         switch (input) {
         case 'h':
@@ -109,7 +102,7 @@ void Konfiguration::askUser(string filename) {
             endProgramm();
             break;
         default:
-            system("cls"); // Für Windows
+            system("cls"); // Bereinigung des Terminals von allen Zeichen
             cout << "Ungueltiger Befehl. Bitte erneut versuchen.\n" << endl;
         }
     } while (input != 'h' && input != 's' && input != 'b' && input != 'e');
@@ -118,41 +111,22 @@ void Konfiguration::askUser(string filename) {
 
 // Spiel starten:
 void Konfiguration::startGame() {
-    system("cls"); // Für Windows
+    system("cls"); // Bereinigung des Terminals von allen Zeichen
     cout << "Das Spiel wird gestartet \n" << endl;
     play = true;
     // weiteren Code eingeben oder andere Funktion hier aufrufen
 }
 
 void Konfiguration::endProgramm() {
-    system("cls"); // Für Windows
+    system("cls"); // Bereinigung des Terminals von allen Zeichen
     cout << "Das Spiel wird beendet \n" << endl;
     end = false;
     // weiteren Code eingebn oder andere Funktion hier aufrufen
 
 }
 
-/*bool Konfiguration::continueGame() {
-    do {
-
-        cin >> input;
-        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
-
-        switch (input) {
-        case 'y':
-            return true;
-            break;
-        case 'n':
-            return false;
-            break;
-        default:
-            cout << "Ungueltiger Befehl. Bitte erneut versuchen. \n" << endl;
-        }
-    } while (input != 'y' && input != 'n');
-}*/
-
 void Konfiguration::endGame() {
-    system("cls"); // Für Windows
+    system("cls"); // Bereinigung des Terminals von allen Zeichen
     cout << "Spiel wurde beended kehre zum Hauptbildschirm zurueck! \n" << endl;
     play = false;
 }
@@ -160,15 +134,15 @@ void Konfiguration::endGame() {
 
 // Hilfefunktion: Spielregeln
 void Konfiguration::Help() {
-    system("cls"); // Für Windows
+    system("cls"); // Bereinigung des Terminals von allen Zeichen
     cout << "\n Hier ist Hilfe:\n";
     cout << "Spielregeln fuer 4 Gewinnt \n";
     cout << "1: Zwei Spieler nehmen abwechselnd an dem Spiel teil1 \n";
-    cout << "2: Jeder Spieler hat verschiedene Spielsteine,  X f�r Spieler eins und O f�r Spieler zwei. \n";
-    cout << "3: Die Spieler werfen abwechselnd einen ihrer Spielsteine in ein Raster, das aus sieben waagerechten und sechs senkrechten L�chern besteht. \n";
-    cout << "4: Die Spielsteine fallen immer auf den tiefsten verf�gbaren Platz im ausgewaehlten Raster. \n ";
-    cout << "5: Das Ziel des Spiels ist es, vier Steine der eigenen Farbe in einer Reihe zu haben.Diese Reihe kann waagerecht, senkrecht oder diagonal sein. \n";
-    cout << "6: Der Spieler, der zuerst vier Steine in einer Reihe hat, gewinnt das Spiel. \n" << endl;
+    cout << "2: Jeder Spieler hat verschiedene Spielsteine\n";
+    cout << "3: Die Spieler werfen abwechselnd einen ihrer Spielsteine in ein Raster\n";
+    cout << "4: Die Spielsteine fallen immer auf den tiefsten verfuegbaren Platz im ausgewaehlten Raster.\n";
+    cout << "5: Das Ziel des Spiels ist es, vier Steine der eigenen Farbe in einer Reihe zu haben.Diese Reihe kann waagerecht, senkrecht oder diagonal sein.\n";
+    cout << "6: Der Spieler, der zuerst vier Steine in einer Reihe hat, gewinnt das Spiel.\n" << endl;
     wait();
 
 }
@@ -177,7 +151,7 @@ void Konfiguration::Help() {
 void Konfiguration::getHighscore(string filename) {
     highscore LIST2;
     LIST2.loadFromFile(filename);
-    system("cls"); // Für Windows
+    system("cls"); // Bereinigung des Terminals von allen Zeichen
 
 ersteFrage:
     cout << "Wonach soll sortiert werden?\n" << endl;
@@ -211,12 +185,12 @@ ersteFrage:
         S = '1';
         break;
     default:
-        system("cls"); // Für Windows
+        system("cls"); // Bereinigung des Terminals von allen Zeichen
         cout << "Invalide Eingabe" << endl;
         goto ersteFrage;
         break;
     }
-    system("cls"); // Für Windows
+    system("cls"); // Bereinigung des Terminals von allen Zeichen
 zweiteFrage:
     cout << "Wie nach soll sortiert werden?\n" << endl;
     cout << "-u fuer Aufsteigend?" << endl;
@@ -289,7 +263,5 @@ zweiteFrage:
     LIST2.displaySorted(S, R);
     wait();
     LIST2.saveToFile(filename);
-    // Hier weiteren Code einfuegen bzw. andere Funktionen aufrufen
-    //Test
 
 }
