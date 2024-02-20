@@ -63,14 +63,6 @@ int main(int argc, char* argv[]) {
 
     string filename = "highscore.txt";
 
-    // Hiermit könnte man die eingegebenen Parameter überprüfen:
-
-    /*cout << "Anzahl der Argumente: " << argc << endl;
-    for (int i = 0; i < argc; ++i) {
-        cout << "Argument " << i << ": " << argv[i] << endl;
-    }
-    */
-
     char ausgabe;
     char TextAusgeben;
 
@@ -80,7 +72,6 @@ int main(int argc, char* argv[]) {
             // zweites Argument abgreifen, also die erste Eingabe
             // Achtung: ausgabe ist ein Charakter, das muss man Bei Vergliech etc. beachten
             ausgabe = *argv[1];
-            //cout << "Das 2. Argument ist " << ausgabe << endl;
         }
         if (argv[2] != NULL) {
             TextAusgeben = *argv[2]; // drittes Argument einlesen
@@ -88,7 +79,7 @@ int main(int argc, char* argv[]) {
 
     }
     else { // Falls beim Start keine Parameter übergeben wurde
-        system("cls"); // Für Windows
+        system("cls"); // Bereinigung des Terminals von allen Zeichen
         cout << "Falsche Eingabe: \n" << endl << "1 => Spieler 1: X | Spieler 2: O \n2 => Spieler 1: O | Spieler 2: X \n" << endl;
         cout << "Ihre Eingabe: ";
         cin >> ausgabe;
@@ -104,7 +95,7 @@ int main(int argc, char* argv[]) {
             token2 = 'X';
             ausgabe = '2';
         }
-        system("cls"); // Für Windows
+        system("cls"); // Bereinigung des Terminals von allen Zeichen
         cout << "T => Ausgabe des Spieles in einer .txt Datei" << endl;
         cout << "K => Ausgabe des Spieles im Terminal \n" << endl;
         cout << "Ihre Eingabe: ";
@@ -115,7 +106,7 @@ int main(int argc, char* argv[]) {
             GameOn.displayText = true;
             TextAusgeben = 'T';
         }
-        system("cls"); // Für Windows
+        system("cls"); // Bereinigung des Terminals von allen Zeichen
 
     }
 
@@ -179,7 +170,8 @@ int main(int argc, char* argv[]) {
                         Board2.displayBoard(board);
                     }
 
-                    cout << "\nSpieler " << (turn % 2 + 1) << " gewinnt" << " in " << Ruler.countpasses(ausgabe, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2) << " Zuege!" << endl; // Ausgabe des Gewinners
+                    cout << "\nSpieler " << (turn % 2 + 1) << " gewinnt" << " in ";
+                    cout << Ruler.countpasses(ausgabe, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2) << " Zuege!" << endl; // Ausgabe des Gewinners
                     NameOfWinner(); // Festlegung des Namens des Gewinners
                     cout << "gewonnen hat: " << winner.getName() << endl; // Ausgabe des Gewinnernamens
                     list.loadFromFile(filename); // Laden des Highscores von der Text Datei
@@ -206,7 +198,7 @@ int main(int argc, char* argv[]) {
 
             }
             else {
-                system("cls"); // Für Windows
+                system("cls"); // Bereinigung des Terminals von allen Zeichen
                 cout << "\nUngueltige Spalte waehle eine andere \n";
             }
         }

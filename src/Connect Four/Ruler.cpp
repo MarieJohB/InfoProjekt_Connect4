@@ -10,18 +10,25 @@ bool Ruler :: isValidMove(char board[ROWS][COLS], int col){
         Celebrater cel; 
         cel.victoryDance(); // Abspielen einer Animation im Terminal
     };
-    if (board[0][col] == ' ' && col < COLS) { // Ueberprüfung ob die Oberste Reihe belegt ist und die Zeile existiert
+    if (col < COLS && board[0][col] == ' ') { // Ueberprüfung ob die Oberste Reihe belegt ist und die Zeile existiert
         return true;
     }
     return false;
 }
 
-bool Ruler::isWinningMove(char board[ROWS][COLS], char token, int col) { // Ueberpruefung ob eine Platzirtung die Gewinnvorraussetzung erfUellt
-    int hight = 0;
-    while (board[hight][col] != token) { // Ueberpruefung in welcher Reihe der Token Plaziert wurde
-        hight++;
+
+int Ruler::getTokenHeight(char board[ROWS][COLS], char token, int col) {
+    int height = 0;
+    while (board[height][col] != token) { // Ueberpruefung in welcher Reihe der Token Plaziert wurde
+        height++;
     }
-    // Waagerecht nach Links prüfen
+    return height;
+}
+
+bool Ruler::isWinningMove(char board[ROWS][COLS], char token, int col) { // Ueberpruefung ob eine Platzierung die Gewinnvorraussetzung erfuellt
+    int hight = getTokenHeight(board, token, col);
+
+    // Waagerecht nach Links pruefen
     /*|   |   |   |   |   |   |   |
       |   |   |   |   |   |   |   |
       |   |   |   |   |   |   |   |
@@ -35,7 +42,7 @@ bool Ruler::isWinningMove(char board[ROWS][COLS], char token, int col) { // Uebe
             return true;
         }
 
-    // Sonderfall des Waagerecht nach Links prüfen
+    // Sonderfall des Waagerecht nach Links pruefen
     /*|   |   |   |   |   |   |   |
       |   |   |   |   |   |   |   |
       |   |   |   |   |   |   |   |
@@ -49,7 +56,7 @@ bool Ruler::isWinningMove(char board[ROWS][COLS], char token, int col) { // Uebe
             return true;
         }
     }
-    // Waagerecht nach Rechts prüfen
+    // Waagerecht nach Rechts pruefen
     /*|   |   |   |   |   |   |   |
       |   |   |   |   |   |   |   |
       |   |   |   |   |   |   |   |
@@ -63,7 +70,7 @@ bool Ruler::isWinningMove(char board[ROWS][COLS], char token, int col) { // Uebe
             return true;
         }
 
-    // Sonderfall des Waagerecht nach Rechts prüfen
+    // Sonderfall des Waagerecht nach Rechts pruefen
     /*|   |   |   |   |   |   |   |
       |   |   |   |   |   |   |   |
       |   |   |   |   |   |   |   |
@@ -78,7 +85,7 @@ bool Ruler::isWinningMove(char board[ROWS][COLS], char token, int col) { // Uebe
         }
     }
 
-    // Diagonal nach Oben Rechts prüfen
+    // Diagonal nach Oben Rechts pruefen
     /*|   |   |   |   |   |   |   |
       |   |   |   |   |   |   |   |
       |   |   |   | x |   |   |   |
@@ -93,7 +100,7 @@ bool Ruler::isWinningMove(char board[ROWS][COLS], char token, int col) { // Uebe
             return true;
         }
 
-    // Sonderfall des Daiagonal nach Oben Rechts prüfen
+    // Sonderfall des Daiagonal nach Oben Rechts pruefen
     /*|   |   |   |   |   |   |   |
       |   |   |   |   |   |   |   |
       |   |   |   | x |   |   |   |
@@ -108,7 +115,7 @@ bool Ruler::isWinningMove(char board[ROWS][COLS], char token, int col) { // Uebe
         }
     }
 
-    // Diagonal nach Oben Links prüfen
+    // Diagonal nach Oben Links pruefen
     /*|   |   |   |   |   |   |   |
       |   |   |   |   |   |   |   |
       | x |   |   |   |   |   |   |
@@ -123,7 +130,7 @@ bool Ruler::isWinningMove(char board[ROWS][COLS], char token, int col) { // Uebe
             return true;
         }
 
-    // Sonderfall des Daiagonal nach Oben Links prüfen
+    // Sonderfall des Daiagonal nach Oben Links pruefen
     /*|   |   |   |   |   |   |   |
       |   |   |   |   |   |   |   |
       | x |   |   |   |   |   |   |
@@ -133,12 +140,12 @@ bool Ruler::isWinningMove(char board[ROWS][COLS], char token, int col) { // Uebe
       -----------------------------
         1   2   3   4   5   6   7    */
 
-        else if (board[hight - 1][col - 1] == token && board[hight - 2][col - 2] == token && board[hight + 1][col + 1] == token) {
+        else if (hight < 5 && board[hight - 1][col - 1] == token && board[hight - 2][col - 2] == token && board[hight + 1][col + 1] == token) {
             return true;
         }
     }
 
-    // Diagonal nach Unten Links überprüfen
+    // Diagonal nach Unten Links ueberpruefen
     /*|   |   |   |   |   |   |   |
       |   |   |   |   |   |   |   |
       |   |   |   |   |   |   |   |
@@ -153,7 +160,7 @@ bool Ruler::isWinningMove(char board[ROWS][COLS], char token, int col) { // Uebe
             return true;
         }
 
-    // Sonderfall des Daiagonal nach Unten Links prüfen
+    // Sonderfall des Daiagonal nach Unten Links pruefen
     /*|   |   |   |   |   |   |   |
       |   |   |   |   |   |   |   |
       |   |   |   | x |   |   |   |
@@ -163,12 +170,12 @@ bool Ruler::isWinningMove(char board[ROWS][COLS], char token, int col) { // Uebe
       -----------------------------
         1   2   3   4   5   6   7    */
 
-        else if (board[hight + 1][col - 1] == token && board[hight + 2][col - 2] == token && board[hight - 1][col + 1] == token) {
+        else if (hight > 0 && board[hight + 1][col - 1] == token && board[hight + 2][col - 2] == token && board[hight - 1][col + 1] == token) {
             return true;
         }
     }
 
-    // Diagonal nach Unten Rechts überprüfen
+    // Diagonal nach Unten Rechts ueberpruefen
     /*|   |   |   |   |   |   |   |
       |   |   |   |   |   |   |   |
       |   |   |   |   |   |   |   |
@@ -183,7 +190,7 @@ bool Ruler::isWinningMove(char board[ROWS][COLS], char token, int col) { // Uebe
             return true;
         }
 
-    // Diagonal nach Unten Rechts überprüfen
+    // Diagonal nach Unten Rechts ueberpruefen
     /*|   |   |   |   |   |   |   |
       |   |   |   |   |   |   |   |
       | x |   |   |   |   |   |   |
@@ -198,7 +205,7 @@ bool Ruler::isWinningMove(char board[ROWS][COLS], char token, int col) { // Uebe
         }
     }
 
-    // Seenkrecht nach Unten überprüfen
+    // Seenkrecht nach Unten ueberpruefen
     /*|   |   |   |   |   |   |   |
       |   |   |   |   |   |   |   |
       |   |   |   |   |   |   |   |
@@ -215,7 +222,7 @@ bool Ruler::isWinningMove(char board[ROWS][COLS], char token, int col) { // Uebe
     return false;
 }
 
-bool Ruler :: isDraw(char board[ROWS][COLS]) { // Prüfen ob die Obere Reihe nur aus Token besteht
+bool Ruler :: isDraw(char board[ROWS][COLS]) { // Pruefen ob die Obere Reihe nur aus Token besteht
     int count = 0; 
     for (int i = 0; i < COLS; i++) { // Loop zum durchgehen der ersten Reihe
         if (board[0][i] == 'X' || board[0][i] == 'O') {
@@ -229,8 +236,9 @@ bool Ruler :: isDraw(char board[ROWS][COLS]) { // Prüfen ob die Obere Reihe nur 
     return false;
 }
 
-int Ruler :: countpasses(char checktoken, char turn, int& cplayer1, int& cplayer2) { // Funktion zum Zählen der Anzahl der gesetzten Tokens
-    // hier muss man auach prüfen, welcher Spieler X oder O hat
+
+int Ruler::countpasses(char checktoken, char turn, int& cplayer1, int& cplayer2) { // Funktion zum Zaehlen der Anzahl der gesetzten Tokens
+    // hier muss man auach pruefen, welcher Spieler X oder O hat
     if (checktoken == '1') { // 1: Spieler 1 hat X
         if (turn == 'X') {
             cplayer1++;

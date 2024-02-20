@@ -11,17 +11,20 @@ using namespace::std;
 class Ruler {
 public:
 
-    // Überprüfen, ob der Zug gültig ist
+    // Ueberpruefen, ob der Zug gueltig ist
     bool isValidMove(char board[ROWS][COLS], int col);
 
-    // Überprüfen, ob das Spiel gewonnen wurde
+    // Ueberpruefen, ob das Spiel gewonnen wurde
     bool isWinningMove(char board[ROWS][COLS], char token, int col);
 
-    //Überprüfen, ob ein Unentschieden vorliegt
+    //Ueberpruefen, ob ein Unentschieden vorliegt
     bool isDraw(char board[ROWS][COLS]);
 
-    //Zählung der gesetzten Token pro Spieler
+    //Zaehlung der gesetzten Token pro Spieler
     int countpasses(char checktoken, char turn, int& cplayer1, int& cplayer2);
+
+    // Hoehe des Tokens bekommen
+    int getTokenHeight(char board[ROWS][COLS], char token, int col);
 
     // Den Token im Spielbrett platzieren
     void makeMove(char board[ROWS][COLS], int col, char token);
