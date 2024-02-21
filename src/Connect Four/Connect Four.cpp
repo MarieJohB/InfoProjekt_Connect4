@@ -155,8 +155,7 @@ int main(int argc, char* argv[]) {
                     cout << "\nSpieler " << (turn % 2 + 1) << " gewinnt" << " in ";
                     cout << Ruler.countpasses(ausgabe, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2) << " Zuege!" << endl; // Ausgabe des Gewinners
                     // Der Gewinner wird nach seinem Namen gefragt
-                    winner.setVorname();
-                    winner.setNachname();
+                    winner.setName();
                     cout << "gewonnen hat: " << winner.getName() << endl; // Ausgabe des Gewinnernamens
                     GameOn.wait();
                     list.loadFromFile(filename); // Laden des Highscores von der Text Datei

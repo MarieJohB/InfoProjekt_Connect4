@@ -37,7 +37,7 @@ Player::~Player() {
 }
 
 // Namen eingeben:
-void Player::setVorname() {
+void Player::setName() {
     string dump; // fängt leeren input ab 
     getline(cin, dump);
 
@@ -49,14 +49,11 @@ void Player::setVorname() {
     getline(cin, inputVorname);
     this->vorname = inputVorname; // eingegebenen Vornamen an das Objekt zu uebergeben
 
-
-}
-
-void Player::setNachname() {
     cout << "Gewinner, bitte geben Sie Ihren Nachnamen ein:" << endl;
     string inputNachname;
     getline(cin, inputNachname);
     this->nachname = inputNachname; // ebenso Nachname uebergeben
+
 
 }
 
