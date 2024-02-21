@@ -43,7 +43,7 @@ int main(int argc, char* argv[]) {
     string filename = "highscore.txt";
 
     // Hier werden die Kommandline-Parameter ueberprueft
-    
+
     char TokenAusgeben; // In diese Variable wird 1 (Spieler 1 hat X) oder 2 (Spieler 2 hat X) eingelesen
     char SpielAusgeben; // In diese Variable wird T (Text-Datei) oder K (Konsole) eingelesen
 
@@ -69,6 +69,7 @@ int main(int argc, char* argv[]) {
         cin >> TokenAusgeben;
         cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
         int check1 = check.checkNumberAusgabe(TokenAusgeben); // Das Ueberprüfen der Eingabe wird aus der Main rausverlagert in die Klasse Checker
+
         if (check1 == '1') { // Spieler 1 hat X
             token1 = 'X';
             token2 = 'O';
@@ -129,19 +130,19 @@ int main(int argc, char* argv[]) {
     };
 
     while (GameOn.end) {
-        Board1.initializeBoard(board); // Initialisierung des Spielfeldes
+        boardDisplay->initializeBoard(board); // Initialisierung des Spielfeldes
         // Eingabeaufforderung im Hauptmenue
        // Uebergabe der beiden Spieler, damit dies weiter gegeben werden kann, wenn das Spiel gestartet wird und die Namen eingegeben werden
         GameOn.askUser(filename, Spieler1, Spieler2);
 
         while (GameOn.play) {
-
             boardDisplay->displayBoard(board);
 
-             
+
             cout << "\nSpieler " << check.checkPlayerTurn((turn % 2 + 1), Spieler1.getName(), Spieler2.getName()) << ", waehlen Sie eine Spalte: "; // Spaltenwahl Aufforderung korrespodierend zu dem dazugehoerigen Spielern
             int col = players.getInteger(); // Lesen der Eingabe 
             col--; // Array-Indizes beginnen bei 0
+
             if (Ruler.isValidMove(board, col)) { // Uberpruefen ob der Zug gueltig ist
 
                 Ruler.makeMove(board, col, (turn % 2 == 0) ? token1 : token2); // Platzierung des Tokens
@@ -151,18 +152,9 @@ int main(int argc, char* argv[]) {
 
                     boardDisplay->displayBoard(board);
 
-                        Board1.displayBoard(board);
-                    }
-                    else
-                    {
-                        Board2.displayBoard(board);
-                    }
+                    cout << "\nSpieler " << check.checkPlayerTurn((turn % 2 + 1), Spieler1.getName(), Spieler2.getName()) << " gewinnt" << " in ";
+                    cout << Ruler.countpasses(TokenAusgeben, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2) << " Zuege!" << endl; // Ausgabe des Gewinners
 
-                cout << "\nSpieler " << check.checkPlayerTurn((turn % 2 + 1), Spieler1.getName(), Spieler2.getName()) << " gewinnt" << " in ";
-                    cout << Ruler.countpasses(ausgabe, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2) << " Zuege!" << endl; // Ausgabe des Gewinners
-                    // Der Gewinner wird nach seinem Namen gefragt
-                    winner.setName();
-                    cout << "gewonnen hat: " << winner.getName() << endl; // Ausgabe des Gewinnernamens
                     GameOn.wait();
 
 
@@ -175,21 +167,21 @@ int main(int argc, char* argv[]) {
                 }
                 else if (Ruler.isDraw(board)) { // Ueberpruefen ob ein Unentschieden vorliegt
 
-                        boardDisplay->displayBoard(board);
-                        delete boardDisplay;
-                        GameOn.endGame();
-                    }
 
-                    turn++; // Aenderung des Spielers welcher am Zug ist
+                    boardDisplay->displayBoard(board);
+                    delete boardDisplay;
+                    GameOn.endGame();
+                }
 
-                }
-                else {
-                    system("cls"); // Bereinigung des Terminals von allen Zeichen
-                    cout << "\nUngueltige Spalte waehle eine andere \n";
-                }
+                turn++; // Aenderung des Spielers welcher am Zug ist
+
             }
-
+            else {
+                system("cls"); // Bereinigung des Terminals von allen Zeichen
+                cout << "\nUngueltige Spalte waehle eine andere \n";
+            }
         }
-        return 0;
-    }
 
+    }
+    return 0;
+}
