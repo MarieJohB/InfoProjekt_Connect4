@@ -53,9 +53,6 @@ void Player::setVorname() {
 }
 
 void Player::setNachname() {
-    string dump; // fängt leeren input ab 
-    getline(cin, dump);
-
     cout << "Gewinner, bitte geben Sie Ihren Nachnamen ein:" << endl;
     string inputNachname;
     getline(cin, inputNachname);
