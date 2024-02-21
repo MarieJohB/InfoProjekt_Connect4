@@ -137,7 +137,7 @@ void Konfiguration::Help() {
     system("cls"); // Bereinigung des Terminals von allen Zeichen
     cout << "\n Hier ist Hilfe:\n";
     cout << "Spielregeln fuer 4 Gewinnt \n";
-    cout << "1: Zwei Spieler nehmen abwechselnd an dem Spiel teil1 \n";
+    cout << "1: Zwei Spieler nehmen abwechselnd an dem Spiel teil \n";
     cout << "2: Jeder Spieler hat verschiedene Spielsteine\n";
     cout << "3: Die Spieler werfen abwechselnd einen ihrer Spielsteine in ein Raster\n";
     cout << "4: Die Spielsteine fallen immer auf den tiefsten verfuegbaren Platz im ausgewaehlten Raster.\n";

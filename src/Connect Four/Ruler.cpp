@@ -125,7 +125,7 @@ bool Ruler::isWinningMove(char board[ROWS][COLS], char token, int col) { // Uebe
       -----------------------------
         1   2   3   4   5   6   7    */
 
-    if (hight >= 3 && col >= COLS - 2) {
+    if (hight >= 3 && col >= 2) {
         if (board[hight - 1][col - 1] == token && board[hight - 2][col - 2] == token && board[hight - 3][col - 3] == token) {
             return true;
         }
@@ -140,7 +140,7 @@ bool Ruler::isWinningMove(char board[ROWS][COLS], char token, int col) { // Uebe
       -----------------------------
         1   2   3   4   5   6   7    */
 
-        else if (hight < 5 && board[hight - 1][col - 1] == token && board[hight - 2][col - 2] == token && board[hight + 1][col + 1] == token) {
+        else if (board[hight - 1][col - 1] == token && board[hight - 2][col - 2] == token && board[hight + 1][col + 1] == token) {
             return true;
         }
     }
@@ -155,7 +155,7 @@ bool Ruler::isWinningMove(char board[ROWS][COLS], char token, int col) { // Uebe
       -----------------------------
         1   2   3   4   5   6   7    */
 
-    if ((hight <= ROWS - 3) && (col >= 2)) {
+    if (hight <= ROWS - 3 && col >= 2) {
         if (board[hight + 1][col - 1] == token && board[hight + 2][col - 2] == token && board[hight + 3][col - 3] == token) {
             return true;
         }
