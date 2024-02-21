@@ -102,6 +102,7 @@ int main(int argc, char* argv[]) {
         cin >> TextAusgeben;
         cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
         int check2 = check.checkTextAusgabe(TextAusgeben);
+
         if (check2 == 'T' || check2 == 't') {
             GameOn.displayText = true;
             TextAusgeben = 'T';
@@ -175,7 +176,7 @@ int main(int argc, char* argv[]) {
                     NameOfWinner(); // Festlegung des Namens des Gewinners
                     cout << "gewonnen hat: " << winner.getName() << endl; // Ausgabe des Gewinnernamens
                     list.loadFromFile(filename); // Laden des Highscores von der Text Datei
-                    list.insertNode(Ruler.countpasses(ausgabe, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2), 0, winner.getName()); // Einfügen der Daten des Gewinners in der Liste
+                    list.insertNode(Ruler.countpasses(ausgabe, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2), winner.getName()); // Einfügen der Daten des Gewinners in der Liste
                     list.saveToFile(filename); // Abspeicherung der Daten des Gewinners in der Text Datei
                     GameOn.endGame(); // Beenden der Spielinstanz
 
