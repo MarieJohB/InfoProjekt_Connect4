@@ -5,98 +5,98 @@ using namespace::std;
 #include <sstream>
 #include <ctime>
 // Konstruktor für die highscore Klasse
-highscore::highscore() : head(nullptr), headData2(nullptr), headStrData(nullptr) {} 
+highscore::highscore() : head(nullptr), headZeit(nullptr), headName(nullptr) {} 
 
 // Destructor; Dabei wird die List durch Durchlaufen von ihr gelöscht
 highscore::~highscore() {
     Node* current = head;
     while (current != nullptr) { //Die Liste wird druchlaufen
-        Node* next = current->nextData1;
+        Node* next = current->nextHighscore;
         delete current; // Der nächste Eintrag wird gelöscht
         current = next;
     }
     // Die Pointer der Klasse werden wieder zum Nullpointer
     head = nullptr;
-    headData2 = nullptr;
-    headStrData = nullptr;
+    headZeit = nullptr;
+    headName = nullptr;
 }
 // Es kommt eine Überladene Funktion. Diese ist hier für das einfügen eines neuen Scores
 void highscore::insertNode(int value1, const string& strValue) {
     //Hier werden die gegeben Werte, Name und Anzahl der Züge eingefügt
     Node* newNode = new Node;
-    newNode->data1 = value1;
-    newNode->strData = strValue;
-    newNode->nextData1 = nullptr;
-    newNode->nextData2 = nullptr;
-    newNode->nextStrData = nullptr;
-    newNode->data2 = time(nullptr);
+    newNode->Highscore = value1;
+    newNode->Name = strValue;
+    newNode->nextHighscore = nullptr;
+    newNode->nextZeit = nullptr;
+    newNode->nextName = nullptr;
+    newNode->Zeit = time(nullptr);
 
     //Wenn die Liste leer ist, kann man die Pointer der Klasse direkt dem neuen Eintrag zuordnen.
     if (head == nullptr) {
         head = newNode;
-        headData2 = newNode;
-        headStrData = newNode;
+        headZeit = newNode;
+        headName = newNode;
         return;
     }
     else {
-        //Hier wird die richtige Reihenfolge vom Pointer für Data1 sichergestellt
-        // Man erhält hieraus zwei Pointer, der eine Pointer currentData1 hat zeigt auf eine Liste mite einem höheren Data1 Wert
-        // und previousData1, der auf den vorherigen Listeneintrag zeigt
-        Node* currentData1 = head;
-        Node* previousData1 = nullptr;
-        while (currentData1 != nullptr && currentData1->data1 < value1) { //Die Liste wird so lange durchgegangen bis endweder das Ende erreicht wurde oder ein höherer Wert als der Wert vom neuen Eintrag erreicht wurde
-            previousData1 = currentData1;
-            currentData1 = currentData1->nextData1;
+        //Hier wird die richtige Reihenfolge vom Pointer für Highscore sichergestellt
+        // Man erhält hieraus zwei Pointer, der eine Pointer currentHighscore hat zeigt auf eine Liste mite einem höheren Highscore Wert
+        // und previousHighscore, der auf den vorherigen Listeneintrag zeigt
+        Node* currentHighscore = head;
+        Node* previousHighscore = nullptr;
+        while (currentHighscore != nullptr && currentHighscore->Highscore < value1) { //Die Liste wird so lange durchgegangen bis endweder das Ende erreicht wurde oder ein höherer Wert als der Wert vom neuen Eintrag erreicht wurde
+            previousHighscore = currentHighscore;
+            currentHighscore = currentHighscore->nextHighscore;
         }
 
-        //Hier wird die richtige Reihenfolge vom Pointer für Data2 sichergestellt
-        // Man erhält hieraus zwei Pointer, der eine Pointer currentData2 hat zeigt auf eine Liste mite einem höheren Data1 Wert
-        // und previousData2, der auf den vorherigen Listeneintrag zeigt
-        Node* currentData2 = headData2;
-        Node* previousData2 = nullptr;
-        while (currentData2 != nullptr && currentData2->data2 < newNode->data2) { //Die Liste wird so lange durchgegangen bis endweder das Ende erreicht wurde oder ein höherer Wert als der Wert vom neuen Eintrag erreicht wurde
-            previousData2 = currentData2;
-            currentData2 = currentData2->nextData2;
+        //Hier wird die richtige Reihenfolge vom Pointer für Zeit sichergestellt
+        // Man erhält hieraus zwei Pointer, der eine Pointer currentZeit hat zeigt auf eine Liste mite einem höheren Highscore Wert
+        // und previousZeit, der auf den vorherigen Listeneintrag zeigt
+        Node* currentZeit = headZeit;
+        Node* previousZeit = nullptr;
+        while (currentZeit != nullptr && currentZeit->Zeit < newNode->Zeit) { //Die Liste wird so lange durchgegangen bis endweder das Ende erreicht wurde oder ein höherer Wert als der Wert vom neuen Eintrag erreicht wurde
+            previousZeit = currentZeit;
+            currentZeit = currentZeit->nextZeit;
         }
 
-        //Hier wird die richtige Reihenfolge vom Pointer für Data2 sichergestellt
-        // Man erhält hieraus zwei Pointer, der eine Pointer currentData2 hat zeigt auf eine Liste mite einem höheren Data1 Wert
-        // und previousData2, der auf den vorherigen Listeneintrag zeigt
-        Node* currentStrData = headStrData;
-        Node* previousStrData = nullptr;
-        while (currentStrData != nullptr && currentStrData->strData < strValue) { //Die Liste wird so lange durchgegangen bis endweder das Ende erreicht wurde oder ein höherer Wert als der Wert vom neuen Eintrag erreicht wurde
-            previousStrData = currentStrData;
-            currentStrData = currentStrData->nextStrData;
+        //Hier wird die richtige Reihenfolge vom Pointer für Zeit sichergestellt
+        // Man erhält hieraus zwei Pointer, der eine Pointer currentZeit hat zeigt auf eine Liste mite einem höheren Highscore Wert
+        // und previousZeit, der auf den vorherigen Listeneintrag zeigt
+        Node* currentName = headName;
+        Node* previousName = nullptr;
+        while (currentName != nullptr && currentName->Name < strValue) { //Die Liste wird so lange durchgegangen bis endweder das Ende erreicht wurde oder ein höherer Wert als der Wert vom neuen Eintrag erreicht wurde
+            previousName = currentName;
+            currentName = currentName->nextName;
         }
 
         // Hier werden die Pointer richtig verlegt, sodass das neue Listenelement richtig eingefügt wurde
-        if (previousData1 == nullptr) { // Sollte das neue Element das kleinste sein, muss es an erste Stelle eingefügt werden und daraus folgen besondere Anweisungen
-            newNode->nextData1 = head; //Das neue Element, was jetzt an erster Stelle steht muss auf das ehemalige erste Element zeigen, was jetzt das zweite ist.
+        if (previousHighscore == nullptr) { // Sollte das neue Element das kleinste sein, muss es an erste Stelle eingefügt werden und daraus folgen besondere Anweisungen
+            newNode->nextHighscore = head; //Das neue Element, was jetzt an erster Stelle steht muss auf das ehemalige erste Element zeigen, was jetzt das zweite ist.
             head = newNode; // Der Pointer der Klasse zeigt direkt auf das neue Element
         }
-        else { //Wenn das neue Element nicht das neue erste Element ist, dann wird es zwischen currentData1, was auf eine Listenelement mit einem größeren Data1 zeigt, und previousData1, was das vorherige Listenelement ist, einsortiert
-            newNode->nextData1 = currentData1;
-            previousData1->nextData1 = newNode;
+        else { //Wenn das neue Element nicht das neue erste Element ist, dann wird es zwischen currentHighscore, was auf eine Listenelement mit einem größeren Highscore zeigt, und previousHighscore, was das vorherige Listenelement ist, einsortiert
+            newNode->nextHighscore = currentHighscore;
+            previousHighscore->nextHighscore = newNode;
         }
 
-        // Das verfahren von Data1 wird analog auf Data2 übertragen
-        if (previousData2 == nullptr) {
-            newNode->nextData2 = headData2;
-            headData2 = newNode;
+        // Das verfahren von Highscore wird analog auf Zeit übertragen
+        if (previousZeit == nullptr) {
+            newNode->nextZeit = headZeit;
+            headZeit = newNode;
         }
         else {
-            newNode->nextData2 = currentData2;
-            previousData2->nextData2 = newNode;
+            newNode->nextZeit = currentZeit;
+            previousZeit->nextZeit = newNode;
         }
 
-        // Das Verfahren von Data1 wird auf den String übertragen
-        if (previousStrData == nullptr) {
-            newNode->nextStrData = headStrData;
-            headStrData = newNode;
+        // Das Verfahren von Highscore wird auf den String übertragen
+        if (previousName == nullptr) {
+            newNode->nextName = headName;
+            headName = newNode;
         }
         else {
-            newNode->nextStrData = currentStrData;
-            previousStrData->nextStrData = newNode;
+            newNode->nextName = currentName;
+            previousName->nextName = newNode;
         }
     };
 };
@@ -104,87 +104,90 @@ void highscore::insertNode(int value1, const string& strValue) {
 void highscore::insertNode(int value1, time_t value2, const string& strValue) {
     //Hier werden die gegeben Werte, Name und Anzahl der Züge eingefügt
     Node* newNode = new Node;
-    newNode->data1 = value1;
-    newNode->strData = strValue;
-    newNode->nextData1 = nullptr;
-    newNode->nextData2 = nullptr;
-    newNode->nextStrData = nullptr;
+    newNode->Highscore = value1;
+    newNode->Name = strValue;
+    newNode->nextHighscore = nullptr;
+    newNode->nextZeit = nullptr;
+    newNode->nextName = nullptr;
 
-    //Hier wird das Datum in Unix auf data2 gespeichert
+    //Hier wird das Datum in Unix auf Zeit gespeichert
     if (value2 == 0) { //Sollte kein Wert für die Zeit gegeben worden sein, muss eine neue Zeit gespeichert werden. Das ist im Fall, dass es ein Fehler bei der Interpretation der Daten gibt.
-        newNode->data2 = time(nullptr);
+        newNode->Zeit = time(nullptr);
     }
     else { //Sollte eine Zeit gegeben worden sein, wie z.B. aus bereits gespeicherten Daten, wird der Zeitstempel übernommen, damit nicht die Zeit des Laden genommen wird
-        newNode->data2 = value2;
+        newNode->Zeit = value2;
     }
 
     //Wenn die Liste leer ist, kann man die Pointer der Klasse direkt dem neuen Eintrag zuordnen.
     if (head == nullptr) {
         head = newNode;
-        headData2 = newNode;
-        headStrData = newNode;
+        headZeit = newNode;
+        headName = newNode;
+        newNode->Position = 1;
         return;
     }
     else {
-        //Hier wird die richtige Reihenfolge vom Pointer für Data1 sichergestellt
-        // Man erhält hieraus zwei Pointer, der eine Pointer currentData1 hat zeigt auf eine Liste mite einem höheren Data1 Wert
-        // und previousData1, der auf den vorherigen Listeneintrag zeigt
-        Node* currentData1 = head;
-        Node* previousData1 = nullptr;
-        while (currentData1 != nullptr && currentData1->data1 < value1) { //Die Liste wird so lange durchgegangen bis endweder das Ende erreicht wurde oder ein höherer Wert als der Wert vom neuen Eintrag erreicht wurde
-            previousData1 = currentData1;
-            currentData1 = currentData1->nextData1;
+        //Hier wird die richtige Reihenfolge vom Pointer für Highscore sichergestellt
+        // Man erhält hieraus zwei Pointer, der eine Pointer currentHighscore hat zeigt auf eine Liste mite einem höheren Highscore Wert
+        // und previousHighscore, der auf den vorherigen Listeneintrag zeigt
+        Node* currentHighscore = head;
+        Node* previousHighscore = nullptr;
+        while (currentHighscore != nullptr && currentHighscore->Highscore < value1) { //Die Liste wird so lange durchgegangen bis endweder das Ende erreicht wurde oder ein höherer Wert als der Wert vom neuen Eintrag erreicht wurde
+            previousHighscore = currentHighscore;
+            currentHighscore = currentHighscore->nextHighscore;
         }
 
-        //Hier wird die richtige Reihenfolge vom Pointer für Data2 sichergestellt
-        // Man erhält hieraus zwei Pointer, der eine Pointer currentData2 hat zeigt auf eine Liste mite einem höheren Data1 Wert
-        // und previousData2, der auf den vorherigen Listeneintrag zeigt
-        Node* currentData2 = headData2;
-        Node* previousData2 = nullptr;
-        while (currentData2 != nullptr && currentData2->data2 < newNode->data2) { //Die Liste wird so lange durchgegangen bis endweder das Ende erreicht wurde oder ein höherer Wert als der Wert vom neuen Eintrag erreicht wurde
-            previousData2 = currentData2;
-            currentData2 = currentData2->nextData2;
+        //Hier wird die richtige Reihenfolge vom Pointer für Zeit sichergestellt
+        // Man erhält hieraus zwei Pointer, der eine Pointer currentZeit hat zeigt auf eine Liste mite einem höheren Highscore Wert
+        // und previousZeit, der auf den vorherigen Listeneintrag zeigt
+        Node* currentZeit = headZeit;
+        Node* previousZeit = nullptr;
+        while (currentZeit != nullptr && currentZeit->Zeit < newNode->Zeit) { //Die Liste wird so lange durchgegangen bis endweder das Ende erreicht wurde oder ein höherer Wert als der Wert vom neuen Eintrag erreicht wurde
+            previousZeit = currentZeit;
+            currentZeit = currentZeit->nextZeit;
         }
 
-        //Hier wird die richtige Reihenfolge vom Pointer für Data2 sichergestellt
-        // Man erhält hieraus zwei Pointer, der eine Pointer currentData2 hat zeigt auf eine Liste mite einem höheren Data1 Wert
-        // und previousData2, der auf den vorherigen Listeneintrag zeigt
-        Node* currentStrData = headStrData;
-        Node* previousStrData = nullptr;
-        while (currentStrData != nullptr && currentStrData->strData < strValue) { //Die Liste wird so lange durchgegangen bis endweder das Ende erreicht wurde oder ein höherer Wert als der Wert vom neuen Eintrag erreicht wurde
-            previousStrData = currentStrData;
-            currentStrData = currentStrData->nextStrData;
+        //Hier wird die richtige Reihenfolge vom Pointer für Zeit sichergestellt
+        // Man erhält hieraus zwei Pointer, der eine Pointer currentZeit hat zeigt auf eine Liste mite einem höheren Highscore Wert
+        // und previousZeit, der auf den vorherigen Listeneintrag zeigt
+        Node* currentName = headName;
+        Node* previousName = nullptr;
+        while (currentName != nullptr && currentName->Name < strValue) { //Die Liste wird so lange durchgegangen bis endweder das Ende erreicht wurde oder ein höherer Wert als der Wert vom neuen Eintrag erreicht wurde
+            previousName = currentName;
+            currentName = currentName->nextName;
         }
 
         // Hier werden die Pointer richtig verlegt, sodass das neue Listenelement richtig eingefügt wurde
-        if (previousData1 == nullptr) { // Sollte das neue Element das kleinste sein, muss es an erste Stelle eingefügt werden und daraus folgen besondere Anweisungen
-            newNode->nextData1 = head; //Das neue Element, was jetzt an erster Stelle steht muss auf das ehemalige erste Element zeigen, was jetzt das zweite ist.
+        if (previousHighscore == nullptr) { // Sollte das neue Element das kleinste sein, muss es an erste Stelle eingefügt werden und daraus folgen besondere Anweisungen
+            newNode->nextHighscore = head; //Das neue Element, was jetzt an erster Stelle steht muss auf das ehemalige erste Element zeigen, was jetzt das zweite ist.
+            newNode->Position = 1;
             head = newNode; // Der Pointer der Klasse zeigt direkt auf das neue Element
         }
-        else { //Wenn das neue Element nicht das neue erste Element ist, dann wird es zwischen currentData1, was auf eine Listenelement mit einem größeren Data1 zeigt, und previousData1, was das vorherige Listenelement ist, einsortiert
-            newNode->nextData1 = currentData1;
-            previousData1->nextData1 = newNode;
+        else { //Wenn das neue Element nicht das neue erste Element ist, dann wird es zwischen currentHighscore, was auf eine Listenelement mit einem größeren Highscore zeigt, und previousHighscore, was das vorherige Listenelement ist, einsortiert
+            newNode->nextHighscore = currentHighscore;
+            previousHighscore->nextHighscore = newNode;
         }
 
-        // Das verfahren von Data1 wird analog auf Data2 übertragen
-        if (previousData2 == nullptr) { 
-            newNode->nextData2 = headData2;
-            headData2 = newNode;
+        // Das verfahren von Highscore wird analog auf Zeit übertragen
+        if (previousZeit == nullptr) { 
+            newNode->nextZeit = headZeit;
+            headZeit = newNode;
         }
         else { 
-            newNode->nextData2 = currentData2;
-            previousData2->nextData2 = newNode;
+            newNode->nextZeit = currentZeit;
+            previousZeit->nextZeit = newNode;
         }
 
-        // Das Verfahren von Data1 wird auf den String übertragen
-        if (previousStrData == nullptr) {
-            newNode->nextStrData = headStrData;
-            headStrData = newNode;
+        // Das Verfahren von Highscore wird auf den String übertragen
+        if (previousName == nullptr) {
+            newNode->nextName = headName;
+            headName = newNode;
         }
         else { 
-            newNode->nextStrData = currentStrData;
-            previousStrData->nextStrData = newNode;
+            newNode->nextName = currentName;
+            previousName->nextName = newNode;
         }
+        Positionsbestimmung(head);
     };
 };
 // Diese Funktion ermöglicht, dass Highscoredaten langfristig aus einer .txt Datei geladen werden können.
@@ -230,9 +233,9 @@ void highscore::saveToFile(const string& filename) {
     }
 
     Node* current = head;
-    while (current != nullptr) { //Die Liste wird nach Data1 durchlaufen und mit "," getrennt
-        outputFile << current->data1 << "," << current->data2 << "," << current->strData << endl;  //Die Daten werden in eine Zeile geschrieben
-        current = current->nextData1;
+    while (current != nullptr) { //Die Liste wird nach Highscore durchlaufen und mit "," getrennt
+        outputFile << current->Highscore << "," << current->Zeit << "," << current->Name << endl;  //Die Daten werden in eine Zeile geschrieben
+        current = current->nextHighscore;
     }
 
     outputFile.close(); //Die Datei mit den Daten wird geschlossen
@@ -245,35 +248,55 @@ void highscore::displaySorted(char sortBy, bool ascending) {
     switch (sortBy) { //Diser bestimmt, nach welcher Variable (Name, Datum oder Züge) sortiert werden muss
     case '1': //Sortierung nach dem Highscore
         cout << "Sortierung erfolgte nach dem Highscore:\n" << endl;
-        current = ascending ? head : findLastNodeData1(head); // Es wird noch gefragt, ob es aufsteigend oder absteigend ist und dementsprechend wird der Start gesetzt
+        current = ascending ? head : findLastNodeHighscore(head); // Es wird noch gefragt, ob es aufsteigend oder absteigend ist und dementsprechend wird der Start gesetzt
         break;
     case '2': //Sortierung nach dem Datum
         cout << "Sortierung erfolgte nach dem Datum:\n" << endl;
-        current = ascending ? headData2 : findLastNodeData2(headData2); // Es wird noch gefragt, ob es aufsteigend oder absteigend ist und dementsprechend wird der Start gesetzt
+        current = ascending ? headZeit : findLastNodeZeit(headZeit); // Es wird noch gefragt, ob es aufsteigend oder absteigend ist und dementsprechend wird der Start gesetzt
         break;
     case 's': //Sortierung nach dem Namen
         cout << "Sortierung erfolgte nach dem Namen:\n" << endl;
-        current = ascending ? headStrData : findLastNodeDataStr(headStrData); // Es wird noch gefragt, ob es aufsteigend oder absteigend ist und dementsprechend wird der Start gesetzt
+        current = ascending ? headName : findLastNodeDataStr(headName); // Es wird noch gefragt, ob es aufsteigend oder absteigend ist und dementsprechend wird der Start gesetzt
         break;
     default:
         cerr << "Error 320: Invalide Sortier Option." << endl; //Sollte ein Fehler auftreten und keine richtige Eingabe kommen, wird dieser Fehler geworden. Das ist ein interer Test, da die Funktion ohne Konsoleneingabe funktioniert.
         return;
     }
     //Hier wird die Liste ausgegeben
+    cout << "Position | Highscore | Datum       | Name" << endl;
     while (current != nullptr) {//Man durchläut in der Schleife die ganze geladene Liste
         //Die Daten aus dem Listenelement wird ausgeworfen.
-        cout << "Highscore: " << current->data1 << ", ";
-        cout << "Date: " << formatUnixTime(current->data2) << ", ";
-        cout << "Name: " << current->strData << endl;
+        cout << current->Position;
+        if (current->Position < 10) {
+            cout << "        | ";
+        }
+        else if (current->Position > 9 && current->Position < 100) {
+            cout << "       | ";
+        }
+        else {
+            cout << "      | ";
+        }
+        cout << current->Highscore;
+        if (current->Highscore < 10) {
+            cout << "         | ";
+        }
+        else if (current->Highscore > 9 && current->Highscore < 100) {
+            cout << "        | ";
+        }
+        else {
+            cout << "       | ";
+        }
+        cout << formatUnixTime(current->Zeit) << "  | ";
+        cout << current->Name << endl;
         //Je nachdem wonach sortiert wird, wird der Pointer current neu gesetzt
         if (sortBy == '1') { //Highscore
-            current = ascending ? current->nextData1 : findPreviousNodeData1(current, head); //Wenn aufsteigend sortiert wird, folgt man der List direkt. Wenn absteigend sortiert wird, muss man den vorherigen Eintrag finden
+            current = ascending ? current->nextHighscore : findPreviousNodeHighscore(current, head); //Wenn aufsteigend sortiert wird, folgt man der List direkt. Wenn absteigend sortiert wird, muss man den vorherigen Eintrag finden
         }
         else if (sortBy == '2') { //Datum
-            current = ascending ? current->nextData2 : findPreviousNodeData2(current, headData2); //Wenn aufsteigend sortiert wird, folgt man der List direkt. Wenn absteigend sortiert wird, muss man den vorherigen Eintrag finden
+            current = ascending ? current->nextZeit : findPreviousNodeZeit(current, headZeit); //Wenn aufsteigend sortiert wird, folgt man der List direkt. Wenn absteigend sortiert wird, muss man den vorherigen Eintrag finden
         }
         else { //Name
-            current = ascending ? current->nextStrData : findPreviousNodeStrData(current, headStrData); //Wenn aufsteigend sortiert wird, folgt man der List direkt. Wenn absteigend sortiert wird, muss man den vorherigen Eintrag finden
+            current = ascending ? current->nextName : findPreviousNodeName(current, headName); //Wenn aufsteigend sortiert wird, folgt man der List direkt. Wenn absteigend sortiert wird, muss man den vorherigen Eintrag finden
         }
     }
 }
@@ -291,53 +314,63 @@ string highscore::formatUnixTime(time_t unixTime) {
     strftime(buffer, sizeof(buffer), "%d/%m/%Y", &timeinfo);
     return std::string(buffer);
 }
-//Die Funktion findet das letzte Element der Liste sortiert nach dem Data1.
-Node* highscore::findLastNodeData1(Node* head) {
+//Die Funktion findet das letzte Element der Liste sortiert nach dem Highscore.
+Node* highscore::findLastNodeHighscore(Node* head) {
     Node* current = head;
-    while (current != nullptr && current->nextData1 != nullptr) { //Die Schleife läuft durch die Liste bis ein Nullpointer erreicht wurde
-        current = current->nextData1;
+    while (current != nullptr && current->nextHighscore != nullptr) { //Die Schleife läuft durch die Liste bis ein Nullpointer erreicht wurde
+        current = current->nextHighscore;
     }
     return current;
 }
-//Die Funktion macht das gleiche wie die fast gleichnamige Funktion nur für Data2 anstelle von Data1
-Node* highscore::findLastNodeData2(Node* head) {
+//Die Funktion macht das gleiche wie die fast gleichnamige Funktion nur für Zeit anstelle von Highscore
+Node* highscore::findLastNodeZeit(Node* head) {
     Node* current = head;
-    while (current != nullptr && current->nextData2 != nullptr) {
-        current = current->nextData2;
+    while (current != nullptr && current->nextZeit != nullptr) {
+        current = current->nextZeit;
     }
     return current;
 }
-//Die Funktion macht das gleiche wie die fast gleichnamige Funktion nur für den String anstelle von Data1
+//Die Funktion macht das gleiche wie die fast gleichnamige Funktion nur für den String anstelle von Highscore
 Node* highscore::findLastNodeDataStr(Node* head) {
     Node* current = head;
-    while (current != nullptr && current->nextStrData != nullptr) {
-        current = current->nextStrData;
+    while (current != nullptr && current->nextName != nullptr) {
+        current = current->nextName;
     }
     return current;
 }
 //Die Funktion findet das vorherige Listelement
-Node* highscore::findPreviousNodeData1(Node* current, Node* head) {
+Node* highscore::findPreviousNodeHighscore(Node* current, Node* head) {
     Node* prev = head;
-    while (prev != nullptr && prev->nextData1 != current) { //Diese Funktion geht die Liste so lange durch, bis auf das aktuelle Element gezeigt wird
-        prev = prev->nextData1;
+    while (prev != nullptr && prev->nextHighscore != current) { //Diese Funktion geht die Liste so lange durch, bis auf das aktuelle Element gezeigt wird
+        prev = prev->nextHighscore;
     }
-    return prev; //Gibt das Listenelement aus, was über Data1 auf das aktuelle Listenelement zeigt
+    return prev; //Gibt das Listenelement aus, was über Highscore auf das aktuelle Listenelement zeigt
 }
-//Die Funktion macht das gleiche wie die fast gleichnamige Funktion nur für Data2 anstelle von Data1
-Node* highscore::findPreviousNodeData2(Node* current, Node* head) {
+//Die Funktion macht das gleiche wie die fast gleichnamige Funktion nur für Zeit anstelle von Highscore
+Node* highscore::findPreviousNodeZeit(Node* current, Node* head) {
     Node* prev = head;
-    while (prev != nullptr && prev->nextData2 != current) {
-        prev = prev->nextData2;
+    while (prev != nullptr && prev->nextZeit != current) {
+        prev = prev->nextZeit;
     }
     return prev;
 }
-//Die Funktion macht das gleiche wie die fast gleichnamige Funktion nur für den Strinanstelle von Data1
-Node* highscore::findPreviousNodeStrData(Node* current, Node* head) {
+//Die Funktion macht das gleiche wie die fast gleichnamige Funktion nur für den Strinanstelle von Highscore
+Node* highscore::findPreviousNodeName(Node* current, Node* head) {
     Node* prev = head;
-    while (prev != nullptr && prev->nextStrData != current) {
-        prev = prev->nextStrData;
+    while (prev != nullptr && prev->nextName != current) {
+        prev = prev->nextName;
     }
     return prev;
+}
+Node* highscore::Positionsbestimmung(Node* head) {
+    Node* current = head;
+    int Number = 0;
+    while (current != nullptr) { //Die Schleife läuft durch die Liste bis ein Nullpointer erreicht wurde
+        Number++;
+        current->Position = Number;
+        current = current->nextHighscore;
+    }
+    return 0;
 }
 
 
