@@ -95,7 +95,7 @@ void Konfiguration::askUser(string filename, Player& Spieler1, Player& Spieler2)
             Help();
             break;
         case 's':
-            startGame(Spieler1, Spieler2); // Spieler werden weiter an dei Startfunktion gegeben, dort werden die NAmen eingelesen
+            startGame(Spieler1, Spieler2); // Spieler werden weiter an dei Startfunktion gegeben, dort werden die Namen eingelesen
             break;
         case 'b':
             getHighscore(filename);
@@ -114,13 +114,14 @@ void Konfiguration::askUser(string filename, Player& Spieler1, Player& Spieler2)
 // Spiel starten:
 void Konfiguration::startGame(Player& Spieler1, Player& Spieler2) { // Uebergabe der Klasse mit CallByRefernece
     system("cls"); // Bereinigung des Terminals von allen Zeichen
-    cout << "Das Spiel wird gestartet \n" << endl;
-    cout << "Geben Sie zunaechst die Namen der Spieler ein: " << endl;
+    cout << "Player 1:\n" << endl;
     // Name der beiden Spieler einlesen
     Spieler1.setName();
-    cout << "Spieler 1 ist nun: " << Spieler1.getName() << endl;
+    cout << "\nSpieler 1 ist nun: " << Spieler1.getName() << endl;
+    system("cls"); // Bereinigung des Terminals von allen Zeichen
+    cout << "Player 2:\n" << endl;
     Spieler2.setName();
-    cout << "Spieler 2 ist nun: " << Spieler2.getName() << endl;
+    cout << "\nSpieler 2 ist nun: " << Spieler2.getName() << endl;
     cout << "Viel Spass beim Spielen" << endl; 
 
     play = true; // Spiel wird gestartet
