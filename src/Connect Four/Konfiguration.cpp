@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include "highscore.h"
+#include "Player.h"
 #include <cstdlib>
 #include <limits>
 using namespace::std;
@@ -9,6 +10,7 @@ using namespace::std;
 
 void Konfiguration::wait() {
     char wait;
+
     cout << "\nEnter zum Fortfahren druecken\n";
     cin.get(wait);
     while (wait != '\n' && wait != ' ') {
@@ -39,7 +41,7 @@ Konfiguration::Konfiguration() {
 }
 
 
-void Konfiguration::askUser(string filename) {
+void Konfiguration::askUser(string filename, Player& Spieler1, Player& Spieler2) {
     do {
         string hauptmenu = R"(
 %@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%
@@ -93,7 +95,7 @@ void Konfiguration::askUser(string filename) {
             Help();
             break;
         case 's':
-            startGame();
+            startGame(Spieler1, Spieler2); // Spieler werden weiter an dei Startfunktion gegeben, dort werden die NAmen eingelesen
             break;
         case 'b':
             getHighscore(filename);
@@ -110,14 +112,22 @@ void Konfiguration::askUser(string filename) {
 
 
 // Spiel starten:
-void Konfiguration::startGame() {
+void Konfiguration::startGame(Player& Spieler1, Player& Spieler2) { // Uebergabe der Klasse mit CallByRefernece
     system("cls"); // Bereinigung des Terminals von allen Zeichen
     cout << "Das Spiel wird gestartet \n" << endl;
-    play = true;
+    cout << "Geben Sie zunaechst die Namen der Spieler ein: " << endl;
+    // Name der beiden Spieler einlesen
+    Spieler1.setName();
+    cout << "Spieler 1 ist nun: " << Spieler1.getName() << endl;
+    Spieler2.setName();
+    cout << "Spieler 2 ist nun: " << Spieler2.getName() << endl;
+    cout << "Viel Spass beim Spielen" << endl; 
+
+    play = true; // Spiel wird gestartet
     // weiteren Code eingeben oder andere Funktion hier aufrufen
 }
 
-void Konfiguration::endProgramm() {
+void Konfiguration::endProgramm() { // Nicht nur ein Spiel, sondern das ganze Programm beenden
     system("cls"); // Bereinigung des Terminals von allen Zeichen
     cout << "Das Spiel wird beendet \n" << endl;
     end = false;
@@ -125,10 +135,10 @@ void Konfiguration::endProgramm() {
 
 }
 
-void Konfiguration::endGame() {
+void Konfiguration::endGame() { // Ein Spiel wurde beendet, aber das Programm nicht 
     system("cls"); // Bereinigung des Terminals von allen Zeichen
-    cout << "Spiel wurde beended kehre zum Hauptbildschirm zurueck! \n" << endl;
-    play = false;
+    cout << "Spiel wurde beended, kehre zum Hauptbildschirm zurueck! \n" << endl;
+    play = false; 
 }
 
 
@@ -186,7 +196,7 @@ ersteFrage:
     }
     system("cls"); // Bereinigung des Terminals von allen Zeichen
 zweiteFrage:
-    cout << "Wie nach soll sortiert werden?\n" << endl;
+    cout << "Wie soll sortiert werden?\n" << endl;
     cout << "-u fuer Aufsteigend?" << endl;
     cout << "-b fuer Absteigend?" << endl;
     cout << "\nIhre Eingabe: ";

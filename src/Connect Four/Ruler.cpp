@@ -238,7 +238,7 @@ bool Ruler :: isDraw(char board[ROWS][COLS]) { // Pruefen ob die Obere Reihe nur
 
 
 int Ruler::countpasses(char checktoken, char turn, int& cplayer1, int& cplayer2) { // Funktion zum Zaehlen der Anzahl der gesetzten Tokens
-    // hier muss man auach pruefen, welcher Spieler X oder O hat
+    //pruefen, welcher Spieler X oder O hat
     if (checktoken == '1') { // 1: Spieler 1 hat X
         if (turn == 'X') {
             cplayer1++;
