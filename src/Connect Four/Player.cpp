@@ -37,20 +37,38 @@ Player::~Player() {
 }
 
 // Namen eingeben:
-void Player::setVorname(string Vorname) {
-    this->vorname = Vorname;
+void Player::setVorname() {
+    string dump; // fängt leeren input ab 
+    getline(cin, dump);
+
+    cout << "Und den Vornamen des Gewinners eingeben:" << endl;
+    string inputVorname;
+    // cin.clear();
+    // fflush(stdin);
+
+    getline(cin, inputVorname);
+    this->vorname = inputVorname; // eingegebenen Vornamen an das Objekt zu uebergeben
+
+
 }
 
-void Player::setNachname(string Nachname) {
-    this->nachname = Nachname;
+void Player::setNachname() {
+    string dump; // fängt leeren input ab 
+    getline(cin, dump);
+
+    cout << "Gewinner, bitte geben Sie Ihren Nachnamen ein:" << endl;
+    string inputNachname;
+    getline(cin, inputNachname);
+    this->nachname = inputNachname; // ebenso Nachname uebergeben
 
 }
 
 
 
-// Get Name
+/// Get Name
 string Player :: getName() {
-    string name = vorname + " " + nachname;
+   
+    string name = vorname + " " + nachname; // das ganze Name soll zurueckgegeben werden
     return  name;
 }
 

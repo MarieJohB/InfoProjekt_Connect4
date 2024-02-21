@@ -15,31 +15,6 @@ using namespace::std;
 #define COLS 7
 
 
-// Global, damit er in der Funktion verwendet werden kann und diese ausherlb der Main festgelegt wird
-Player winner;
-
-void NameOfWinner() {
-    string dump; // fängt leeren input ab 
-    getline(cin, dump);
-
-    cout << "Und den Vornamen des Gewinners eingeben:" << endl;
-    string inputVorname;
-    // cin.clear();
-    // fflush(stdin);
-
-    getline(cin, inputVorname);
-    winner.setVorname(inputVorname);
-
-    cout << "Gewinner, bitte geben Sie Ihren Nachnamen ein:" << endl;
-    string inputNachname;
-    getline(cin, inputNachname);
-    winner.setNachname(inputNachname);
-    // cout << "Vorname " << inputVorname << endl;
-    //  cout << "nachname " << inputNachname << endl;
-}
-
-
-
 int main(int argc, char* argv[]) {
 
     Konfiguration GameOn;
@@ -47,6 +22,7 @@ int main(int argc, char* argv[]) {
     FileBoard Board1;
     ConsoleBoard Board2;
     Player players;
+    Player winner;
     highscore list;
     Checker check;
     Celebrater celeb;
@@ -63,11 +39,15 @@ int main(int argc, char* argv[]) {
 
     string filename = "highscore.txt";
 
-    char ausgabe;
-    char TextAusgeben;
+    // Hier werden die Kommandline-Parameter ueberprueft
+    char ausgabe; // In diese Variable wird 1 (Spieler 1 hat X) oder 2 (Spieler 2 hat X) eingelesen
+    char TextAusgeben; // In diese Variable wird T (Text-Datei) oder K (Konsole) eingelesen
 
-    if (argc >= 3) { // wenn dar User beim Start Parameter eingegeben hat
 
+    // if-Fall:  wenn der User beim Start Parameter eingegeben hat
+    if (argc >= 3) { // 2 Eingaben vom User werden gefodert, also müssen mindestens 3 Argumente vorliegen
+
+        // bevor der Pointer Dereferenziert wird, wird NULL-Pointer geprüft, aber dies prüft auch schon die if-Abfrage
         if (argv[1] != NULL) {
             // zweites Argument abgreifen, also die erste Eingabe
             // Achtung: ausgabe ist ein Charakter, das muss man Bei Vergliech etc. beachten
@@ -78,13 +58,13 @@ int main(int argc, char* argv[]) {
         }
 
     }
-    else { // Falls beim Start keine Parameter übergeben wurde
+    else { // Falls beim Start keine Parameter uebergeben wurde
         system("cls"); // Bereinigung des Terminals von allen Zeichen
         cout << "Falsche Eingabe: \n" << endl << "1 => Spieler 1: X | Spieler 2: O \n2 => Spieler 1: O | Spieler 2: X \n" << endl;
         cout << "Ihre Eingabe: ";
         cin >> ausgabe;
         cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
-        int check1 = check.checkNumberAusgabe(ausgabe);
+        int check1 = check.checkNumberAusgabe(ausgabe); // Das Ueberprüfen der Eingabe wird aus der Main rausverlagert in die Klasse Checker
         if (check1 == '1') { // Spieler 1 hat X
             token1 = 'X';
             token2 = 'O';
@@ -95,6 +75,7 @@ int main(int argc, char* argv[]) {
             token2 = 'X';
             ausgabe = '2';
         }
+
         system("cls"); // Bereinigung des Terminals von allen Zeichen
         cout << "T => Ausgabe des Spieles in einer .txt Datei" << endl;
         cout << "K => Ausgabe des Spieles im Terminal \n" << endl;
@@ -102,6 +83,7 @@ int main(int argc, char* argv[]) {
         cin >> TextAusgeben;
         cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
         int check2 = check.checkTextAusgabe(TextAusgeben);
+
         if (check2 == 'T' || check2 == 't') {
             GameOn.displayText = true;
             TextAusgeben = 'T';
@@ -172,10 +154,13 @@ int main(int argc, char* argv[]) {
 
                     cout << "\nSpieler " << (turn % 2 + 1) << " gewinnt" << " in ";
                     cout << Ruler.countpasses(ausgabe, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2) << " Zuege!" << endl; // Ausgabe des Gewinners
-                    NameOfWinner(); // Festlegung des Namens des Gewinners
+                    // Der Gewinner wird nach seinem Namen gefragt
+                    winner.setVorname();
+                    winner.setNachname();
                     cout << "gewonnen hat: " << winner.getName() << endl; // Ausgabe des Gewinnernamens
+                    GameOn.wait();
                     list.loadFromFile(filename); // Laden des Highscores von der Text Datei
-                    list.insertNode(Ruler.countpasses(ausgabe, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2), 0, winner.getName()); // Einfügen der Daten des Gewinners in der Liste
+                    list.insertNode(Ruler.countpasses(ausgabe, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2), winner.getName()); // Einfügen der Daten des Gewinners in der Liste
                     list.saveToFile(filename); // Abspeicherung der Daten des Gewinners in der Text Datei
                     GameOn.endGame(); // Beenden der Spielinstanz
 

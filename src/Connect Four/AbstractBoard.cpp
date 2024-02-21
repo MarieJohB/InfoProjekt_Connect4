@@ -76,28 +76,28 @@ void FileBoard::displayBoard(char board[ROWS][COLS]) { //Anzeigen des Spielfelde
     for (int i = 0; i < ROWS; i++) {
         for (int j = 0; j < COLS; j++)
             // Gibt den Inhalt jeder Zelle aus
-            cout << "| " << board[i][j] << " ";
-        cout << "|\n"; // Beendet die Zeile nach dem Durchlaufen aller Spalten
+            file << "| " << board[i][j] << " ";
+        file << "|\n"; // Beendet die Zeile nach dem Durchlaufen aller Spalten
     }
     // Zeichnet eine Trennlinie
     for (int g = 0; g < 4 * COLS + 1; g++) {
-        cout << "-";
+        file << "-";
         if (g + 1 == 4 * COLS + 1) {
-            cout << "\n"; // Beendet die Zeile nach dem Zeichnen der Trennlinie
+            file << "\n"; // Beendet die Zeile nach dem Zeichnen der Trennlinie
         }
     }
     // Gibt die Spaltennummern aus
     for (int h = 0; h < COLS; h++) {
         if (h == 0) {
-            cout << "  "; // Fuegt am Anfang der Zeile ein Leerzeichen hinzu
+            file << "  "; // Fuegt am Anfang der Zeile ein Leerzeichen hinzu
         }
         if (h > 7) {
-            cout << h + 1; // Gibt die Spaltennummer aus
-            cout << "  "; // Fügt nach jeder Spaltennummer ein Leerzeichen hinzu
+            file << h + 1; // Gibt die Spaltennummer aus
+            file << "  "; // Fügt nach jeder Spaltennummer ein Leerzeichen hinzu
         }
         else {
-            cout << h + 1; // Gibt die Spaltennummer aus
-            cout << "   "; // Fügt nach jeder Spaltennummer ein Leerzeichen hinzu
+            file << h + 1; // Gibt die Spaltennummer aus
+            file << "   "; // Fügt nach jeder Spaltennummer ein Leerzeichen hinzu
         }
     }
 
