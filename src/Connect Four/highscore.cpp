@@ -111,7 +111,7 @@ void highscore::insertNode(int value1, time_t value2, const string& strValue) {
 void highscore::loadFromFile(const string& filename) {
     ifstream inputFile(filename);
     if (!inputFile) { //Sollte die Datei nicht gefunden oder geöffnet werden können, wird dieser Fehler geworfen
-        cerr << "Error: Datei kann nicht geöffnet werden " << filename << endl;
+        cerr << "Error 300: Datei kann nicht geöffnet werden " << filename << endl;
         return;
     }
 
@@ -124,13 +124,13 @@ void highscore::loadFromFile(const string& filename) {
         char comma; //Die Daten sind durch ein Komma getrennt
         if (iss >> value1 >> comma >> value2 >> comma) { //Die Daten aus der Zeile werden ausgelesen und in die initierten Variablen eingefügt
             if (!getline(iss >> ws, strValue)) {
-                cerr << "Error beim Lesen der Zeile: " << line << endl; //Sollte eine Zeile nicht ordentlich gespeichert worden sein, kommt ein Fehler
+                cerr << "Error 301: Fehler beim Lesen der Zeile: " << line << endl; //Sollte eine Zeile nicht ordentlich gespeichert worden sein, kommt ein Fehler
                 continue; // Die nächste Zeile kommt
             }
             insertNode(value1, value2, strValue); // Die Daten aus der Zeile gelesen wurden, werden jetzt als neues Listenelement eingefügt
         }
         else {
-            cerr << "Error beim Lesen der Zeile: " << line << endl;
+            cerr << "Error 302: Fehler beim Lesen der Zeile: " << line << endl;
         }
     }
 
@@ -144,7 +144,7 @@ void highscore::saveToFile(const string& filename) {
         cerr << "Datei " << filename << " existiert nicht. Erstelle neu." << endl;
         outputFile.open(filename, ios::out); //Das Erstellen der .txt Datei
         if (!outputFile) {
-            cerr << "Error: Datei kann nicht zum Schreiben " << filename << " erstellt werden." << endl;
+            cerr << "Error 310: Datei kann nicht zum Schreiben " << filename << " erstellt werden." << endl;
             return;
         }
     }
@@ -176,7 +176,7 @@ void highscore::displaySorted(char sortBy, bool ascending) {
         current = ascending ? headStrData : findLastNodeDataStr(headStrData); // Es wird noch gefragt, ob es aufsteigend oder absteigend ist und dementsprechend wird der Start gesetzt
         break;
     default:
-        cerr << "Invalide Sortier Option." << endl; //Sollte ein Fehler auftreten und keine richtige Eingabe kommen, wird dieser Fehler geworden. Das ist ein interer Test, da die Funktion ohne Konsoleneingabe funktioniert.
+        cerr << "Error 320: Invalide Sortier Option." << endl; //Sollte ein Fehler auftreten und keine richtige Eingabe kommen, wird dieser Fehler geworden. Das ist ein interer Test, da die Funktion ohne Konsoleneingabe funktioniert.
         return;
     }
     //Hier wird die Liste ausgegeben
