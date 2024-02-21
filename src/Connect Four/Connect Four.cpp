@@ -83,6 +83,7 @@ int main(int argc, char* argv[]) {
         cin >> TextAusgeben;
         cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
         int check2 = check.checkTextAusgabe(TextAusgeben);
+
         if (check2 == 'T' || check2 == 't') {
             GameOn.displayText = true;
             TextAusgeben = 'T';
