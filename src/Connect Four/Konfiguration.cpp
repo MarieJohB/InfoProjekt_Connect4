@@ -195,9 +195,11 @@ zweiteFrage:
     bool R;
     switch (Sortiert) {
     case 'u':
+    case 'U':
         R = true;
         break;
     case 'b':
+    case 'B':
         R = false;
         break;
     default:

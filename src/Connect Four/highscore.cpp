@@ -98,6 +98,7 @@ void highscore::insertNode(int value1, const string& strValue) {
             newNode->nextName = currentName;
             previousName->nextName = newNode;
         }
+        Positionsbestimmung(head);
     };
 };
 //Diese Funktion sorgt dafür, dass ein alte Daten in die Liste eingefügt werden
@@ -187,7 +188,6 @@ void highscore::insertNode(int value1, time_t value2, const string& strValue) {
             newNode->nextName = currentName;
             previousName->nextName = newNode;
         }
-        Positionsbestimmung(head);
     };
 };
 // Diese Funktion ermöglicht, dass Highscoredaten langfristig aus einer .txt Datei geladen werden können.
@@ -218,6 +218,7 @@ void highscore::loadFromFile(const string& filename) {
     }
 
     inputFile.close(); //Sobald alle Daten gelesen wurde, wird die Datei wieder geschlossen
+    Positionsbestimmung(head);
 };
 
 //Hier werden die highscoredaten aus dem RAM in einer .txt Datei gespeichert
@@ -362,6 +363,7 @@ Node* highscore::findPreviousNodeName(Node* current, Node* head) {
     }
     return prev;
 }
+//Die Funktion läuft durch die Liste anhand des Highscores und verteilt die Positionsnummer
 Node* highscore::Positionsbestimmung(Node* head) {
     Node* current = head;
     int Number = 0;
