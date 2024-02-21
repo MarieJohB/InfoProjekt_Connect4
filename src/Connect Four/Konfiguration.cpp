@@ -167,11 +167,11 @@ ersteFrage:
 
     switch (Sortiert) {
     case 'N':
-    case 'n'
+    case 'n':
         S = 's';
         break;
     case 'D':
-    case 'd'
+    case 'd':
         S = '2';
         break;
     case 'Z':
