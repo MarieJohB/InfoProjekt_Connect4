@@ -20,7 +20,87 @@ highscore::~highscore() {
     headData2 = nullptr;
     headStrData = nullptr;
 }
-//Diese Funktion sorgt dafür, dass ein neuer Eintrag in der Liste gemacht wird
+// Es kommt eine Überladene Funktion. Diese ist hier für das einfügen eines neuen Scores
+void highscore::insertNode(int value1, const string& strValue) {
+    //Hier werden die gegeben Werte, Name und Anzahl der Züge eingefügt
+    Node* newNode = new Node;
+    newNode->data1 = value1;
+    newNode->strData = strValue;
+    newNode->nextData1 = nullptr;
+    newNode->nextData2 = nullptr;
+    newNode->nextStrData = nullptr;
+    newNode->data2 = time(nullptr);
+
+    //Wenn die Liste leer ist, kann man die Pointer der Klasse direkt dem neuen Eintrag zuordnen.
+    if (head == nullptr) {
+        head = newNode;
+        headData2 = newNode;
+        headStrData = newNode;
+        return;
+    }
+    else {
+        //Hier wird die richtige Reihenfolge vom Pointer für Data1 sichergestellt
+        // Man erhält hieraus zwei Pointer, der eine Pointer currentData1 hat zeigt auf eine Liste mite einem höheren Data1 Wert
+        // und previousData1, der auf den vorherigen Listeneintrag zeigt
+        Node* currentData1 = head;
+        Node* previousData1 = nullptr;
+        while (currentData1 != nullptr && currentData1->data1 < value1) { //Die Liste wird so lange durchgegangen bis endweder das Ende erreicht wurde oder ein höherer Wert als der Wert vom neuen Eintrag erreicht wurde
+            previousData1 = currentData1;
+            currentData1 = currentData1->nextData1;
+        }
+
+        //Hier wird die richtige Reihenfolge vom Pointer für Data2 sichergestellt
+        // Man erhält hieraus zwei Pointer, der eine Pointer currentData2 hat zeigt auf eine Liste mite einem höheren Data1 Wert
+        // und previousData2, der auf den vorherigen Listeneintrag zeigt
+        Node* currentData2 = headData2;
+        Node* previousData2 = nullptr;
+        while (currentData2 != nullptr && currentData2->data2 < newNode->data2) { //Die Liste wird so lange durchgegangen bis endweder das Ende erreicht wurde oder ein höherer Wert als der Wert vom neuen Eintrag erreicht wurde
+            previousData2 = currentData2;
+            currentData2 = currentData2->nextData2;
+        }
+
+        //Hier wird die richtige Reihenfolge vom Pointer für Data2 sichergestellt
+        // Man erhält hieraus zwei Pointer, der eine Pointer currentData2 hat zeigt auf eine Liste mite einem höheren Data1 Wert
+        // und previousData2, der auf den vorherigen Listeneintrag zeigt
+        Node* currentStrData = headStrData;
+        Node* previousStrData = nullptr;
+        while (currentStrData != nullptr && currentStrData->strData < strValue) { //Die Liste wird so lange durchgegangen bis endweder das Ende erreicht wurde oder ein höherer Wert als der Wert vom neuen Eintrag erreicht wurde
+            previousStrData = currentStrData;
+            currentStrData = currentStrData->nextStrData;
+        }
+
+        // Hier werden die Pointer richtig verlegt, sodass das neue Listenelement richtig eingefügt wurde
+        if (previousData1 == nullptr) { // Sollte das neue Element das kleinste sein, muss es an erste Stelle eingefügt werden und daraus folgen besondere Anweisungen
+            newNode->nextData1 = head; //Das neue Element, was jetzt an erster Stelle steht muss auf das ehemalige erste Element zeigen, was jetzt das zweite ist.
+            head = newNode; // Der Pointer der Klasse zeigt direkt auf das neue Element
+        }
+        else { //Wenn das neue Element nicht das neue erste Element ist, dann wird es zwischen currentData1, was auf eine Listenelement mit einem größeren Data1 zeigt, und previousData1, was das vorherige Listenelement ist, einsortiert
+            newNode->nextData1 = currentData1;
+            previousData1->nextData1 = newNode;
+        }
+
+        // Das verfahren von Data1 wird analog auf Data2 übertragen
+        if (previousData2 == nullptr) {
+            newNode->nextData2 = headData2;
+            headData2 = newNode;
+        }
+        else {
+            newNode->nextData2 = currentData2;
+            previousData2->nextData2 = newNode;
+        }
+
+        // Das Verfahren von Data1 wird auf den String übertragen
+        if (previousStrData == nullptr) {
+            newNode->nextStrData = headStrData;
+            headStrData = newNode;
+        }
+        else {
+            newNode->nextStrData = currentStrData;
+            previousStrData->nextStrData = newNode;
+        }
+    };
+};
+//Diese Funktion sorgt dafür, dass ein alte Daten in die Liste eingefügt werden
 void highscore::insertNode(int value1, time_t value2, const string& strValue) {
     //Hier werden die gegeben Werte, Name und Anzahl der Züge eingefügt
     Node* newNode = new Node;
@@ -31,7 +111,7 @@ void highscore::insertNode(int value1, time_t value2, const string& strValue) {
     newNode->nextStrData = nullptr;
 
     //Hier wird das Datum in Unix auf data2 gespeichert
-    if (value2 == 0) { //Sollte kein Wert für die Zeit gegeben worden sein, muss eine neue Zeit gespeichert werden
+    if (value2 == 0) { //Sollte kein Wert für die Zeit gegeben worden sein, muss eine neue Zeit gespeichert werden. Das ist im Fall, dass es ein Fehler bei der Interpretation der Daten gibt.
         newNode->data2 = time(nullptr);
     }
     else { //Sollte eine Zeit gegeben worden sein, wie z.B. aus bereits gespeicherten Daten, wird der Zeitstempel übernommen, damit nicht die Zeit des Laden genommen wird

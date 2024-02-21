@@ -34,6 +34,7 @@ public:
     highscore(); //Konstruktor
     ~highscore(); //Destruktor
     // Die Funktionen werden initiert und in der cpp Datei definiert
+    void insertNode(int value1, const string& strValue);
     void insertNode(int value1, time_t value2, const string& strValue); 
     void loadFromFile(const string& filename);
     void saveToFile(const string& filename);
