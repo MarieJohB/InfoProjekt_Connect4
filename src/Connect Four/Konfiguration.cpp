@@ -117,12 +117,13 @@ void Konfiguration::startGame(Player& Spieler1, Player& Spieler2) { // Uebergabe
     cout << "Player 1:\n" << endl;
     // Name der beiden Spieler einlesen
     Spieler1.setName();
-    cout << "\nSpieler 1 ist nun: " << Spieler1.getName() << endl;
     system("cls"); // Bereinigung des Terminals von allen Zeichen
     cout << "Player 2:\n" << endl;
     Spieler2.setName();
-    cout << "\nSpieler 2 ist nun: " << Spieler2.getName() << endl;
-    cout << "Viel Spass beim Spielen" << endl; 
+    system("cls"); // Bereinigung des Terminals von allen Zeichen
+    cout << "\nSpieler 1 ist nun: " << Spieler1.getName() << "\n\nSpieler 2 ist nun: " << Spieler2.getName() << endl;
+    wait();
+    system("cls"); // Bereinigung des Terminals von allen Zeichen
 
     play = true; // Spiel wird gestartet
     // weiteren Code eingeben oder andere Funktion hier aufrufen
