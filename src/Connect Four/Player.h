@@ -22,8 +22,8 @@ public:
 
     
     // Funktionen der Klasse Player: 
-    void setVorname(string Vorname);
-    void setNachname(string Vorname);
+    void setVorname();
+    void setNachname();
     int getInteger();
     string getName();
     int getPunktzahl();
