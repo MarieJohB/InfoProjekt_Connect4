@@ -6,25 +6,25 @@
 #include <sstream>
 #include <ctime>
 using namespace::std;
-struct Node {
-    int data1;
-    time_t data2;
-    string strData;
-    Node* nextData1;
-    Node* nextData2;
-    Node* nextStrData;
+struct Node { //Die Struktur der verketteten List
+    int data1; //Anzahl der benötigten Züge
+    time_t data2; //Zeit des Sieges
+    string strData; //Name des Siegers
+    Node* nextData1; //Das ist ein Pointer, der auf das nächste (aufsteigend sortiert) Listenelement nach Data1 zeigt
+    Node* nextData2; //Das ist ein Pointer, der auf das nächste (aufsteigend sortiert) Listenelement nach Data2 zeigt
+    Node* nextStrData; //Das ist ein Pointer, der auf das nächste (aufsteigend sortiert) Listenelement nach dem String zeigt
 };
 class highscore{
 private:
-    Node* head;
-    Node* headData2; // Pointer to the first element sorted by data2
-    Node* headStrData; // Pointer to the first element sorted by strData
+    Node* head; //Zeigt auf das erste Element nach Data1
+    Node* headData2; // Zeiger auf das erste Element nach Data2
+    Node* headStrData; //Zeigt auf das erste Element nach String
 
 public:
-    highscore(); //constructor
-    ~highscore(); //Destructor
-
-    void insertNode(int value1, time_t value2, const string& strValue);
+    highscore(); //Konstruktor
+    ~highscore(); //Destruktor
+    // Die Funktionen werden initiert und in der cpp Datei definiert
+    void insertNode(int value1, time_t value2, const string& strValue); 
     void loadFromFile(const string& filename);
     void saveToFile(const string& filename);
     void displaySorted(char sortBy, bool ascending);
