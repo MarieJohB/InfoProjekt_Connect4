@@ -38,7 +38,7 @@ Player::~Player() {
 
 // Namen eingeben:
 void Player::setName() {
-   // string dump; // fängt leeren input ab 
+   // string dump; // faengt leeren input ab 
    // getline(cin, dump);
 
     cout << "Bitte den Vornamen eingeben:" << endl;

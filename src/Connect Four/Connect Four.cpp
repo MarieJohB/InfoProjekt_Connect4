@@ -155,6 +155,9 @@ int main(int argc, char* argv[]) {
                     cout << "\nSpieler " << check.checkPlayerTurn((turn % 2 + 1), Spieler1.getName(), Spieler2.getName()) << " gewinnt" << " in ";
                     cout << Ruler.countpasses(TokenAusgeben, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2) << " Zuege!" << endl; // Ausgabe des Gewinners
 
+                    // hier muss eine leere eingabe vorliegen
+                    string dump; // faengt leeren input ab 
+                    getline(cin, dump);
                     GameOn.wait();
 
 
