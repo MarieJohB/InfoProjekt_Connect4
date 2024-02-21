@@ -156,13 +156,14 @@ int main(int argc, char* argv[]) {
                     list.loadFromFile(filename); // Laden des Highscores von der Text Datei
                     list.insertNode(Ruler.countpasses(ausgabe, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2), winner.getName()); // Einfügen der Daten des Gewinners in der Liste
                     list.saveToFile(filename); // Abspeicherung der Daten des Gewinners in der Text Datei
+                    delete boardDisplay;
                     GameOn.endGame(); // Beenden der Spielinstanz
 
                 }
                 else if (Ruler.isDraw(board)) { // Ueberpruefen ob ein Unentschieden vorliegt
 
                         boardDisplay->displayBoard(board);
-
+                        delete boardDisplay;
                         GameOn.endGame();
                     }
 
