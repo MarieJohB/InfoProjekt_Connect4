@@ -3,6 +3,8 @@
 #include <cstdlib>
 #include "Konfiguration.h"
 #include "AbstractBoard.h"
+#include "ConsoleBoard.h"
+#include "FileBoard.h"
 #include "Ruler.h"
 #include "Player.h"
 #include "highscore.h"
@@ -19,14 +21,14 @@ int main(int argc, char* argv[]) {
 
     Konfiguration GameOn;
     Ruler Ruler;
-    FileBoard Board1;
-    ConsoleBoard Board2;
     Player players;
     Player Spieler1;
     Player Spieler2;
     highscore list;
     Checker check;
     Celebrater celeb;
+
+    AbstractBoard* boardDisplay;
 
     char board[ROWS][COLS];
     int turn = 0;
@@ -119,23 +121,22 @@ int main(int argc, char* argv[]) {
 
     }
 
+    if (GameOn.displayText) { // Festlegen wo das Spiel Ausgegeben wird
+        boardDisplay = new FileBoard();
+    }
+    else {
+        boardDisplay = new ConsoleBoard();
+    };
+
     while (GameOn.end) {
         Board1.initializeBoard(board); // Initialisierung des Spielfeldes
-
         // Eingabeaufforderung im Hauptmenue
-        // Uebergabe der beiden Spieler, damit dies weiter gegeben werden kann, wenn das Spiel gestartet wird und die Namen eingegeben werden
-        GameOn.askUser(filename, Spieler1, Spieler2);  
+       // Uebergabe der beiden Spieler, damit dies weiter gegeben werden kann, wenn das Spiel gestartet wird und die Namen eingegeben werden
+        GameOn.askUser(filename, Spieler1, Spieler2);
 
         while (GameOn.play) {
 
-            if (GameOn.displayText) { // Festlegen wo das Spiel Ausgegeben wird
-
-                Board1.displayBoard(board);
-            }
-            else
-            {
-                Board2.displayBoard(board);
-            }
+            boardDisplay->displayBoard(board);
 
              
             cout << "\nSpieler " << check.checkPlayerTurn((turn % 2 + 1), Spieler1.getName(), Spieler2.getName()) << ", waehlen Sie eine Spalte: "; // Spaltenwahl Aufforderung korrespodierend zu dem dazugehoerigen Spielern
@@ -148,7 +149,7 @@ int main(int argc, char* argv[]) {
 
                 if (Ruler.isWinningMove(board, (turn % 2 == 0) ? token1 : token2, col)) { // Ueberpruefen der Gewinnkondition
 
-                    if (GameOn.displayText) { // Festlegen wo das Spiel Ausgegeben wird
+                    boardDisplay->displayBoard(board);
 
                         Board1.displayBoard(board);
                     }
@@ -157,46 +158,38 @@ int main(int argc, char* argv[]) {
                         Board2.displayBoard(board);
                     }
 
-                    cout << "\nSpieler " << check.checkPlayerTurn((turn % 2 + 1), Spieler1.getName(), Spieler2.getName()) << " gewinnt" << " in ";
-                    cout << Ruler.countpasses(TokenAusgeben, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2) << " Zuege!" << endl; // Ausgabe des Gewinners
-                    
-                    // An dieser Stelle braucht muss man eine leere Eingabe abfangen, bevor man cin nutzen kann
-                    string dump; // fängt leeren input ab 
-                    getline(cin, dump);
+                cout << "\nSpieler " << check.checkPlayerTurn((turn % 2 + 1), Spieler1.getName(), Spieler2.getName()) << " gewinnt" << " in ";
+                    cout << Ruler.countpasses(ausgabe, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2) << " Zuege!" << endl; // Ausgabe des Gewinners
+                    // Der Gewinner wird nach seinem Namen gefragt
+                    winner.setName();
+                    cout << "gewonnen hat: " << winner.getName() << endl; // Ausgabe des Gewinnernamens
                     GameOn.wait();
 
 
                     list.loadFromFile(filename); // Laden des Highscores von der Text Datei
                     list.insertNode(Ruler.countpasses(TokenAusgeben, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2), check.checkPlayerTurn((turn % 2 + 1), Spieler1.getName(), Spieler2.getName())); // Einfügen der Daten des Gewinners in der Liste
                     list.saveToFile(filename); // Abspeicherung der Daten des Gewinners in der Text Datei
+                    delete boardDisplay;
                     GameOn.endGame(); // Beenden der Spielinstanz
 
                 }
                 else if (Ruler.isDraw(board)) { // Ueberpruefen ob ein Unentschieden vorliegt
 
-
-                    if (GameOn.displayText) { // Festlegen wo das Spiel Ausgegeben wird
-
-                        Board1.displayBoard(board);
+                        boardDisplay->displayBoard(board);
+                        delete boardDisplay;
+                        GameOn.endGame();
                     }
-                    else
-                    {
-                        Board2.displayBoard(board);
-                    }
-                    GameOn.endGame();
+
+                    turn++; // Aenderung des Spielers welcher am Zug ist
+
                 }
-
-                turn++; // Aenderung des Spielers welcher am Zug ist
-
+                else {
+                    system("cls"); // Bereinigung des Terminals von allen Zeichen
+                    cout << "\nUngueltige Spalte waehle eine andere \n";
+                }
             }
-            else {
-                system("cls"); // Bereinigung des Terminals von allen Zeichen
-                cout << "\nUngueltige Spalte waehle eine andere \n";
-            }
+
         }
-
+        return 0;
     }
-    return 0;
-}
-
 

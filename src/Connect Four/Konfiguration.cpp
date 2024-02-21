@@ -13,12 +13,13 @@ void Konfiguration::wait() {
 
     cout << "\nEnter zum Fortfahren druecken\n";
     cin.get(wait);
-    while (wait != '\n' && wait != ' ') {
+    while (cin) {
         cin.get(wait);
-        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
+        if (wait != '\n' && wait != ' ') {
+            break;
+        }
     }
     system("cls"); // Bereinigung des Terminals von allen Zeichen
-
 }
 
 
