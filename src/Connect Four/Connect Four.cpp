@@ -170,16 +170,17 @@ int main(int argc, char* argv[]) {
                 }
                 else if (Ruler.isDraw(board)) { // Ueberpruefen ob ein Unentschieden vorliegt
 
-
                     boardDisplay->displayBoard(board);
                     delete boardDisplay;
                     GameOn.endGame();
+
                 }
 
                 turn++; // Aenderung des Spielers welcher am Zug ist
 
             }
             else {
+
                 system("cls"); // Bereinigung des Terminals von allen Zeichen
                 cout << "\nUngueltige Spalte waehle eine andere \n";
             }

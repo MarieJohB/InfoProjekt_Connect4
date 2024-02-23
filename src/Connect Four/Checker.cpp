@@ -41,7 +41,7 @@ char Checker::checkNumberAusgabe(char TokenAusgeben) {
 };
 
 
-string Checker :: checkPlayerTurn(int Turn, string NameSpieler1, string NameSpieler2) {
+string Checker::checkPlayerTurn(int Turn, string NameSpieler1, string NameSpieler2) {
     int turn = Turn;
     if (turn == 1) {
        // Spieler 1 ist an der Reihe
