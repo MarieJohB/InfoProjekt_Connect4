@@ -13,26 +13,11 @@ class AbstractBoard {
 public:
     // Virtuelle Funktion des Spielbrett anzeigens
     virtual void displayBoard(char board[ROWS][COLS]) = 0; // Pure virtual function
-};
 
-
-class ConsoleBoard : public AbstractBoard {
-public:
-
-    // Spielbrett initialisieren
+    // Initialisiert das Spielbrett
     void initializeBoard(char board[ROWS][COLS]);
 
-    //Spielbrett anzeigen 
-    void displayBoard(char board[ROWS][COLS]) override;
-};
-
-class FileBoard : public AbstractBoard {
-public:
-
-    //Spielbrett anzeigen 
-    void initializeBoard(char board[ROWS][COLS]);
-
-    //Spielbrett anzeigen 
-    void displayBoard(char board[ROWS][COLS]) override;
+    /*Ueberpruefung welche Ausgabe geschieht
+    void checkBoardOutput(); */
 };
 #endif

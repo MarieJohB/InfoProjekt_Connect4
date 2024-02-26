@@ -18,7 +18,7 @@ int Player :: getInteger() {
     while (!(cin >> col) || col > 1000) {
         cin.clear(); // löscht den Fehlerstatus
         cin.ignore(numeric_limits<streamsize>::max(), '\n'); // ignoriert das falsche Eingabe
-        cout << "\nUngueltige Eingabe. Bitte geben Sie eine Ganzzahl ein die im Wertebereich liegt: ";
+        cout << "\nUngueltige Eingabe. Bitte geben Sie eine Ganzzahl ein die im Wertebereich liegt: \n";
     }
 
     return col;
@@ -33,15 +33,15 @@ Player::Player() {
 
 // Destruktor:
 Player::~Player() {
-    cout << "Der Destruktor der Klasse Player wurde aufgerufen" << endl;
+    cout << "Der Destruktor der Klasse Player wurde aufgerufen  \n" << endl;
 }
 
 // Namen eingeben:
-void Player::setVorname() {
-    string dump; // fängt leeren input ab 
-    getline(cin, dump);
+void Player::setName() {
+   // string dump; // faengt leeren input ab 
+   // getline(cin, dump);
 
-    cout << "Und den Vornamen des Gewinners eingeben:" << endl;
+    cout << "\nBitte den Vornamen eingeben: \n" << endl;
     string inputVorname;
     // cin.clear();
     // fflush(stdin);
@@ -49,14 +49,11 @@ void Player::setVorname() {
     getline(cin, inputVorname);
     this->vorname = inputVorname; // eingegebenen Vornamen an das Objekt zu uebergeben
 
-
-}
-
-void Player::setNachname() {
-    cout << "Gewinner, bitte geben Sie Ihren Nachnamen ein:" << endl;
+    cout << "\nBitte geben Sie auch den Nachnamen ein: \n" << endl;
     string inputNachname;
     getline(cin, inputNachname);
     this->nachname = inputNachname; // ebenso Nachname uebergeben
+
 
 }
 

@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "Player.h"
 using namespace::std;
 
 
@@ -20,11 +21,11 @@ public:
 	Konfiguration();
 	
 
-	void askUser(string filename);
+	void askUser(string filename, Player& Spieler1, Player& Spieler2);
 
 	// Funktionen, die der User aufrufen kann
 	// Spiel starten:
-	void startGame();
+	void startGame(Player& Spieler1, Player& Spieler2); // Uebergabe der Klasse mit CallByRefernece
 	void endGame();
 	// Hilfefunktion: Spielregeln
 	void Help();
