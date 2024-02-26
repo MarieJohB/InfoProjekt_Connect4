@@ -141,6 +141,7 @@ void Konfiguration::endGame() { // Ein Spiel wurde beendet, aber das Programm ni
     system("cls"); // Bereinigung des Terminals von allen Zeichen
     cout << "Spiel wurde beended, kehre zum Hauptbildschirm zurueck! \n" << endl;
     play = false; 
+
 }
 
 
