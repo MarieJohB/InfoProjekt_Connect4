@@ -162,7 +162,6 @@ __/\\\________/\\\__________/\\\\\\____________/\\\\\_________________
         _\///________\///___\///___\/////////______\///__________\//////////__                                                                                           
 )";
 
-
     cout << asciiArt << "\n";
     cout << "Spielregeln fuer 4 Gewinnt \n";
     cout << "1: Zwei Spieler nehmen abwechselnd an dem Spiel teil \n";
