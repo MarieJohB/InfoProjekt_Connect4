@@ -148,7 +148,23 @@ void Konfiguration::endGame() { // Ein Spiel wurde beendet, aber das Programm ni
 // Hilfefunktion: Spielregeln
 void Konfiguration::Help() {
     system("cls"); // Bereinigung des Terminals von allen Zeichen
-    cout << "\n Hier ist Hilfe:\n";
+
+    string asciiArt = R"(
+                                                                                                                                                                    
+                                                                                                                                                                    
+__/\\\________/\\\__________/\\\\\\____________/\\\\\_________________        
+ _\/\\\_______\/\\\_________\////\\\__________/\\\///__________________       
+  _\/\\\_______\/\\\___/\\\_____\/\\\_________/\\\______________________      
+   _\/\\\\\\\\\\\\\\\__\///______\/\\\______/\\\\\\\\\________/\\\\\\\\__     
+    _\/\\\/////////\\\___/\\\_____\/\\\_____\////\\\//_______/\\\/////\\\_    
+     _\/\\\_______\/\\\__\/\\\_____\/\\\________\/\\\________/\\\\\\\\\\\__   
+      _\/\\\_______\/\\\__\/\\\_____\/\\\________\/\\\_______\//\\///////___  
+       _\/\\\_______\/\\\__\/\\\___/\\\\\\\\\_____\/\\\________\//\\\\\\\\\\_ 
+        _\///________\///___\///___\/////////______\///__________\//////////__                                                                                           
+)";
+
+
+    cout << asciiArt << "\n";
     cout << "Spielregeln fuer 4 Gewinnt \n";
     cout << "1: Zwei Spieler nehmen abwechselnd an dem Spiel teil \n";
     cout << "2: Jeder Spieler hat verschiedene Spielsteine\n";
