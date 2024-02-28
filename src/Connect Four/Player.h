@@ -6,13 +6,13 @@ class Player
 {
 public:
 
-    string vorname;
-    string nachname;
+    string name;
+    
     int punktzahl;
 
 	
 	// Konstruktor
-    Player(string vorname_, string nachname_, int punktzahl_);
+    Player( string name_, int punktzahl_);
 
     // Default-konstruktor:
     Player();

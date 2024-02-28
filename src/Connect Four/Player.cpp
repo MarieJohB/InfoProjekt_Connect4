@@ -7,9 +7,8 @@ using namespace::std;
 
 
 
-Player::Player(string vorname_, string nachname_, int punktzahl_) {
-    vorname = vorname_;
-    nachname = nachname_;
+Player::Player(string name_, int punktzahl_) {
+    name = name_;
     punktzahl = punktzahl_;
 }
 
@@ -26,8 +25,7 @@ int Player :: getInteger() {
 
 // Default Konstruktor
 Player::Player() {
-    this->vorname = "Max";
-    this->nachname = "Mustermann";
+    this->name = "Max Mustermann";
     this->punktzahl = 100;
 }
 
@@ -40,20 +38,36 @@ Player::~Player() {
 void Player::setName() {
    // string dump; // faengt leeren input ab 
    // getline(cin, dump);
+   // cin.clear();
+   // fflush(stdin);
 
-    cout << "\nBitte den Vornamen eingeben: \n" << endl;
-    string inputVorname;
-    // cin.clear();
-    // fflush(stdin);
+    cout << "\nBitte den Namen eingeben: \n" << endl;
+    string inputName;
 
-    getline(cin, inputVorname);
-    this->vorname = inputVorname; // eingegebenen Vornamen an das Objekt zu uebergeben
+    getline(cin, inputName);
+    // Den eingegebenen Namen auf maximal 20 Zeichen begrenzen:
+    char NameTwentyChars[21]; // Platz für 20 Zeichen + Nullzeichen
+    for (int i = 0; i < 20; ++i) {
+        NameTwentyChars[i] = inputName[i];
+    }
+    NameTwentyChars[20] = '\0'; // Nullzeichen am Ende hinzufügen, um das Ende der Zeichenkette zu markieren
 
-    cout << "\nBitte geben Sie auch den Nachnamen ein: \n" << endl;
-    string inputNachname;
-    getline(cin, inputNachname);
-    this->nachname = inputNachname; // ebenso Nachname uebergeben
+    cout << "Die ersten 20 Zeichen: " << NameTwentyChars << endl;
 
+    // Ausserdem Kommata raussieben, damit es nicht zu Konflikten bei der Datenspeicherung im Highscore kommen kann
+    int j = 0;
+    for (int i = 0; NameTwentyChars[i] != '\0'; ++i) {
+        if (NameTwentyChars[i] != ',') { // nur wenn die Zeichen keine Kommata sind, werden sie uebernommen 
+            NameTwentyChars[j] = NameTwentyChars[i];
+            ++j;
+        }
+    }
+    NameTwentyChars[j] = '\0'; // Setze das Nullzeichen am Ende
+
+    cout << "Der bereinigte String: " << NameTwentyChars << endl;
+
+
+    this->name = NameTwentyChars; // der gepruefte Namen wird an das Objekt uebergeben
 
 }
 
@@ -62,7 +76,6 @@ void Player::setName() {
 /// Get Name
 string Player :: getName() {
    
-    string name = vorname + " " + nachname; // das ganze Name soll zurueckgegeben werden
     return  name;
 }
 

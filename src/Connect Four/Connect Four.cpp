@@ -160,7 +160,7 @@ int main(int argc, char* argv[]) {
                     boardDisplay->displayBoard(board);
 
                     cout << "\nSpieler " << Ruler.PlayerTurn((turn % 2 + 1), Spieler1.getName(), Spieler2.getName()) << " gewinnt" << " in ";
-                    cout << Ruler.countpasses(TokenAusgeben, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2) << " Zuege!" << endl; // Ausgabe des Gewinners
+                    cout << Ruler.countpasses(TokenAusgeben, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2) << " Zuegen!" << endl; // Ausgabe des Gewinners
 
                     player1 = -1;
                     player2 = -1;
