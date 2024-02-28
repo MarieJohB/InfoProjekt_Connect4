@@ -1,7 +1,4 @@
 #pragma once
-#ifndef __Checker__
-#define __Checker__
-#pragma once
 #include <fstream>
 #include <stdio.h>
 #include <iostream>
@@ -18,4 +15,3 @@ public:
 	bool AusgabeZuordnen(char SpielAusgeben);
 
 };
-#endif

@@ -1,5 +1,3 @@
-#ifndef __Ruler__
-#define __Ruler__
 #pragma once
 #include <stdio.h>
 #include <iostream>
@@ -31,4 +29,3 @@ public:
 
     string PlayerTurn(int Turn, string NameSpieler1, string NameSpieler2);
 };
-#endif

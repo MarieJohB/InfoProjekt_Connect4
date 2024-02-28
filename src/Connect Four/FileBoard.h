@@ -1,5 +1,3 @@
-#ifndef __FileBoard__
-#define __FileBoard__
 #pragma once
 #include <fstream>
 #include <stdio.h>
@@ -13,6 +11,3 @@ public:
     //Spielbrett anzeigen 
     void displayBoard(char board[ROWS][COLS]) override;
 };
-
-
-#endif
