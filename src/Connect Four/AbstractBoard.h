@@ -1,5 +1,3 @@
-#ifndef __AbstractBoard__
-#define __AbstractBoard__
 #pragma once
 #include <fstream>
 #include <stdio.h>
@@ -20,4 +18,3 @@ public:
     /*Ueberpruefung welche Ausgabe geschieht
     void checkBoardOutput(); */
 };
-#endif
