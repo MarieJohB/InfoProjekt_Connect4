@@ -1,7 +1,4 @@
 #pragma once
-#ifndef __Celebrater__
-#define __Celebrater__
-#pragma once
 #include <fstream>
 #include <stdio.h>
 #include <iostream>
@@ -19,4 +16,3 @@ public:
 	void PauseAndClearBeforeResume();
 
 };
-#endif
