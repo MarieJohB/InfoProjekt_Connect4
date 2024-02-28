@@ -46,13 +46,27 @@ void Player::setName() {
 
     getline(cin, inputName);
     // Den eingegebenen Namen auf maximal 20 Zeichen begrenzen:
-    char NameTwentyChars[21]; // Platz für 20 Zeichen + Nullzeichen
-    for (int i = 0; i < 20; ++i) {
-        NameTwentyChars[i] = inputName[i];
-    }
-    NameTwentyChars[20] = '\0'; // Nullzeichen am Ende hinzufügen, um das Ende der Zeichenkette zu markieren
 
-    cout << "Die ersten 20 Zeichen: " << NameTwentyChars << endl;
+   
+    int zeichenAnzahl = 0;
+    while (inputName[zeichenAnzahl] != '\0') {
+        zeichenAnzahl++;
+    }
+    
+    char NameTwentyChars[21]; // Platz für 20 Zeichen + Nullzeichen
+    if (zeichenAnzahl > 20) {
+        for (int i = 0; i < 20; ++i) {
+            NameTwentyChars[i] = inputName[i];
+        }
+        NameTwentyChars[20] = '\0'; // Nullzeichen am Ende hinzufügen, um das Ende der Zeichenkette zu markieren
+    }
+    else {
+        for (int i = 0; i < zeichenAnzahl; ++i) {
+            NameTwentyChars[i] = inputName[i];
+        }
+        NameTwentyChars[zeichenAnzahl+1] = '\0'; // Nullzeichen am Ende hinzufügen, um das Ende der Zeichenkette zu markieren
+    }
+    
 
     // Ausserdem Kommata raussieben, damit es nicht zu Konflikten bei der Datenspeicherung im Highscore kommen kann
     int j = 0;

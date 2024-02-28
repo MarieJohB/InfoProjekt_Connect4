@@ -12,10 +12,10 @@ class Checker{
 
 public:
 
-	char checkTextAusgabe(char Textausgeben);
-	char checkNumberAusgabe(char ausgabe);
+	char checkTextAusgabe();
+	char checkNumberAusgabe();
 
-	
+	bool AusgabeZuordnen(char SpielAusgeben);
 
 };
 #endif

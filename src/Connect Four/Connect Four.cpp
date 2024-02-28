@@ -37,6 +37,7 @@ int main(int argc, char* argv[]) {
     int player2 = -1;
     int& cplayer2 = player2;
 
+    // Default-Werte 
     char token1 = 'X';
     char token2 = 'O';
 
@@ -44,8 +45,9 @@ int main(int argc, char* argv[]) {
 
     // Hier werden die Kommandline-Parameter ueberprueft
 
-    char TokenAusgeben; // In diese Variable wird 1 (Spieler 1 hat X) oder 2 (Spieler 2 hat X) eingelesen
-    char SpielAusgeben; // In diese Variable wird T (Text-Datei) oder K (Konsole) eingelesen
+    // Default-Werte
+    char TokenAusgeben = ' '; // In diese Variable wird 1 (Spieler 1 hat X) oder 2 (Spieler 2 hat X) eingelesen
+    char SpielAusgeben = ' '; // In diese Variable wird T (Text-Datei) oder K (Konsole) eingelesen
 
 
     // if-Fall:  wenn der User beim Start Parameter eingegeben hat
@@ -53,9 +55,7 @@ int main(int argc, char* argv[]) {
 
         // bevor der Pointer Dereferenziert wird, wird NULL-Pointer geprüft, aber dies prüft auch schon die if-Abfrage
         if (argv[1] != NULL) {
-            // zweites Argument abgreifen, also die erste Eingabe
-            // Achtung: Es handelt sich um Charakter, das muss man Bei Vergliech etc. beachten
-            TokenAusgeben = *argv[1];
+            TokenAusgeben = *argv[1]; // zweites Argument abgreifen, also die erste Eingabe
         }
         if (argv[2] != NULL) {
             SpielAusgeben = *argv[2]; // drittes Argument einlesen
@@ -63,33 +63,34 @@ int main(int argc, char* argv[]) {
 
     }
     else { // Falls beim Start keine Parameter uebergeben wurde
-        system("cls"); // Bereinigung des Terminals von allen Zeichen
-        cout << "Falsche Eingabe: \n" << endl << "1 => Spieler 1: X | Spieler 2: O \n2 => Spieler 1: O | Spieler 2: X \n" << endl;
-        cout << "Ihre Eingabe: ";
-        cin >> TokenAusgeben;
-        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
-        int check1 = check.checkNumberAusgabe(TokenAusgeben); // Das Ueberprüfen der Eingabe wird aus der Main rausverlagert in die Klasse Checker
 
-        if (check1 == '1') { // Spieler 1 hat X
+       // system("cls"); // Bereinigung des Terminals von allen Zeichen
+       // cout << "Falsche Eingabe: \n" << endl << "1 => Spieler 1: X | Spieler 2: O \n2 => Spieler 1: O | Spieler 2: X \n" << endl;
+       // cout << "Ihre Eingabe: ";
+       // cin >> TokenAusgeben;
+       // cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
+
+        char check12 = check.checkNumberAusgabe(); // Das Ueberprüfen der Eingabe wird aus der Main rausverlagert in die Klasse Checker
+        if (check12 == '1') { // Spieler 1 hat X
             token1 = 'X';
             token2 = 'O';
             TokenAusgeben = '1';
         }
-        else if (check1 == '2') { // 1: Spieler 2 hat X
+        else if (check12 == '2') { // 1: Spieler 2 hat X
             token1 = 'O';
             token2 = 'X';
             TokenAusgeben = '2';
         }
 
-        system("cls"); // Bereinigung des Terminals von allen Zeichen
-        cout << "T => TokenAusgeben des Spieles in einer .txt Datei" << endl;
-        cout << "K => Ausgabe des Spieles im Terminal \n" << endl;
-        cout << "Ihre Eingabe: ";
-        cin >> SpielAusgeben;
-        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
-        int check2 = check.checkTextAusgabe(SpielAusgeben);
+       // system("cls"); // Bereinigung des Terminals von allen Zeichen
+       // cout << "T => TokenAusgeben des Spieles in einer .txt Datei" << endl;
+       // cout << "K => Ausgabe des Spieles im Terminal \n" << endl;
+       // cout << "Ihre Eingabe: ";
+       // cin >> SpielAusgeben;
+       // cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
 
-        if (check2 == 'T' || check2 == 't') {
+        char checkTK = check.checkTextAusgabe();
+        if (checkTK == 'T' || checkTK == 't') {
             GameOn.displayText = true;
             SpielAusgeben = 'T';
         }
@@ -97,7 +98,9 @@ int main(int argc, char* argv[]) {
 
     }
 
+
     // Überprüfen, welcher Spieler X bzw O hat
+    // Da token1 und token2 im Main mehrfach verwendet werden, wird diese if-Pruefung nicht in eine Funktion der Klasse verlagert
     if (TokenAusgeben == '1') { // Spieler 1 hat X
         token1 = 'X';
         token2 = 'O';
@@ -113,19 +116,8 @@ int main(int argc, char* argv[]) {
 
 
     // Überprüfen, ob das Spiel in der Konsole oder in der Text Datei stattfindet
-    if (SpielAusgeben == 'T' || SpielAusgeben == 't') {
-        cout << "Spielfeldausgabe geschieht im .txt Datei \n" << endl;
-        GameOn.displayText = true;
-    }
-    else {
-        cout << "Spielfeldausgabe geschieht im Terminal \n" << endl;
-
-    }
-
-
-
-
-
+    GameOn.displayText = check.AusgabeZuordnen(SpielAusgeben); // Bool Funktion --> Return wird für GameOn.displayText genutzt
+   
 
 
     if (GameOn.displayText) { // Festlegen wo das Spiel Ausgegeben wird
@@ -165,7 +157,7 @@ int main(int argc, char* argv[]) {
                     player1 = -1;
                     player2 = -1;
 
-                    // hier muss eine leere eingabe vorliegen
+                    // hier muss eine leere Eingabe vorliegen, diese wird abgefangen
                     string dump; // faengt leeren input ab 
                     getline(cin, dump);
                     GameOn.wait();
