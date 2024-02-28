@@ -38,4 +38,3 @@ public:
     void displaySorted(char sortBy, bool ascending);
 
 };
-#endif
