@@ -1,5 +1,3 @@
-#ifndef __Ruler__
-#define __Ruler__
 #pragma once
 #include <stdio.h>
 #include <iostream>
