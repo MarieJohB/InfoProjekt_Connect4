@@ -57,10 +57,10 @@ void Player::setName() {
         NameTwentyChars[20] = '\0'; // Nullzeichen am Ende hinzufügen, um das Ende der Zeichenkette zu markieren
     }
     else {
-        for (int i = 0; i < zeichenAnzahl; ++i) {
+        for (int i = 0; i < zeichenAnzahl; i++) {
             NameTwentyChars[i] = inputName[i];
         }
-        NameTwentyChars[zeichenAnzahl+1] = '\0'; // Nullzeichen am Ende hinzufügen, um das Ende der Zeichenkette zu markieren
+        NameTwentyChars[zeichenAnzahl] = '\0'; // Nullzeichen am Ende hinzufügen, um das Ende der Zeichenkette zu markieren
     }
     
 
@@ -75,7 +75,6 @@ void Player::setName() {
     NameTwentyChars[j] = '\0'; // Setze das Nullzeichen am Ende
 
     string NameTwentyString(NameTwentyChars);
-
 
     this->name = NameTwentyString; // der gepruefte Namen wird an das Objekt uebergeben
 
