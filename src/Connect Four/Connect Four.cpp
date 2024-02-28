@@ -53,14 +53,8 @@ int main(int argc, char* argv[]) {
     // if-Fall:  wenn der User beim Start Parameter eingegeben hat
     if (argc >= 3) { // 2 Eingaben vom User werden gefodert, also müssen mindestens 3 Argumente vorliegen
 
-        // bevor der Pointer Dereferenziert wird, wird NULL-Pointer geprüft, aber dies prüft auch schon die if-Abfrage
-        if (argv[1] != NULL) {
             TokenAusgeben = *argv[1]; // zweites Argument abgreifen, also die erste Eingabe
-        }
-        if (argv[2] != NULL) {
             SpielAusgeben = *argv[2]; // drittes Argument einlesen
-        }
-
     }
     else { // Falls beim Start keine Parameter uebergeben wurde
 
