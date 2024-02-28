@@ -114,7 +114,13 @@ int main(int argc, char* argv[]) {
 
                     boardDisplay->displayBoard(board);
 
-                    cout << "\nSpieler " << Ruler.PlayerTurn((turn % 2 + 1), Spieler1.getName(), Spieler2.getName()) << " gewinnt" << " in ";
+                    // Anwendung fuer den Copy-Konstruktor
+                    // Der Name des Gewinners wird erstellt und eine Kopie des gewinnenden Spielers wird mithilfe des Copy-Konstruktor erstellen
+                    // die Rueckgabe der Funktion getWinner ist vom Typ Player
+                    Player Winner = players.getWinner(Ruler.PlayerTurn((turn % 2 + 1), Spieler1.getName(), Spieler2.getName()), Spieler1, Spieler2);
+
+
+                    cout << "\nSpieler " << Winner.name  << " gewinnt" << " in ";
                     cout << Ruler.countpasses(TokenAusgeben, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2) << " Zuegen!" << endl; // Ausgabe des Gewinners
 
                     player1 = -1;
@@ -125,7 +131,7 @@ int main(int argc, char* argv[]) {
                     getline(cin, dump);
                     GameOn.wait();
 
-
+                    
                     list.loadFromFile(filename); // Laden des Highscores von der Text Datei
                     list.insertNode(Ruler.countpasses(TokenAusgeben, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2), Ruler.PlayerTurn((turn % 2 + 1), Spieler1.getName(), Spieler2.getName())); // Einfügen der Daten des Gewinners in der Liste
                     list.saveToFile(filename); // Abspeicherung der Daten des Gewinners in der Text Datei

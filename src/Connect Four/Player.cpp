@@ -88,6 +88,7 @@ void Player::setName() {
 
     string NameTwentyString(NameTwentyChars);
 
+
     this->name = NameTwentyString; // der gepruefte Namen wird an das Objekt uebergeben
 }
 
@@ -107,4 +108,14 @@ int Player :: getPunktzahl() {
 // Punktzahl setzen/aendern
 void Player :: setPunktzahl(int punktzahl) {
     this->punktzahl = punktzahl;
+}
+
+// Entscheiden, wer gewonnen hat
+Player Player :: getWinner(string NameOfWinner, Player& Spieler1_, Player& Spieler2_) {
+    if (NameOfWinner == Spieler1_.name) {
+        return Spieler1_;
+    }
+    else if (NameOfWinner == Spieler2_.name) {
+        return Spieler2_;
+    }
 }
