@@ -29,4 +29,3 @@ public:
 
     string PlayerTurn(int Turn, string NameSpieler1, string NameSpieler2);
 };
-#endif
