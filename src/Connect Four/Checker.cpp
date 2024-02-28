@@ -41,17 +41,3 @@ char Checker::checkNumberAusgabe(char TokenAusgeben) {
 };
 
 
-string Checker::checkPlayerTurn(int Turn, string NameSpieler1, string NameSpieler2) {
-    int turn = Turn;
-    if (turn == 1) {
-       // Spieler 1 ist an der Reihe
-
-        return NameSpieler1; // Name von Spieler 1 zurueckgeben
-    }
-    else {
-        // Spieler 2 ist an der Reihe
-
-        return NameSpieler2; // Name von Spieler 2 zurueckgeben
-    }
-
-};

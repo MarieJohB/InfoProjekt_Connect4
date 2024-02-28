@@ -118,9 +118,15 @@ int main(int argc, char* argv[]) {
         GameOn.displayText = true;
     }
     else {
-        cout << "Speilfeldausgabe geschieht im Terminal \n" << endl;
+        cout << "Spielfeldausgabe geschieht im Terminal \n" << endl;
 
     }
+
+
+
+
+
+
 
     if (GameOn.displayText) { // Festlegen wo das Spiel Ausgegeben wird
         boardDisplay = new FileBoard();
@@ -140,7 +146,7 @@ int main(int argc, char* argv[]) {
             boardDisplay->displayBoard(board);
 
 
-            cout << "\nSpieler " << check.checkPlayerTurn((turn % 2 + 1), Spieler1.getName(), Spieler2.getName()) << ", waehlen Sie eine Spalte: "; // Spaltenwahl Aufforderung korrespodierend zu dem dazugehoerigen Spielern
+            cout << "\nSpieler " << Ruler.PlayerTurn((turn % 2 + 1), Spieler1.getName(), Spieler2.getName()) << ", waehlen Sie eine Spalte: "; // Spaltenwahl Aufforderung korrespodierend zu dem dazugehoerigen Spielern
             int col = players.getInteger(); // Lesen der Eingabe 
             col--; // Array-Indizes beginnen bei 0
 
@@ -153,7 +159,7 @@ int main(int argc, char* argv[]) {
 
                     boardDisplay->displayBoard(board);
 
-                    cout << "\nSpieler " << check.checkPlayerTurn((turn % 2 + 1), Spieler1.getName(), Spieler2.getName()) << " gewinnt" << " in ";
+                    cout << "\nSpieler " << Ruler.PlayerTurn((turn % 2 + 1), Spieler1.getName(), Spieler2.getName()) << " gewinnt" << " in ";
                     cout << Ruler.countpasses(TokenAusgeben, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2) << " Zuege!" << endl; // Ausgabe des Gewinners
 
                     player1 = -1;
@@ -166,7 +172,7 @@ int main(int argc, char* argv[]) {
 
 
                     list.loadFromFile(filename); // Laden des Highscores von der Text Datei
-                    list.insertNode(Ruler.countpasses(TokenAusgeben, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2), check.checkPlayerTurn((turn % 2 + 1), Spieler1.getName(), Spieler2.getName())); // Einfügen der Daten des Gewinners in der Liste
+                    list.insertNode(Ruler.countpasses(TokenAusgeben, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2), Ruler.PlayerTurn((turn % 2 + 1), Spieler1.getName(), Spieler2.getName())); // Einfügen der Daten des Gewinners in der Liste
                     list.saveToFile(filename); // Abspeicherung der Daten des Gewinners in der Text Datei
                     GameOn.endGame(); // Beenden der Spielinstanz
 

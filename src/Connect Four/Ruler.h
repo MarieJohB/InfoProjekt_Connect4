@@ -28,5 +28,7 @@ public:
 
     // Den Token im Spielbrett platzieren
     void makeMove(char board[ROWS][COLS], int col, char token);
+
+    string PlayerTurn(int Turn, string NameSpieler1, string NameSpieler2);
 };
 #endif
