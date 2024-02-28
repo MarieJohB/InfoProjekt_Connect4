@@ -64,12 +64,6 @@ int main(int argc, char* argv[]) {
     }
     else { // Falls beim Start keine Parameter uebergeben wurde
 
-       // system("cls"); // Bereinigung des Terminals von allen Zeichen
-       // cout << "Falsche Eingabe: \n" << endl << "1 => Spieler 1: X | Spieler 2: O \n2 => Spieler 1: O | Spieler 2: X \n" << endl;
-       // cout << "Ihre Eingabe: ";
-       // cin >> TokenAusgeben;
-       // cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
-
         char check12 = check.checkNumberAusgabe(); // Das Ueberprüfen der Eingabe wird aus der Main rausverlagert in die Klasse Checker
         if (check12 == '1') { // Spieler 1 hat X
             token1 = 'X';
@@ -81,13 +75,6 @@ int main(int argc, char* argv[]) {
             token2 = 'X';
             TokenAusgeben = '2';
         }
-
-       // system("cls"); // Bereinigung des Terminals von allen Zeichen
-       // cout << "T => TokenAusgeben des Spieles in einer .txt Datei" << endl;
-       // cout << "K => Ausgabe des Spieles im Terminal \n" << endl;
-       // cout << "Ihre Eingabe: ";
-       // cin >> SpielAusgeben;
-       // cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
 
         char checkTK = check.checkTextAusgabe();
         if (checkTK == 'T' || checkTK == 't') {
@@ -114,10 +101,8 @@ int main(int argc, char* argv[]) {
         cout << "Spieler 1 => Token: " << token1 << " Spieler 2 => Token: " << token2 << endl;
     }
 
-
     // Überprüfen, ob das Spiel in der Konsole oder in der Text Datei stattfindet
     GameOn.displayText = check.AusgabeZuordnen(SpielAusgeben); // Bool Funktion --> Return wird für GameOn.displayText genutzt
-   
 
 
     if (GameOn.displayText) { // Festlegen wo das Spiel Ausgegeben wird
@@ -136,7 +121,6 @@ int main(int argc, char* argv[]) {
         while (GameOn.play) {
 
             boardDisplay->displayBoard(board);
-
 
             cout << "\nSpieler " << Ruler.PlayerTurn((turn % 2 + 1), Spieler1.getName(), Spieler2.getName()) << ", waehlen Sie eine Spalte: "; // Spaltenwahl Aufforderung korrespodierend zu dem dazugehoerigen Spielern
             int col = players.getInteger(); // Lesen der Eingabe 
