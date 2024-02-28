@@ -20,6 +20,9 @@ public:
     // Destruktor
     ~Player();
 
+    // Copy-Konstruktor
+    Player(const Player& p);
+
     
     // Funktionen der Klasse Player: 
     void setName();

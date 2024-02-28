@@ -12,16 +12,6 @@ Player::Player(string name_, int punktzahl_) {
     punktzahl = punktzahl_;
 }
 
-int Player :: getInteger() {
-    int col;
-    while (!(cin >> col) || col > 1000) {
-        cin.clear(); // löscht den Fehlerstatus
-        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // ignoriert das falsche Eingabe
-        cout << "\nUngueltige Eingabe. Bitte geben Sie eine Ganzzahl ein die im Wertebereich liegt: \n";
-    }
-
-    return col;
-}
 
 // Default Konstruktor
 Player::Player() {
@@ -33,6 +23,28 @@ Player::Player() {
 Player::~Player() {
     cout << "Der Destruktor der Klasse Player wurde aufgerufen  \n" << endl;
 }
+
+
+// Copy-Konstruktor
+Player::Player(const Player& p) { // Call by Referene, aber als const
+    this->name = p.name;
+    this->punktzahl = p.punktzahl;
+}
+
+
+
+int Player::getInteger() {
+    int col;
+    while (!(cin >> col) || col > 1000) {
+        cin.clear(); // löscht den Fehlerstatus
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // ignoriert das falsche Eingabe
+        cout << "\nUngueltige Eingabe. Bitte geben Sie eine Ganzzahl ein die im Wertebereich liegt: \n";
+    }
+
+    return col;
+}
+
+
 
 // Namen eingeben:
 void Player::setName() {
@@ -77,7 +89,6 @@ void Player::setName() {
     string NameTwentyString(NameTwentyChars);
 
     this->name = NameTwentyString; // der gepruefte Namen wird an das Objekt uebergeben
-
 }
 
 
