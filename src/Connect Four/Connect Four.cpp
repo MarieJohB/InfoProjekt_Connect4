@@ -64,25 +64,9 @@ int main(int argc, char* argv[]) {
     }
     else { // Falls beim Start keine Parameter uebergeben wurde
 
-        char check12 = check.checkNumberAusgabe(); // Das Ueberprüfen der Eingabe wird aus der Main rausverlagert in die Klasse Checker
-        if (check12 == '1') { // Spieler 1 hat X
-            token1 = 'X';
-            token2 = 'O';
-            TokenAusgeben = '1';
-        }
-        else if (check12 == '2') { // 1: Spieler 2 hat X
-            token1 = 'O';
-            token2 = 'X';
-            TokenAusgeben = '2';
-        }
-
-        char checkTK = check.checkTextAusgabe();
-        if (checkTK == 'T' || checkTK == 't') {
-            GameOn.displayText = true;
-            SpielAusgeben = 'T';
-        }
+        TokenAusgeben = check.checkNumberAusgabe(); // Das Ueberprüfen der Eingabe wird aus der Main rausverlagert in die Klasse Checker
+        SpielAusgeben = check.checkTextAusgabe();
         system("cls"); // Bereinigung des Terminals von allen Zeichen
-
     }
 
 
@@ -100,6 +84,7 @@ int main(int argc, char* argv[]) {
 
         cout << "Spieler 1 => Token: " << token1 << " Spieler 2 => Token: " << token2 << endl;
     }
+
 
     // Überprüfen, ob das Spiel in der Konsole oder in der Text Datei stattfindet
     GameOn.displayText = check.AusgabeZuordnen(SpielAusgeben); // Bool Funktion --> Return wird für GameOn.displayText genutzt

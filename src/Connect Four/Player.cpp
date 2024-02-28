@@ -36,11 +36,7 @@ Player::~Player() {
 
 // Namen eingeben:
 void Player::setName() {
-   // string dump; // faengt leeren input ab 
-   // getline(cin, dump);
-   // cin.clear();
-   // fflush(stdin);
-
+  
     cout << "\nBitte den Namen eingeben: \n" << endl;
     string inputName;
 
@@ -78,10 +74,10 @@ void Player::setName() {
     }
     NameTwentyChars[j] = '\0'; // Setze das Nullzeichen am Ende
 
-    cout << "Der bereinigte String: " << NameTwentyChars << endl;
+    string NameTwentyString(NameTwentyChars);
 
 
-    this->name = NameTwentyChars; // der gepruefte Namen wird an das Objekt uebergeben
+    this->name = NameTwentyString; // der gepruefte Namen wird an das Objekt uebergeben
 
 }
 
