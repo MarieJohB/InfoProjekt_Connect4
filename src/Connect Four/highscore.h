@@ -1,6 +1,4 @@
-#ifndef LINKEDLIST_H
-#define LINKEDLIST_H
-
+#pragma once
 #include <iostream>
 #include <fstream>
 #include <sstream>
