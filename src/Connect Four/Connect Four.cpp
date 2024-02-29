@@ -78,13 +78,16 @@ int main(int argc, char* argv[]) {
         token2 = 'O';
 
         cout << "Spieler 1 => Token: " << token1 << " Spieler 2 => Token: " << token2 << endl;
+        GameOn.wait();
     }
     else if (check.TokenZuordnen(TokenAusgeben) == 'O') { // Spieler 1 hat O und somit hat Spieler 2 X
         token1 = 'O';
         token2 = 'X';
 
         cout << "Spieler 1 => Token: " << token1 << " Spieler 2 => Token: " << token2 << endl;
+        GameOn.wait();
     }
+
    
    
 
