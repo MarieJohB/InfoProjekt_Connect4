@@ -26,14 +26,14 @@ highscore::~highscore() {
         tail[i] = nullptr;
     };
 }
-// Es kommt eine Überladene Funktion. Diese ist hier für das einfügen eines neuen Scores
+// Es kommt eine Ueberladene Funktion. Diese ist hier für das einfügen eines neuen Scores
 void highscore::insertNode(int value1, const string& strValue) {
     insertNode(value1, time(nullptr), strValue); //Ein Zeitstempel wird eingefügt und dann die andere Funktion aufgerufen.
     Positionsbestimmung(head[0]); //Nach dem Einfügen, muss die Postion wieder neu bestimmt werden.
 };
-//Diese Funktion sorgt dafür, dass Daten mit einem Zeitstempel in die Liste eingefügt werden
+//Diese Funktion sorgt dafuer, dass Daten mit einem Zeitstempel in die Liste eingefügt werden
 void highscore::insertNode(int value1, time_t value2, const string& strValue) {
-    //Hier werden die gegeben Werte, Name und Anzahl der Züge eingefügt
+    //Hier werden die gegeben Werte, Name und Anzahl der Zuege eingefügt
     Node* newNode = new Node;
     newNode->Highscore = value1;
     newNode->Name = strValue;

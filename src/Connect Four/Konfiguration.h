@@ -32,8 +32,9 @@ public:
 	void Help();
 	// Highscore ausgeben lassen:
 	void getHighscore(string filename);
-
+	// Beenden
 	void endProgramm();
+	// Warte-Funktion wird an verschiedenen Stellen verwendet
 	void wait();
 
 };

@@ -41,7 +41,11 @@ int main(int argc, char* argv[]) {
     char token1 = 'X';
     char token2 = 'O';
 
-    string filename = "highscore.txt";
+
+    /* wird in der Funktion "askUser" der Klasse Konfiguration uebergeben 
+    und von der Klasse Konfiguration aus weiter an die Klasse Highscore
+    fuer die Speicherung des Highscores in einer .txt Datei*/
+    string filename = "highscore.txt"; 
 
     // Hier werden die Kommandline-Parameter ueberprueft
 

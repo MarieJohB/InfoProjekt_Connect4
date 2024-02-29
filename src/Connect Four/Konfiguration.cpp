@@ -8,20 +8,7 @@
 using namespace::std;
 
 
-void Konfiguration::wait() {
-    char wait;
-
-    cout << "\nEnter zum Fortfahren druecken\n";
-    cin.get(wait);
-    while (wait != '\n' && wait != ' ') {
-        cin.get(wait);
-        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
-    }
-    system("cls"); // Bereinigung des Terminals von allen Zeichen
-
-}
-
-
+// Konstruktor 
 Konfiguration::Konfiguration(char input_, int ROW_, int COL_, bool displayText_, bool play_, bool end_) {
     input = input_;
     ROW = ROW_;
@@ -41,6 +28,25 @@ Konfiguration::Konfiguration() {
 }
 
 
+// Warte-Funktion
+// Anwendung/Funktion: nach dem Beenden einer Funktion wird mit dem Start der naechsten Funktion gewartet, 
+// bis der User Enter drueckt
+void Konfiguration::wait() {
+    char wait;
+
+    cout << "\nEnter zum Fortfahren druecken\n";
+    cin.get(wait);
+    while (wait != '\n' && wait != ' ') {
+        cin.get(wait);
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
+    }
+    system("cls"); // Bereinigung des Terminals von allen Zeichen
+
+}
+
+// Die Funktion des "askUser" stellt das Hauptmenue da
+// Von dort aus kann der User bestimmen, was gemacht werden soll
+// Connect Four spielt als ansprechendes Layout fuer das Hauptmenue
 void Konfiguration::askUser(string filename, Player& Spieler1, Player& Spieler2) {
     do {
         string hauptmenu = R"(
@@ -86,28 +92,28 @@ void Konfiguration::askUser(string filename, Player& Spieler1, Player& Spieler2)
 )";
 
         cout << hauptmenu << "\n";
-        cout << "                                      Ihre Eingabe: ";
+        cout << "\t\t\t\t  Ihre Eingabe: ";
         input = getchar();
         cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
 
         switch (input) {
-        case 'h':
+        case 'h': // Eingabe "h": Aufruf der Hilfe/Spielregeln
             Help();
             break;
-        case 's':
-            startGame(Spieler1, Spieler2); // Spieler werden weiter an dei Startfunktion gegeben, dort werden die Namen eingelesen
+        case 's': // Eingabe "s": Spiel wird gestartet, zunaechst werden die Spieler nach ihrem NAmen gefragt
+            startGame(Spieler1, Spieler2); // Spieler werden weiter an die Startfunktion gegeben, dort werden die Namen eingelesen
             break;
-        case 'b':
+        case 'b': // Eingabe "b": Aufruf der Bestenliste
             getHighscore(filename);
             break;
-        case 'e':
+        case 'e': // Eingabe "e": Beenden des Connect Four Spiels
             endProgramm();
             break;
         default:
             system("cls"); // Bereinigung des Terminals von allen Zeichen
-            cout << "Ungueltiger Befehl. Bitte erneut versuchen.\n" << endl;
+            cout << "Ungueltiger Befehl. Bitte erneut versuchen.\n" << endl; // hier wird eine falsche Eingabe des Users abgefangen
         }
-    } while (input != 'h' && input != 's' && input != 'b' && input != 'e');
+    } while (input != 'h' && input != 's' && input != 'b' && input != 'e'); // wenn eine falsche Eingabe erfolgt, bleibt man im Hauptmenue
 }
 
 
@@ -115,7 +121,7 @@ void Konfiguration::askUser(string filename, Player& Spieler1, Player& Spieler2)
 void Konfiguration::startGame(Player& Spieler1, Player& Spieler2) { // Uebergabe der Klasse mit CallByRefernece
     system("cls"); // Bereinigung des Terminals von allen Zeichen
 
-    // Name der beiden Spieler einlesen
+    // zunaechst die Namen der beiden Spieler einlesen
     cout << "Player 1:\n" << endl;
     Spieler1.setName();
     system("cls"); // Bereinigung des Terminals von allen Zeichen
@@ -123,19 +129,16 @@ void Konfiguration::startGame(Player& Spieler1, Player& Spieler2) { // Uebergabe
     Spieler2.setName();
     system("cls"); // Bereinigung des Terminals von allen Zeichen
     cout << "\nSpieler 1 ist nun: " << Spieler1.getName() << "\n\nSpieler 2 ist nun: " << Spieler2.getName() << endl;
-    wait();
+    wait(); // Warten, bis der User das Spiel fortsetzt
     system("cls"); // Bereinigung des Terminals von allen Zeichen
 
     play = true; // Spiel wird gestartet
-    // weiteren Code eingeben oder andere Funktion hier aufrufen
 }
 
-void Konfiguration::endProgramm() { // Nicht nur ein Spiel, sondern das ganze Programm beenden
+void Konfiguration::endProgramm() { // Das Connect Four Spiel wird beendet
     system("cls"); // Bereinigung des Terminals von allen Zeichen
     cout << "Das Spiel wird beendet \n" << endl;
     end = false;
-    // weiteren Code eingebn oder andere Funktion hier aufrufen
-
 }
 
 void Konfiguration::endGame() { // Ein Spiel wurde beendet, aber das Programm nicht 
@@ -164,6 +167,7 @@ __/\\\________/\\\__________/\\\\\\____________/\\\\\_________________
         _\///________\///___\///___\/////////______\///__________\//////////__                                                                                           
 )";
 
+    // beim Aufruf der Hilfe werden die Spielregeln angezeigt
     cout << asciiArt << "\n";
     cout << "Spielregeln fuer 4 Gewinnt \n";
     cout << "1: Zwei Spieler nehmen abwechselnd an dem Spiel teil \n";
@@ -178,24 +182,25 @@ __/\\\________/\\\__________/\\\\\\____________/\\\\\_________________
 
 // Highscore ausgeben lassen:
 void Konfiguration::getHighscore(string filename) {
-    highscore LIST2;
-    LIST2.loadFromFile(filename);
+    // hier werden Funktionen der Klasse "highscore" verwendet
+    highscore LIST2; // dafuer wird zunaechst ein Objekt der Klasse "highscore" erstellt
+    LIST2.loadFromFile(filename); // Laden einer .txt Datei
     system("cls"); // Bereinigung des Terminals von allen Zeichen
 
-ersteFrage:
+ersteFrage: // Sprungstelle fuer goto
     cout << "Wonach soll sortiert werden?\n" << endl;
     cout << "-N fuer Name" << endl;
     cout << "-D fuer Datum" << endl;
     cout << "-Z fuer Zuege" << endl;
 
     char Sortiert;
-    char S;
+    char S; // S wird an die Funktion der Klasse Highscore uebergeben
     cout << "\nIhre Eingabe: ";
     cin >> Sortiert;
     cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
 
     switch (Sortiert) {
-    case 'N':
+    case 'N': // sowohl kein als auch großbuchstaben werden akzeptiert
     case 'n':
         S = 's';
         break;
@@ -209,8 +214,8 @@ ersteFrage:
         break;
     default:
         system("cls"); // Bereinigung des Terminals von allen Zeichen
-        cout << "Invalide Eingabe" << endl;
-        goto ersteFrage;
+        cout << "Invalide Eingabe" << endl; // Abfangen einer falschen Eingabe
+        goto ersteFrage; // Man springt zurueck zur Frage, da die Eingabe falsch war 
         break;
     }
     system("cls"); // Bereinigung des Terminals von allen Zeichen
@@ -221,7 +226,7 @@ zweiteFrage:
     cout << "\nIhre Eingabe: ";
     cin >> Sortiert;
     cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
-    bool R;
+    bool R; // R wird an die Funktion der Klasse Highscore uebergeben
     switch (Sortiert) {
     case 'u':
     case 'U':
@@ -254,9 +259,9 @@ __/\\\________/\\\________________________/\\\__________________________________
 
 
     cout << asciiArt << "\n";
-
-    LIST2.displaySorted(S, R);
+    // Hier werden S und R uebergeben an die Klasse Highscore 
+    LIST2.displaySorted(S, R); // Uebergabeparameter: char sortBy, bool ascending
     wait();
-    LIST2.saveToFile(filename);
+    LIST2.saveToFile(filename); // Speichern in einer .txt Datei
 
 }
