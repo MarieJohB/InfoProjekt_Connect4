@@ -26,7 +26,7 @@ private:
     void sortNodeHighscore(Node* newNode);
     void sortNodeZeit(Node* newNode);
     void sortNodeName(Node* newNode);
-
+    void readFile(const string& filename);
 public:
     highscore(); //Konstruktor
     ~highscore(); //Destruktor

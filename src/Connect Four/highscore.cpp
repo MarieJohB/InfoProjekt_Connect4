@@ -139,13 +139,10 @@ void highscore::sortNodeName(Node* newNode) {//Analog zum Highscore-System
         newNode->previousNode[2] = previousName;
     }
 };
-
-// Diese Funktion ermöglicht, dass Highscoredaten langfristig aus einer .txt Datei geladen werden können.
-void highscore::loadFromFile(const string& filename) {
+void highscore::readFile(const string& filename) {
     ifstream inputFile(filename);
     if (!inputFile) { //Sollte die Datei nicht gefunden oder geöffnet werden können, wird dieser Fehler geworfen
-        cerr << "Error 300: Datei kann nicht geöffnet werden " << filename << endl;
-        return;
+        throw 300;
     }
 
     string line;
@@ -168,6 +165,15 @@ void highscore::loadFromFile(const string& filename) {
     }
 
     inputFile.close(); //Sobald alle Daten gelesen wurde, wird die Datei wieder geschlossen
+}
+// Diese Funktion ermöglicht, dass Highscoredaten langfristig aus einer .txt Datei geladen werden können.
+void highscore::loadFromFile(const string& filename) {
+    try {
+        readFile(filename);
+    }
+    catch (int e) {
+        cerr << "Error 300: Datei kann nicht geöffnet werden " << filename << endl;
+    }
     Positionsbestimmung(head[0]);//Hier bekommen alle neuen Elemente eine Position
 };
 
