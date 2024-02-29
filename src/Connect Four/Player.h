@@ -20,6 +20,9 @@ public:
     // Destruktor
     ~Player();
 
+    // Copy-Konstruktor
+    Player(const Player& p);
+
     
     // Funktionen der Klasse Player: 
     void setName();
@@ -27,6 +30,7 @@ public:
     string getName();
     int getPunktzahl();
     void setPunktzahl(int punktzahl);
+    Player getWinner(string NameOfWinner, Player& Spieler1_, Player& Spieler2_);
  
 
 private:

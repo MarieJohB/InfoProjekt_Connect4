@@ -114,8 +114,9 @@ void Konfiguration::askUser(string filename, Player& Spieler1, Player& Spieler2)
 // Spiel starten:
 void Konfiguration::startGame(Player& Spieler1, Player& Spieler2) { // Uebergabe der Klasse mit CallByRefernece
     system("cls"); // Bereinigung des Terminals von allen Zeichen
-    cout << "Player 1:\n" << endl;
+
     // Name der beiden Spieler einlesen
+    cout << "Player 1:\n" << endl;
     Spieler1.setName();
     system("cls"); // Bereinigung des Terminals von allen Zeichen
     cout << "Player 2:\n" << endl;
