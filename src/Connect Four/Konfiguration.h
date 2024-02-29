@@ -10,15 +10,13 @@ class Konfiguration
 public: 
 
 	char input;
-	int ROW;
-	int COL; 
-	bool displayText;
+	bool displayText; 
 	bool play;
 	bool end;
 
 
 	// Konstruktor
-	Konfiguration(char input_, int ROW_, int COL_, bool displayText_, bool play_, bool end_);
+	Konfiguration(char input_, bool displayText_, bool play_, bool end_);
 	Konfiguration();
 	
 

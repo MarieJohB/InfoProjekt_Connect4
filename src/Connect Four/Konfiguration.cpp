@@ -9,10 +9,8 @@ using namespace::std;
 
 
 // Konstruktor 
-Konfiguration::Konfiguration(char input_, int ROW_, int COL_, bool displayText_, bool play_, bool end_) {
+Konfiguration::Konfiguration(char input_, bool displayText_, bool play_, bool end_) {
     input = input_;
-    ROW = ROW_;
-    COL = COL_;
     displayText = displayText_;
     play = play_;
     end = end_;
@@ -20,8 +18,6 @@ Konfiguration::Konfiguration(char input_, int ROW_, int COL_, bool displayText_,
 // Default Konstruktur:
 Konfiguration::Konfiguration() {
     this->input = 's';
-    this->ROW = 6;
-    this->COL = 7;
     this->displayText = false;
     this->play = false;
     this->end = true;
