@@ -49,16 +49,40 @@ char Checker::checkNumberAusgabe() {
 
 
 bool Checker::AusgabeZuordnen(char SpielAusgeben) {
+
+  
+    // Diese Pruefung ist notwendig fuer den Fall, dass eine Eingabe ueber die Kommandline erfolgt ist, aber die Eingabe falsch war
+    if (SpielAusgeben != 'T' && SpielAusgeben != 't' && SpielAusgeben  != 'K' && SpielAusgeben != 'k') {
+        SpielAusgeben = checkTextAusgabe();
+    }
+
     if (SpielAusgeben == 'T' || SpielAusgeben == 't') {
         cout << "Spielfeldausgabe geschieht im .txt Datei \n" << endl;
         //GameOn.displayText = true;
         return true;
     }
-    else {
+    else if (SpielAusgeben == 'K' || SpielAusgeben == 'k') {
         cout << "Spielfeldausgabe geschieht im Terminal \n" << endl;
         return false;
     }
+    
+};
 
 
+char Checker::TokenZuordnen(char TokenAusgeben) {
+
+    // Diese Pruefung ist notwendig fuer den Fall, dass eine Eingabe ueber die Kommandline erfolgt ist, aber die Eingabe falsch war
+    if (TokenAusgeben != '1' && TokenAusgeben != '2') {
+        TokenAusgeben = checkNumberAusgabe();
+    }
+
+    if (TokenAusgeben == '1') {
+        
+        return 'X'; // den Token zurueckgeben, den Spieler 1 hat
+    }
+    else if (TokenAusgeben == '2') {
+        
+        return 'O'; // den Token zurueckgeben, den Spieler 1 hat
+    }
 
 };

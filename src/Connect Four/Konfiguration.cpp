@@ -196,7 +196,7 @@ ersteFrage: // Sprungstelle fuer goto
     cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
 
     switch (Sortiert) {
-    case 'N': // sowohl kein als auch großbuchstaben werden akzeptiert
+    case 'N': // sowohl Klein- als auch Großbuchstaben werden akzeptiert
     case 'n':
         S = 's';
         break;
@@ -233,12 +233,12 @@ zweiteFrage:
         R = false;
         break;
     default:
-        system("cls"); // Für Windows
+        system("cls"); 
         cout << "Invalide Eingabe" << endl;
         goto zweiteFrage;
         break;
     }
-    system("cls"); // Für Windows
+    system("cls"); 
     string asciiArt = R"(
                                                                                                                                                                     
                                                                                                                                                                     
