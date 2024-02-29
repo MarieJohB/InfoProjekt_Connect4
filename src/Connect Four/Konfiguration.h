@@ -10,9 +10,9 @@ class Konfiguration
 public: 
 
 	char input;
-	bool displayText; 
-	bool play;
-	bool end;
+	bool displayText; //Bool um die Ausgabe zu wechseln
+	bool play; // Bool um in die Spielschleife zu gehen
+	bool end; // Bool um das Programm zu beenden
 
 
 	// Konstruktor
