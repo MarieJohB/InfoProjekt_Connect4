@@ -31,11 +31,7 @@ public:
     int getPunktzahl();
     void setPunktzahl(int punktzahl);
     Player getWinner(string NameOfWinner, Player& Spieler1_, Player& Spieler2_);
- 
-
-private:
-
-    
+  
 
 };
 
