@@ -88,7 +88,7 @@ void Konfiguration::askUser(string filename, Player& Spieler1, Player& Spieler2)
 )";
 
         cout << hauptmenu << "\n";
-        cout << "\t\t\t\t  Ihre Eingabe: "; // Dér text wird mittig unter der Abbildung platziert 
+        cout << "\t\t\t\t      Ihre Eingabe: "; // Dér text wird mittig unter der Abbildung platziert 
         input = getchar(); // Eingabe des Users einlesen 
         cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
 
