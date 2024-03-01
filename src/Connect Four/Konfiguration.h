@@ -14,28 +14,34 @@ public:
 	bool play; // Bool um in die Spielschleife zu gehen
 	bool end; // Bool um das Programm zu beenden
 
-
-	// Konstruktor
 	Konfiguration(char input_, bool displayText_, bool play_, bool end_);
+	// Konstruktor
 	Konfiguration();
+
+	void askUser(string filename, Player& Spieler1, Player& Spieler2);
+	// Uebergabe der Klasse mit CallByRefernece, wird weiter gegeben an startGame()
+
+	// Warte-Funktion wird an verschiedenen Stellen verwendet
+	void wait();
+
+	//Beenden der Spielinstanz
+	void endGame();
+
+private:
+
+
 	
 	// Methoden der Klasse: 
-
-	void askUser(string filename, Player& Spieler1, Player& Spieler2); 
-	// Uebergabe der Klasse mit CallByRefernece, wird weiter gegeben an startGame()
 
 	// Funktionen, die der User aufrufen kann
 	// Spiel starten:
 	void startGame(Player& Spieler1, Player& Spieler2); // Uebergabe der Klasse mit CallByRefernece
-	void endGame();
 	// Hilfefunktion: Spielregeln
 	void Help();
 	// Highscore ausgeben lassen:
 	void getHighscore(string filename);
 	// Beenden
 	void endProgramm();
-	// Warte-Funktion wird an verschiedenen Stellen verwendet
-	void wait();
 
 };
 
