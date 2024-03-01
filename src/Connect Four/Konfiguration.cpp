@@ -163,16 +163,16 @@ __/\\\________/\\\__________/\\\\\\____________/\\\\\_________________
         _\///________\///___\///___\/////////______\///__________\//////////__                                                                                           
 )";
 
-    // beim Aufruf der Hilfe werden die Spielregeln angezeigt
+    // Beim Aufruf der Hilfe werden die Spielregeln angezeigt
     cout << asciiArt << "\n";
-    cout << "Spielregeln fuer 4 Gewinnt \n";
-    cout << "1: Zwei Spieler nehmen abwechselnd an dem Spiel teil \n";
-    cout << "2: Jeder Spieler hat verschiedene Spielsteine\n";
-    cout << "3: Die Spieler werfen abwechselnd einen ihrer Spielsteine in ein Raster\n";
-    cout << "4: Die Spielsteine fallen immer auf den tiefsten verfuegbaren Platz im ausgewaehlten Raster.\n";
+    cout << "Spielregeln fuer 4 Gewinnt: \n";
+    cout << "1: Zwei Spieler nehmen abwechselnd an dem Spiel teil. \n";
+    cout << "2: Die Spieler haben unterschiedliche Spielsteine.\n";
+    cout << "3: Die Spieler werfen abwechselnd einen ihrer Spielsteine in ein Raster.\n";
+    cout << "4: Die Spielsteine fallen immer auf den tiefsten verfuegbaren Platz in der ausgewaehlten Spalte.\n";
     cout << "5: Das Ziel des Spiels ist es, vier Steine der eigenen Farbe in einer Reihe zu haben.Diese Reihe kann waagerecht, senkrecht oder diagonal sein.\n";
     cout << "6: Der Spieler, der zuerst vier Steine in einer Reihe hat, gewinnt das Spiel.\n" << endl;
-    wait();
+    wait(); // Warten, bis der User fortfahren moechte
 
 }
 
