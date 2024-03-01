@@ -6,7 +6,7 @@
 using namespace::std;
 
 class ConsoleBoard : public AbstractBoard {
-public:
+private:
 
     //Spielbrett anzeigen 
     void displayBoard(char board[ROWS][COLS]) override;
