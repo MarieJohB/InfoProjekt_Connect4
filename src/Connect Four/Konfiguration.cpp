@@ -139,7 +139,7 @@ void Konfiguration::endProgramm() { // Das Connect Four Spiel wird beendet
 
 void Konfiguration::endGame() { // Ein Spiel wurde beendet, aber das Programm nicht 
     system("cls"); // Bereinigung des Terminals von allen Zeichen
-    cout << "Spiel wurde beended, kehre zum Hauptbildschirm zurueck! \n" << endl;
+    cout << "Spiel wurde beendet, kehre zum Hauptbildschirm zurueck! \n" << endl;
     play = false; 
 
 }
@@ -189,7 +189,7 @@ ersteFrage: // Sprungstelle fuer goto
     cout << "-D fuer Datum" << endl;
     cout << "-Z fuer Zuege" << endl;
 
-    char Sortiert;
+    char Sortiert; // verwendet fier die User-Eingabe
     char S; // S wird an die Funktion der Klasse Highscore uebergeben
     cout << "\nIhre Eingabe: ";
     cin >> Sortiert;

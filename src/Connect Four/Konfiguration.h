@@ -11,8 +11,8 @@ public:
 
 	char input; // Eingabe durch den User
 	bool displayText; //Bool um die Ausgabe zu wechseln
-	bool play; // Bool um in die Spielschleife zu gehen
-	bool end; // Bool um das Programm zu beenden
+	bool play; // Bool um in die Spielschleife im Main zu gehen
+	bool end; // Bool um das Programm zu beenden, Schleife im Main verlassen
 
 
 	// Konstruktor
