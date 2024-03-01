@@ -12,7 +12,8 @@ public:
 	//Abspielen der Animation
 	void victoryDance();
 
+private:
+
 	//Kurze Pausen fuer eigenen Style der Animation durchfuehren
 	void PauseAndClearBeforeResume();
-
 };
