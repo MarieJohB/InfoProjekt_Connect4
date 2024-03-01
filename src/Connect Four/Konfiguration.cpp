@@ -88,11 +88,11 @@ void Konfiguration::askUser(string filename, Player& Spieler1, Player& Spieler2)
 )";
 
         cout << hauptmenu << "\n";
-        cout << "\t\t\t\t  Ihre Eingabe: ";
-        input = getchar();
+        cout << "\t\t\t\t  Ihre Eingabe: "; // Dér text wird mittig unter der Abbildung platziert 
+        input = getchar(); // Eingabe des Users einlesen 
         cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
 
-        switch (input) {
+        switch (input) { // Case-Switch zur Pruefung der Eingabe des Users
         case 'h': // Eingabe "h": Aufruf der Hilfe/Spielregeln
             Help();
             break;
@@ -105,7 +105,7 @@ void Konfiguration::askUser(string filename, Player& Spieler1, Player& Spieler2)
         case 'e': // Eingabe "e": Beenden des Connect Four Spiels
             endProgramm();
             break;
-        default:
+        default: // Default: Abfangen einer falschen Eingabe
             system("cls"); // Bereinigung des Terminals von allen Zeichen
             cout << "Ungueltiger Befehl. Bitte erneut versuchen.\n" << endl; // hier wird eine falsche Eingabe des Users abgefangen
         }
@@ -256,8 +256,9 @@ __/\\\________/\\\________________________/\\\__________________________________
 
     cout << asciiArt << "\n";
     // Hier werden S und R uebergeben an die Klasse Highscore 
+    // von der Klasse Highscore aus erfolgt die Ausgabe auf der Konsole
     LIST2.displaySorted(S, R); // Uebergabeparameter: char sortBy, bool ascending
-    wait();
+    wait(); // es wird gewartet, bis der User fortfahren möchte
     LIST2.saveToFile(filename); // Speichern in einer .txt Datei
 
 }

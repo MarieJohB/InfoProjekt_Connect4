@@ -19,6 +19,7 @@ public:
 	Konfiguration(char input_, bool displayText_, bool play_, bool end_);
 	Konfiguration();
 	
+	// Methoden der Klasse: 
 
 	void askUser(string filename, Player& Spieler1, Player& Spieler2); 
 	// Uebergabe der Klasse mit CallByRefernece, wird weiter gegeben an startGame()
