@@ -47,6 +47,9 @@ int main(int argc, char* argv[]) {
     fuer die Speicherung des Highscores in einer .txt Datei*/
     string filename = "highscore.txt"; 
 
+
+
+
     // Hier werden die Kommandline-Parameter ueberprueft
 
     // Default-Werte
@@ -70,22 +73,28 @@ int main(int argc, char* argv[]) {
 
     // Überprüfen, welcher Spieler X bzw O hat
     // Da token1 und token2 im Main mehrfach verwendet werden, wird diese if-Pruefung nicht in eine Funktion der Klasse verlagert
-    if (TokenAusgeben == '1') { // Spieler 1 hat X
+    if (check.TokenZuordnen(TokenAusgeben) == 'X') { // Spieler 1 hat X
         token1 = 'X';
         token2 = 'O';
 
         cout << "Spieler 1 => Token: " << token1 << " Spieler 2 => Token: " << token2 << endl;
+        GameOn.wait();
     }
-    else if (TokenAusgeben == '2') { // 1: Spieler 2 hat X
+    else if (check.TokenZuordnen(TokenAusgeben) == 'O') { // Spieler 1 hat O und somit hat Spieler 2 X
         token1 = 'O';
         token2 = 'X';
 
         cout << "Spieler 1 => Token: " << token1 << " Spieler 2 => Token: " << token2 << endl;
+        GameOn.wait();
     }
+
+   
+   
 
 
     // Überprüfen, ob das Spiel in der Konsole oder in der Text Datei stattfindet
     GameOn.displayText = check.AusgabeZuordnen(SpielAusgeben); // Bool Funktion --> Return wird für GameOn.displayText genutzt
+
 
 
     if (GameOn.displayText) { // Festlegen wo das Spiel Ausgegeben wird

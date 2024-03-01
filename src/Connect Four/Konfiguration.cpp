@@ -88,11 +88,11 @@ void Konfiguration::askUser(string filename, Player& Spieler1, Player& Spieler2)
 )";
 
         cout << hauptmenu << "\n";
-        cout << "\t\t\t\t  Ihre Eingabe: ";
-        input = getchar();
+        cout << "\t\t\t\t      Ihre Eingabe: "; // Dér text wird mittig unter der Abbildung platziert 
+        input = getchar(); // Eingabe des Users einlesen 
         cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
 
-        switch (input) {
+        switch (input) { // Case-Switch zur Pruefung der Eingabe des Users
         case 'h': // Eingabe "h": Aufruf der Hilfe/Spielregeln
             Help();
             break;
@@ -105,7 +105,7 @@ void Konfiguration::askUser(string filename, Player& Spieler1, Player& Spieler2)
         case 'e': // Eingabe "e": Beenden des Connect Four Spiels
             endProgramm();
             break;
-        default:
+        default: // Default: Abfangen einer falschen Eingabe
             system("cls"); // Bereinigung des Terminals von allen Zeichen
             cout << "Ungueltiger Befehl. Bitte erneut versuchen.\n" << endl; // hier wird eine falsche Eingabe des Users abgefangen
         }
@@ -163,16 +163,16 @@ __/\\\________/\\\__________/\\\\\\____________/\\\\\_________________
         _\///________\///___\///___\/////////______\///__________\//////////__                                                                                           
 )";
 
-    // beim Aufruf der Hilfe werden die Spielregeln angezeigt
+    // Beim Aufruf der Hilfe werden die Spielregeln angezeigt
     cout << asciiArt << "\n";
-    cout << "Spielregeln fuer 4 Gewinnt \n";
-    cout << "1: Zwei Spieler nehmen abwechselnd an dem Spiel teil \n";
-    cout << "2: Jeder Spieler hat verschiedene Spielsteine\n";
-    cout << "3: Die Spieler werfen abwechselnd einen ihrer Spielsteine in ein Raster\n";
-    cout << "4: Die Spielsteine fallen immer auf den tiefsten verfuegbaren Platz im ausgewaehlten Raster.\n";
+    cout << "Spielregeln fuer 4 Gewinnt: \n";
+    cout << "1: Zwei Spieler nehmen abwechselnd an dem Spiel teil. \n";
+    cout << "2: Die Spieler haben unterschiedliche Spielsteine.\n";
+    cout << "3: Die Spieler werfen abwechselnd einen ihrer Spielsteine in ein Raster.\n";
+    cout << "4: Die Spielsteine fallen immer auf den tiefsten verfuegbaren Platz in der ausgewaehlten Spalte.\n";
     cout << "5: Das Ziel des Spiels ist es, vier Steine der eigenen Farbe in einer Reihe zu haben.Diese Reihe kann waagerecht, senkrecht oder diagonal sein.\n";
     cout << "6: Der Spieler, der zuerst vier Steine in einer Reihe hat, gewinnt das Spiel.\n" << endl;
-    wait();
+    wait(); // Warten, bis der User fortfahren moechte
 
 }
 
@@ -196,7 +196,7 @@ ersteFrage: // Sprungstelle fuer goto
     cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
 
     switch (Sortiert) {
-    case 'N': // sowohl kein als auch großbuchstaben werden akzeptiert
+    case 'N': // sowohl Klein- als auch Großbuchstaben werden akzeptiert
     case 'n':
         S = 's';
         break;
@@ -233,12 +233,12 @@ zweiteFrage:
         R = false;
         break;
     default:
-        system("cls"); // Für Windows
+        system("cls"); 
         cout << "Invalide Eingabe" << endl;
         goto zweiteFrage;
         break;
     }
-    system("cls"); // Für Windows
+    system("cls"); 
     string asciiArt = R"(
                                                                                                                                                                     
                                                                                                                                                                     
@@ -256,8 +256,9 @@ __/\\\________/\\\________________________/\\\__________________________________
 
     cout << asciiArt << "\n";
     // Hier werden S und R uebergeben an die Klasse Highscore 
+    // von der Klasse Highscore aus erfolgt die Ausgabe auf der Konsole
     LIST2.displaySorted(S, R); // Uebergabeparameter: char sortBy, bool ascending
-    wait();
+    wait(); // es wird gewartet, bis der User fortfahren möchte
     LIST2.saveToFile(filename); // Speichern in einer .txt Datei
 
 }

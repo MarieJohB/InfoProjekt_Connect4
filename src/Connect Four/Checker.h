@@ -13,5 +13,6 @@ public:
 	char checkNumberAusgabe();
 
 	bool AusgabeZuordnen(char SpielAusgeben);
+	char TokenZuordnen(char TokenAusgeben);
 
 };
