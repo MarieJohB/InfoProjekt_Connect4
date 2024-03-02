@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include "Player.h"
+#include "Statistik.h"
 #include <string>
 using namespace::std;
 
@@ -10,18 +11,22 @@ using namespace::std;
 Player::Player(string name_, int punktzahl_) {
     name = name_;
     punktzahl = punktzahl_;
+    SpielerStats = new Statistik;
 }
 
 
 // Default Konstruktor
 Player::Player() {
     this->name = "Max Mustermann";
-    this->punktzahl = 100;
+    this->punktzahl = 0;
+    this->SpielerStats = new Statistik;
 }
 
 // Destruktor:
 Player::~Player() {
     cout << "Der Destruktor der Klasse Player wurde aufgerufen  \n" << endl;
+    delete SpielerStats; 
+
 }
 
 
@@ -29,6 +34,12 @@ Player::~Player() {
 Player::Player(const Player& p) { // Call by Referene, aber als const
     this->name = p.name;
     this->punktzahl = p.punktzahl;
+    // Pointer auf andere Adresse, aber die Elemente des originals kopieren
+    // es darf nocht die gleiche Adresse des Originals verwendet werden
+    // durch den Copy-Konstruktor der Klasse Statistik zeigt der neue Pointer des kopierten Spielers die kopierten Elemente der Statistik
+    this->SpielerStats = new Statistik(*p.SpielerStats); // Muss zunaechst dereferenziert werden
+    //this->SpielerStats->AnzahlSpiele = p.SpielerStats->AnzahlSpiele; 
+        
 }
 
 
@@ -113,6 +124,7 @@ void Player :: setPunktzahl(int punktzahl) {
 // Entscheiden, wer gewonnen hat
 Player Player :: getWinner(string NameOfWinner, Player& Spieler1_, Player& Spieler2_) {
     if (NameOfWinner == Spieler1_.name) {
+
         return Spieler1_;
     }
     else if (NameOfWinner == Spieler2_.name) {

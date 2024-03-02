@@ -1,16 +1,20 @@
 #pragma once
 #include <string>
+#include "Statistik.h"
 using namespace::std;
 
 class Player
 {
-public:
+
+private: 
 
     string name;
-    
     int punktzahl;
+    
 
-	
+public:
+
+    Statistik* SpielerStats;
 	// Konstruktor
     Player( string name_, int punktzahl_);
 

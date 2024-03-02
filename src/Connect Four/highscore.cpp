@@ -31,6 +31,8 @@ void highscore::insertNode(int value1, const string& strValue) {
     insertNode(value1, time(nullptr), strValue); //Ein Zeitstempel wird eingefügt und dann die andere Funktion aufgerufen.
     Positionsbestimmung(head[0]); //Nach dem Einfügen, muss die Postion wieder neu bestimmt werden.
 };
+
+
 //Diese Funktion sorgt dafuer, dass Daten mit einem Zeitstempel in die Liste eingefügt werden
 void highscore::insertNode(int value1, time_t value2, const string& strValue) {
     //Hier werden die gegeben Werte, Name und Anzahl der Zuege eingefügt
