@@ -14,7 +14,11 @@ private:
 
 public:
 
-    Statistik* SpielerStats;
+    Statistik* SpielerStats; // Fuer die Anwenung des Copy-Konstruktors
+
+    // Copy-Konstruktor
+    Player(const Player& p);
+
 	// Konstruktor
     Player( string name_, int punktzahl_);
 
@@ -24,8 +28,6 @@ public:
     // Destruktor
     ~Player();
 
-    // Copy-Konstruktor
-    Player(const Player& p);
 
     
     // Funktionen der Klasse Player: 
