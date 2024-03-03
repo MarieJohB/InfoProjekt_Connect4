@@ -1,5 +1,4 @@
 #include "Ruler.h"
-#include "Konfiguration.h"
 #include <iostream>
 #include "Celebrater.h"
 using namespace::std;
