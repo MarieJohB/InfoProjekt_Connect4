@@ -9,4 +9,4 @@ Statistik::Statistik(){
 // Copy-Konstruktor
 Statistik::Statistik(const Statistik& S) {
 	this->AnzahlSpiele = S.AnzahlSpiele;
-}
+}	

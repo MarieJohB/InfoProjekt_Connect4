@@ -133,7 +133,16 @@ int main(int argc, char* argv[]) {
                     //Anfertigen einer Kopie: 
                     Player Winner = players.getWinner(Ruler.PlayerTurn((turn % 2 + 1), Spieler1.getName(), Spieler2.getName()), Spieler1, Spieler2);
                     Winner.setPunktzahl(Ruler.countpasses(TokenAusgeben, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2));
-                                        
+                    
+                    // Demonstration des Copy-Konstruktors 
+                    // zwei unterschiedlicher Pointer, aber es wird auf das gleiche gezeigt
+
+                    /*
+                    Player Winner2 = Winner;
+
+                    cout << endl<< "\nErster Pointer: " << Winner.SpielerStats << " Erster Speicher: " << Winner.SpielerStats->AnzahlSpiele<< endl; 
+                    cout << "\nZweiter Pointer: " << Winner2.SpielerStats << " Zweiter Speicher: " << Winner2.SpielerStats->AnzahlSpiele << endl;
+                    */
 
                     cout << "\nSpieler " << Winner.getName()  << " gewinnt" << " in ";
                     cout << Winner.getPunktzahl() << " Zuegen!" << endl; 
