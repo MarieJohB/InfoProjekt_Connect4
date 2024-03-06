@@ -3,7 +3,6 @@
 #include <iostream>
 #include <limits>
 #include "Checker.h"
-#include "Player.h"
 #include <cstdlib>
 using namespace::std;
 

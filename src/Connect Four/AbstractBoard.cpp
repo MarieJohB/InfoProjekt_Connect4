@@ -1,5 +1,4 @@
 #include "AbstractBoard.h"
-#include "Konfiguration.h"
 #include <iostream>
 #include <fstream>
 #include <stdio.h>
