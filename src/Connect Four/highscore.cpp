@@ -171,10 +171,10 @@ void highscore::readFile(const string& filename) {
 // Diese Funktion ermöglicht, dass Highscoredaten langfristig aus einer .txt Datei geladen werden können.
 void highscore::loadFromFile(const string& filename) {
     try {
-        readFile(filename);
+        readFile(filename); //Die Funktion lädt aus der .txt-Datei und versucht die daraus neuen Nodes einzufügen
     }
     catch (int e) {
-        cerr << "Error 300: Datei kann nicht geöffnet werden " << filename << endl;
+        cerr << "Error 300: Datei kann nicht geöffnet werden " << filename << endl; //Sollte keine .txt-Datei vorhanden sein, wird ein Error geworfen, der diesen Output erzwingt
     }
     Positionsbestimmung(head[0]);//Hier bekommen alle neuen Elemente eine Position
 };
