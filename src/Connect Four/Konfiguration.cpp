@@ -1,7 +1,6 @@
 #include "Konfiguration.h"
 #include <iostream>
 #include <string>
-#include "Player.h"
 #include <cstdlib>
 #include <limits>
 using namespace::std;
@@ -121,7 +120,12 @@ void Konfiguration::startGame(Player& Spieler1, Player& Spieler2) { // Uebergabe
     Spieler1.setName();
     system("cls"); // Bereinigung des Terminals von allen Zeichen
     cout << "Player 2:\n" << endl;
-    Spieler2.setName();
+    do {
+        Spieler2.setName();
+    } while(Spieler2.CompareNames(Spieler2.getName(), Spieler1.getName()));
+
+
+
     system("cls"); // Bereinigung des Terminals von allen Zeichen
     cout << "\nSpieler 1 ist nun: " << Spieler1.getName() << "\n\nSpieler 2 ist nun: " << Spieler2.getName() << endl;
     wait(); // Warten, bis der User das Spiel fortsetzt

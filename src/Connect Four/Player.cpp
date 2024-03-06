@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include "Player.h"
-#include "Statistik.h"
 #include <string>
 using namespace::std;
 
@@ -103,13 +102,24 @@ void Player::setName() {
     this->name = NameTwentyString; // der gepruefte Namen wird an das Objekt uebergeben
 }
 
+// Pruefen, dass die Spieler nicht die gleichen Namen haben
+bool Player::CompareNames(string neuerName, string andererName) {
+    if (neuerName == andererName) {
+        return true;
+    }
+    else {
+        return false; // wenn false, dann wir die while-Schleife in startGame verlassen
+    }
+};
 
 
-/// Get Name
+// Get Name
 string Player :: getName() {
    
     return  name;
 }
+
+
 
 // Get Punktzahl
 int Player :: getPunktzahl() {

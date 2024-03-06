@@ -132,6 +132,7 @@
       <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4996</DisableSpecificWarnings>
     </ClCompile>
     <ClCompile Include="ConsoleBoard.cpp" />
+    <ClCompile Include="deleteme.cpp" />
     <ClCompile Include="FileBoard.cpp" />
     <ClCompile Include="highscore.cpp" />
     <ClCompile Include="Konfiguration.cpp" />
@@ -146,6 +147,7 @@
     <ClInclude Include="Checker.h" />
     <ClInclude Include="Celebrater.h" />
     <ClInclude Include="ConsoleBoard.h" />
+    <ClInclude Include="deleteme.h" />
     <ClInclude Include="FileBoard.h" />
     <ClInclude Include="highscore.h" />
     <ClInclude Include="Konfiguration.h" />

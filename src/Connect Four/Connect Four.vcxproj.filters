@@ -48,6 +48,9 @@
     <ClCompile Include="Statistik.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="deleteme.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractBoard.h">
@@ -78,6 +81,9 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Statistik.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="deleteme.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
