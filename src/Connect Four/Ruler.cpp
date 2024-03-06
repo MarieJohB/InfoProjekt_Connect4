@@ -4,7 +4,7 @@ using namespace::std;
 
 
 bool Ruler :: isValidMove(char board[ROWS][COLS], int col){
-    if (col == 251) { // Easter Egg wenn die Zahl 282 eingegeben wurde
+    if (col == 252) { // Easter Egg wenn die Zahl 251 eingegeben wurde
         Celebrater cel; 
         cel.victoryDance(); // Abspielen einer Animation im Terminal
     };
