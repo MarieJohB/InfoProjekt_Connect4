@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "Player.h"
+#include "highscore.h"
 
 using namespace::std;
 

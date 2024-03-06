@@ -1,7 +1,6 @@
 #include "Konfiguration.h"
 #include <iostream>
 #include <string>
-#include "highscore.h"
 #include "Player.h"
 #include <cstdlib>
 #include <limits>
