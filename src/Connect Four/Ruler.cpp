@@ -1,6 +1,5 @@
 #include "Ruler.h"
 #include <iostream>
-#include "Celebrater.h"
 using namespace::std;
 
 

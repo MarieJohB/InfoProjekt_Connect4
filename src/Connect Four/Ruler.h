@@ -1,6 +1,7 @@
 #pragma once
 #include <stdio.h>
 #include <iostream>
+#include "Celebrater.h"
 using namespace::std;
 
 #define ROWS 6
