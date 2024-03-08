@@ -276,8 +276,8 @@ void Ruler :: makeMove(char board[ROWS][COLS], int col, char token) { // Funktio
 }
 
 string Ruler::PlayerTurn(int Turn, string NameSpieler1, string NameSpieler2) {
-    int turn = Turn;
-    if (turn == 1) {
+    //int turn = Turn;
+    if (Turn == 1) {
         // Spieler 1 ist an der Reihe
 
         return NameSpieler1; // Name von Spieler 1 zurueckgeben
@@ -289,3 +289,4 @@ string Ruler::PlayerTurn(int Turn, string NameSpieler1, string NameSpieler2) {
     }
 
 };
+
