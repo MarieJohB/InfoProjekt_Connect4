@@ -30,14 +30,13 @@ Player::~Player() {
 
 
 // Copy-Konstruktor
-Player::Player(const Player& p) { // Call by Referene, aber als const
-    this->name = p.name;
-    this->punktzahl = p.punktzahl;
     // Pointer auf andere Adresse, aber die Elemente des originals kopieren
     // es darf nocht die gleiche Adresse des Originals verwendet werden
     // durch den Copy-Konstruktor der Klasse Statistik zeigt der neue Pointer des kopierten Spielers die kopierten Elemente der Statistik
+Player::Player(const Player& p) { // Call by Referene, aber als const
+    this->name = p.name;
+    this->punktzahl = p.punktzahl;
     this->SpielerStats = new Statistik(*p.SpielerStats); // Muss zunaechst dereferenziert werden
-    //this->SpielerStats->AnzahlSpiele = p.SpielerStats->AnzahlSpiele; 
         
 }
 

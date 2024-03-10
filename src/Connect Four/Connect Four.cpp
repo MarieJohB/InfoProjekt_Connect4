@@ -104,6 +104,7 @@ int main(int argc, char* argv[]) {
         boardDisplay = new ConsoleBoard();
     };
 
+
     while (GameOn.end) {
         boardDisplay->initializeBoard(board); // Initialisierung des Spielfeldes
         // Eingabeaufforderung im Hauptmenue
