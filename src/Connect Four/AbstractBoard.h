@@ -18,3 +18,6 @@ public:
     /*Ueberpruefung welche Ausgabe geschieht
     void checkBoardOutput(); */
 };
+
+
+

@@ -11,3 +11,4 @@ private:
     //Spielbrett anzeigen 
     void displayBoard(char board[ROWS][COLS]) override;
 };
+
