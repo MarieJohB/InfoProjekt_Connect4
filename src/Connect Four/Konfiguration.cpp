@@ -183,63 +183,70 @@ void Konfiguration::getHighscore(string filename) {
     highscore LIST2; // dafuer wird zunaechst ein Objekt der Klasse "highscore" erstellt
     LIST2.loadFromFile(filename); // Laden einer .txt Datei
     system("cls"); // Bereinigung des Terminals von allen Zeichen
-
-ersteFrage: // Sprungstelle fuer goto
-    cout << "Wonach soll sortiert werden?\n" << endl;
-    cout << "-N fuer Name" << endl;
-    cout << "-D fuer Datum" << endl;
-    cout << "-Z fuer Zuege" << endl;
-
+    bool test = false; // Benutzt für die Schleifen um eine korrekte Eingabe zu sichern
     char Sortiert; // verwendet fier die User-Eingabe
     char S; // S wird an die Funktion der Klasse Highscore uebergeben
-    cout << "\nIhre Eingabe: ";
-    cin >> Sortiert;
-    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
+    bool R; // R wird an die Funktion der Klasse Highscore uebergeben
+    while (test == false) {
+        //ersteFrage: // Sprungstelle fuer goto
+        cout << "Wonach soll sortiert werden?\n" << endl;
+        cout << "-N fuer Name" << endl;
+        cout << "-D fuer Datum" << endl;
+        cout << "-Z fuer Zuege" << endl;
+        cout << "\nIhre Eingabe: ";
+        cin >> Sortiert;
 
-    switch (Sortiert) {
-    case 'N': // sowohl Klein- als auch Großbuchstaben werden akzeptiert
-    case 'n':
-        S = 's';
-        break;
-    case 'D':
-    case 'd':
-        S = '2';
-        break;
-    case 'Z':
-    case 'z':
-        S = '1';
-        break;
-    default:
-        system("cls"); // Bereinigung des Terminals von allen Zeichen
-        cout << "Invalide Eingabe" << endl; // Abfangen einer falschen Eingabe
-        goto ersteFrage; // Man springt zurueck zur Frage, da die Eingabe falsch war 
-        break;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
+
+        switch (Sortiert) {
+        case 'N': // sowohl Klein- als auch Großbuchstaben werden akzeptiert
+        case 'n':
+            S = 's';
+            test = 1;
+            break;
+        case 'D':
+        case 'd':
+            S = '2';
+            test = 1;
+            break;
+        case 'Z':
+        case 'z':
+            S = '1';
+            test = 1;
+            break;
+        default:
+            system("cls"); // Bereinigung des Terminals von allen Zeichen
+            cout << "Invalide Eingabe" << endl; // Abfangen einer falschen Eingabe 
+            break;
+        }
     }
     system("cls"); // Bereinigung des Terminals von allen Zeichen
-zweiteFrage:
-    cout << "Wie soll sortiert werden?\n" << endl;
-    cout << "-u fuer Aufsteigend?" << endl;
-    cout << "-b fuer Absteigend?" << endl;
-    cout << "\nIhre Eingabe: ";
-    cin >> Sortiert;
-    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
-    bool R; // R wird an die Funktion der Klasse Highscore uebergeben
-    switch (Sortiert) {
-    case 'u':
-    case 'U':
-        R = true;
-        break;
-    case 'b':
-    case 'B':
-        R = false;
-        break;
-    default:
-        system("cls"); 
-        cout << "Invalide Eingabe" << endl;
-        goto zweiteFrage;
-        break;
+    test = 0;
+    while (!test) {
+        cout << "Wie soll sortiert werden?\n" << endl;
+        cout << "-u fuer Aufsteigend?" << endl;
+        cout << "-b fuer Absteigend?" << endl;
+        cout << "\nIhre Eingabe: ";
+        cin >> Sortiert;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
+        switch (Sortiert) {
+        case 'u':
+        case 'U':
+            R = true;
+            test = 1;
+            break;
+        case 'b':
+        case 'B':
+            R = false;
+            test = 1;
+            break;
+        default:
+            system("cls");
+            cout << "Invalide Eingabe" << endl;
+            break;
+        }
     }
-    system("cls"); 
+    system("cls");
     string asciiArt = R"(
                                                                                                                                                                     
                                                                                                                                                                     
