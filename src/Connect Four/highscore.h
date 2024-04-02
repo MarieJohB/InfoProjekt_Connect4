@@ -4,7 +4,7 @@
 #include <sstream>
 #include <ctime>
 using namespace::std;
-struct Node { //Die Struktur der verketteten List
+struct Node { //Die Struktur der verketteten Liste
     int Highscore; //Anzahl der benötigten Züge
     time_t Zeit; //Zeit des Sieges
     string Name; //Name des Siegers

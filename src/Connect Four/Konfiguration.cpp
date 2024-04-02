@@ -183,7 +183,7 @@ void Konfiguration::getHighscore(string filename) {
     highscore LIST2; // dafuer wird zunaechst ein Objekt der Klasse "highscore" erstellt
     LIST2.loadFromFile(filename); // Laden einer .txt Datei
     system("cls"); // Bereinigung des Terminals von allen Zeichen
-    bool test = false; // Benutzt für die Schleifen um eine korrekte Eingabe zu sichern
+    bool test = false; // Benutzt fuer die Schleifen um eine korrekte Eingabe zu sichern
     char Sortiert; // verwendet fier die User-Eingabe
     char S; // S wird an die Funktion der Klasse Highscore uebergeben
     bool R; // R wird an die Funktion der Klasse Highscore uebergeben
@@ -266,7 +266,7 @@ __/\\\________/\\\________________________/\\\__________________________________
     // Hier werden S und R uebergeben an die Klasse Highscore 
     // von der Klasse Highscore aus erfolgt die Ausgabe auf der Konsole
     LIST2.displaySorted(S, R); // Uebergabeparameter: char sortBy, bool ascending
-    wait(); // es wird gewartet, bis der User fortfahren möchte
+    wait(); // es wird gewartet, bis der User fortfahren moechte
     LIST2.saveToFile(filename); // Speichern in einer .txt Datei
 
 }

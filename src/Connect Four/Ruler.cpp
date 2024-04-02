@@ -8,7 +8,7 @@ bool Ruler :: isValidMove(char board[ROWS][COLS], int col){
         Celebrater cel; 
         cel.victoryDance(); // Abspielen einer Animation im Terminal
     };
-    if (col < COLS && board[0][col] == ' ') { // Ueberprüfung ob die Oberste Reihe belegt ist und die Zeile existiert
+    if (col < COLS && board[0][col] == ' ') { // Ueberpruefung ob die Oberste Reihe belegt ist und die Zeile existiert
         return true;
     }
     return false;

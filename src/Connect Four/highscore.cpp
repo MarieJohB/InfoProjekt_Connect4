@@ -4,7 +4,7 @@ using namespace::std;
 #include <fstream>
 #include <sstream>
 #include <ctime>
-// Konstruktor für die highscore Klasse
+// Konstruktor fuer die highscore Klasse
 highscore::highscore() {
     for (int i = 0; i < 3; i++) {
         head[i] = nullptr;
@@ -12,12 +12,12 @@ highscore::highscore() {
     };
 }
 
-// Destructor; Dabei wird die List durch Durchlaufen von ihr gelöscht
+// Destructor; Dabei wird die List durch Durchlaufen von ihr geloescht
 highscore::~highscore() {
     Node* current = head[0];
     while (current != nullptr) { //Die Liste wird druchlaufen
         Node* next = current->nextNode[0];
-        delete current; // Der Eintrag wird gelöscht
+        delete current; // Der Eintrag wird geloescht
         current = next;
     }
     // Die Pointer der Klasse werden wieder zum Nullpointer
@@ -26,16 +26,16 @@ highscore::~highscore() {
         tail[i] = nullptr;
     };
 }
-// Es kommt eine Ueberladene Funktion. Diese ist hier für das einfügen eines neuen Scores
+// Es kommt eine Ueberladene Funktion. Diese ist hier fuer das einfuegen eines neuen Scores
 void highscore::insertNode(int value1, const string& strValue) {
-    insertNode(value1, time(nullptr), strValue); //Ein Zeitstempel wird eingefügt und dann die andere Funktion aufgerufen.
-    Positionsbestimmung(head[0]); //Nach dem Einfügen, muss die Postion wieder neu bestimmt werden.
+    insertNode(value1, time(nullptr), strValue); //Ein Zeitstempel wird eingefuegt und dann die andere Funktion aufgerufen.
+    Positionsbestimmung(head[0]); //Nach dem Einfuegen, muss die Postion wieder neu bestimmt werden.
 };
 
 
-//Diese Funktion sorgt dafuer, dass Daten mit einem Zeitstempel in die Liste eingefügt werden
+//Diese Funktion sorgt dafuer, dass Daten mit einem Zeitstempel in die Liste eingefuegt werden
 void highscore::insertNode(int value1, time_t value2, const string& strValue) {
-    //Hier werden die gegeben Werte, Name und Anzahl der Zuege eingefügt
+    //Hier werden die gegeben Werte, Name und Anzahl der Zuege eingefuegt
     Node* newNode = new Node;
     newNode->Highscore = value1;
     newNode->Name = strValue;
@@ -56,7 +56,7 @@ void highscore::sortNode(Node* NewNode) {
         NewNode->Position = 1;
         return;
     }
-    else { //Da es schon einträge gibt, muss es einsortiert werden.
+    else { //Da es schon eintraege gibt, muss es einsortiert werden.
         sortNodeHighscore(NewNode);
         sortNodeZeit(NewNode);
         sortNodeName(NewNode);
@@ -66,23 +66,23 @@ void highscore::sortNode(Node* NewNode) {
 void highscore::sortNodeHighscore(Node* newNode) {//Hier wird das Element dem Highscore entsprechend einsortiert
     Node* currentHighscore = head[0];
     Node* previousHighscore = nullptr;
-    while (currentHighscore != nullptr && currentHighscore->Highscore < newNode->Highscore) { //Die Liste wird so lange durchgegangen bis endweder das Ende erreicht wurde oder ein höherer Wert als der Wert vom neuen Eintrag erreicht wurde
+    while (currentHighscore != nullptr && currentHighscore->Highscore < newNode->Highscore) { //Die Liste wird so lange durchgegangen bis endweder das Ende erreicht wurde oder ein hoeherer Wert als der Wert vom neuen Eintrag erreicht wurde
         previousHighscore = currentHighscore;
         currentHighscore = currentHighscore->nextNode[0];
     }
-    if (previousHighscore == nullptr) {//Das ist der Fall, wenn das neue Listenelement am Anfang eingefügt wird
+    if (previousHighscore == nullptr) {//Das ist der Fall, wenn das neue Listenelement am Anfang eingefuegt wird
         newNode->nextNode[0] = currentHighscore;
         newNode->previousNode[0] = nullptr;
         head[0] = newNode;
         currentHighscore->previousNode[0] = newNode;
     }
-    else if (previousHighscore == tail[0]) {//Das ist der Fall, wenn das Listenelement am Ende eingefügt wird. previousHighscore ist dabei das letzte Element
+    else if (previousHighscore == tail[0]) {//Das ist der Fall, wenn das Listenelement am Ende eingefuegt wird. previousHighscore ist dabei das letzte Element
         newNode->nextNode[0] = nullptr;
         newNode->previousNode[0] = previousHighscore;
         tail[0] = newNode;
         previousHighscore->nextNode[0] = newNode;
     }
-    else { //Das ist der Fall, wenn das Listenelement in der Mitte eingefügt wird. Dabei ist current das nächste Element und previous das Element davor.
+    else { //Das ist der Fall, wenn das Listenelement in der Mitte eingefuegt wird. Dabei ist current das naechste Element und previous das Element davor.
         previousHighscore->nextNode[0] = newNode;
         currentHighscore->previousNode[0] = newNode;
         newNode->nextNode[0] = currentHighscore;
@@ -92,7 +92,7 @@ void highscore::sortNodeHighscore(Node* newNode) {//Hier wird das Element dem Hi
 void highscore::sortNodeZeit(Node* newNode) {//Analog zum Highscore-System
     Node* currentZeit = head[1];
     Node* previousZeit = nullptr;
-    while (currentZeit != nullptr && currentZeit->Zeit < newNode->Zeit) { //Die Liste wird so lange durchgegangen bis endweder das Ende erreicht wurde oder ein höherer Wert als der Wert vom neuen Eintrag erreicht wurde
+    while (currentZeit != nullptr && currentZeit->Zeit < newNode->Zeit) { //Die Liste wird so lange durchgegangen bis endweder das Ende erreicht wurde oder ein hoeherer Wert als der Wert vom neuen Eintrag erreicht wurde
         previousZeit = currentZeit;
         currentZeit = currentZeit->nextNode[1];
     }
@@ -118,7 +118,7 @@ void highscore::sortNodeZeit(Node* newNode) {//Analog zum Highscore-System
 void highscore::sortNodeName(Node* newNode) {//Analog zum Highscore-System
     Node* currentName = head[2];
     Node* previousName = nullptr;
-    while (currentName != nullptr && currentName->Name < newNode->Name) { //Die Liste wird so lange durchgegangen bis endweder das Ende erreicht wurde oder ein höherer Wert als der Wert vom neuen Eintrag erreicht wurde
+    while (currentName != nullptr && currentName->Name < newNode->Name) { //Die Liste wird so lange durchgegangen bis endweder das Ende erreicht wurde oder ein hoeherer Wert als der Wert vom neuen Eintrag erreicht wurde
         previousName = currentName;
         currentName = currentName->nextNode[2];
     }
@@ -143,23 +143,23 @@ void highscore::sortNodeName(Node* newNode) {//Analog zum Highscore-System
 };
 void highscore::readFile(const string& filename) {
     ifstream inputFile(filename);
-    if (!inputFile) { //Sollte die Datei nicht gefunden oder geöffnet werden können, wird dieser Fehler geworfen
+    if (!inputFile) { //Sollte die Datei nicht gefunden oder geoeffnet werden koennen, wird dieser Fehler geworfen
         throw 300;
     }
 
     string line;
     while (getline(inputFile, line)) { //Die Zeilen der .txt Datei werden durchgegangen
         istringstream iss(line);
-        int value1; //Die Daten, die in die Liste gehören werden initiert
+        int value1; //Die Daten, die in die Liste gehoeren werden initiert
         time_t value2;
         string strValue;
         char comma; //Die Daten sind durch ein Komma getrennt
-        if (iss >> value1 >> comma >> value2 >> comma) { //Die Daten aus der Zeile werden ausgelesen und in die initierten Variablen eingefügt
+        if (iss >> value1 >> comma >> value2 >> comma) { //Die Daten aus der Zeile werden ausgelesen und in die initierten Variablen eingefuegt
             if (!getline(iss >> ws, strValue)) {
                 cerr << "Error 301: Fehler beim Lesen der Zeile: " << line << endl; //Sollte eine Zeile nicht ordentlich gespeichert worden sein, kommt ein Fehler
-                continue; // Die nächste Zeile kommt
+                continue; // Die naechste Zeile kommt
             }
-            insertNode(value1, value2, strValue); // Die Daten aus der Zeile gelesen wurden, werden jetzt als neues Listenelement eingefügt
+            insertNode(value1, value2, strValue); // Die Daten aus der Zeile gelesen wurden, werden jetzt als neues Listenelement eingefuegt
         }
         else {
             cerr << "Error 302: Fehler beim Lesen der Zeile: " << line << endl;
@@ -168,13 +168,13 @@ void highscore::readFile(const string& filename) {
 
     inputFile.close(); //Sobald alle Daten gelesen wurde, wird die Datei wieder geschlossen
 }
-// Diese Funktion ermöglicht, dass Highscoredaten langfristig aus einer .txt Datei geladen werden können.
+// Diese Funktion ermoeglicht, dass Highscoredaten langfristig aus einer .txt Datei geladen werden koennen.
 void highscore::loadFromFile(const string& filename) {
     try {
-        readFile(filename); //Die Funktion lädt aus der .txt-Datei und versucht die daraus neuen Nodes einzufügen
+        readFile(filename); //Die Funktion laedt aus der .txt-Datei und versucht die daraus neuen Nodes einzufuegen
     }
     catch (int e) {
-        cerr << "Error 300: Datei kann nicht geöffnet werden " << filename << endl; //Sollte keine .txt-Datei vorhanden sein, wird ein Error geworfen, der diesen Output erzwingt
+        cerr << "Error 300: Datei kann nicht geoeffnet werden " << filename << endl; //Sollte keine .txt-Datei vorhanden sein, wird ein Error geworfen, der diesen Output erzwingt
     }
     Positionsbestimmung(head[0]);//Hier bekommen alle neuen Elemente eine Position
 };
@@ -200,11 +200,11 @@ void highscore::saveToFile(const string& filename) {
     outputFile.close(); //Die Datei mit den Daten wird geschlossen
 };
 
-//Diese Funktion ermöglicht die Darstellung der Funktion im Terminal
+//Diese Funktion ermoeglicht die Darstellung der Funktion im Terminal
 void highscore::displaySorted(char sortBy, bool ascending) {
     Node* current = nullptr;
 
-    switch (sortBy) { //Diser bestimmt, nach welcher Variable (Name, Datum oder Züge) sortiert werden muss
+    switch (sortBy) { //Diser bestimmt, nach welcher Variable (Name, Datum oder Zuege) sortiert werden muss
     case '1': //Sortierung nach dem Highscore
         cout << "Sortierung erfolgte nach dem Highscore:\n" << endl;
         current = ascending ? head[0] : tail[0]; // Es wird noch gefragt, ob es aufsteigend oder absteigend ist und dementsprechend wird der Start gesetzt
@@ -223,7 +223,7 @@ void highscore::displaySorted(char sortBy, bool ascending) {
     }
     //Hier wird die Liste ausgegeben
     cout << "Position | Highscore | Datum       | Name" << endl;
-    while (current != nullptr) {//Man durchläut in der Schleife die ganze geladene Liste
+    while (current != nullptr) {//Man durchlaeut in der Schleife die ganze geladene Liste
         //Die Daten aus dem Listenelement wird ausgeworfen.
         cout << current->Position;
         if (current->Position < 10) {
@@ -273,11 +273,11 @@ string highscore::formatUnixTime(time_t unixTime) {
     strftime(buffer, sizeof(buffer), "%d/%m/%Y", &timeinfo);
     return std::string(buffer);
 }
-//Die Funktion läuft durch die Liste anhand des Highscores und verteilt die Positionsnummer
+//Die Funktion laeuft durch die Liste anhand des Highscores und verteilt die Positionsnummer
 Node* highscore::Positionsbestimmung(Node* head) {
     Node* current = head;
     int Number = 0;
-    while (current != nullptr) { //Die Schleife läuft durch die Liste bis ein Nullpointer erreicht wurde
+    while (current != nullptr) { //Die Schleife laeuft durch die Liste bis ein Nullpointer erreicht wurde
         Number++;
         current->Position = Number;
         current = current->nextNode[0];

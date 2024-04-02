@@ -58,20 +58,20 @@ int main(int argc, char* argv[]) {
 
 
     // if-Fall:  wenn der User beim Start Parameter eingegeben hat
-    if (argc >= 3) { // 2 Eingaben vom User werden gefodert, also müssen mindestens 3 Argumente vorliegen
+    if (argc >= 3) { // 2 Eingaben vom User werden gefodert, also muessen mindestens 3 Argumente vorliegen
 
             TokenAusgeben = *argv[1]; // zweites Argument abgreifen, also die erste Eingabe
             SpielAusgeben = *argv[2]; // drittes Argument einlesen
     }
     else { // Falls beim Start keine Parameter uebergeben wurde
 
-        TokenAusgeben = check.checkNumberAusgabe(); // Das Ueberprüfen der Eingabe wird aus der Main rausverlagert in die Klasse Checker
+        TokenAusgeben = check.checkNumberAusgabe(); // Das Ueberpruefen der Eingabe wird aus der Main rausverlagert in die Klasse Checker
         SpielAusgeben = check.checkTextAusgabe();
         system("cls"); // Bereinigung des Terminals von allen Zeichen
     }
 
 
-    // Überprüfen, welcher Spieler X bzw O hat
+    // ueberpruefen, welcher Spieler X bzw O hat
     // Da token1 und token2 im Main mehrfach verwendet werden, wird diese if-Pruefung nicht in eine Funktion der Klasse verlagert
     if (check.TokenZuordnen(TokenAusgeben) == 'X') { // Spieler 1 hat X
         token1 = 'X';
@@ -92,8 +92,8 @@ int main(int argc, char* argv[]) {
    
 
 
-    // Überprüfen, ob das Spiel in der Konsole oder in der Text Datei stattfindet
-    GameOn.displayText = check.AusgabeZuordnen(SpielAusgeben); // Bool Funktion --> Return wird für GameOn.displayText genutzt
+    // Ueberpruefen, ob das Spiel in der Konsole oder in der Text Datei stattfindet
+    GameOn.displayText = check.AusgabeZuordnen(SpielAusgeben); // Bool Funktion --> Return wird fuer GameOn.displayText genutzt
 
 
 
@@ -159,8 +159,8 @@ int main(int argc, char* argv[]) {
 
                     
                     list.loadFromFile(filename); // Laden des Highscores von der Text Datei
-                    //list.insertNode(Ruler.countpasses(TokenAusgeben, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2), Ruler.PlayerTurn((turn % 2 + 1), Spieler1.getName(), Spieler2.getName())); // Einfügen der Daten des Gewinners in der Liste
-                    list.insertNode(Winner.getPunktzahl(), Winner.getName()); // Einfügen der Daten des Gewinners in der Liste
+                    //list.insertNode(Ruler.countpasses(TokenAusgeben, (turn % 2 == 0) ? token1 : token2, cplayer1, cplayer2), Ruler.PlayerTurn((turn % 2 + 1), Spieler1.getName(), Spieler2.getName())); // Einfuegen der Daten des Gewinners in der Liste
+                    list.insertNode(Winner.getPunktzahl(), Winner.getName()); // Einfuegen der Daten des Gewinners in der Liste
                     list.saveToFile(filename); // Abspeicherung der Daten des Gewinners in der Text Datei
                     GameOn.endGame(); // Beenden der Spielinstanz
 

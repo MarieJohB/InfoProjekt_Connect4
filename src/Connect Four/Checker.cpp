@@ -11,14 +11,14 @@ char Checker::checkTextAusgabe() {
     // Mit do-while Schleife, da mindestens eine Eingabe und Pruefung erfolgen muss, evtl mehr falls falsch
     char checkTK; // heisst genauso wie im Main
     do {
-        system("cls"); // Für Windows
+        system("cls"); // Fuer Windows
         cout << "Falsche Eingabe!: \n" << endl;
         cout << "T => Ausgabe des Spieles in einer .txt Datei" << endl;
         cout << "K => Ausgabe des Spieles im Terminal \n" << endl;
         cout << "Ihre Eingabe: ";
         cin >> checkTK;
         cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
-        system("cls"); // Für Windows
+        system("cls"); // Fuer Windows
 
     } while (!(checkTK == 'T' || checkTK == 'K' || checkTK == 't' || checkTK == 'k'));
 
@@ -32,12 +32,12 @@ char Checker::checkNumberAusgabe() {
     // Mit do-while Schleife, da mindestens eine Eingabe und Pruefung erfolgen muss, evtl mehr falls falsch
     char check12;
     do {
-        system("cls"); // Für Windows
+        system("cls"); // Fuer Windows
         cout << "Falsche Eingabe: \n" << endl << "1 => Spieler 1: X | Spieler 2: O \n2 => Spieler 1: O | Spieler 2: X \n" << endl;
         cout << "Ihre Eingabe: ";
         cin >> check12;
         cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignoriert alle weiteren Zeichen
-        system("cls"); // Für Windows
+        system("cls"); // Fuer Windows
     } while (!(check12 == '1' || check12 == '2')); // oder (check12 != '1' && check12 != '2')
 
     if (check12 == '1' || check12 == '2') {
